@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://the51dtset.github.io/sitemap-index.xml
+Host: https://the51dtset.github.io
