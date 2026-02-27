@@ -2,26 +2,22 @@ import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 
 const FooterWrapper = styled.footer`
-  display: grid;
-  place-items: center;
-  margin-top: auto;
-  padding: 50px 0;
-  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  font-size: 1.2rem;
+  color: #555;
   text-align: center;
-  line-height: 1.5;
 
   @media (max-width: 768px) {
-    font-size: 13px;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 `
 
 const Footer: FunctionComponent = function () {
-  return (
-    <FooterWrapper>
-      Thank You for Visiting My Blog, Have a Good Day 😆
-      <br />© 2026 The51DTSet, Powered By Gatsby.
-    </FooterWrapper>
-  )
+  return <FooterWrapper>© 2026 The51DTSet</FooterWrapper>
 }
 
 export default Footer

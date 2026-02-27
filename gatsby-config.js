@@ -9,7 +9,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `The51X DT Center Set`,
+    title: `BLOG | The51X DT Center Set`,
     description: `The51X DT Center Set Team Blog`,
     author: `@The51DTSet`,
     siteUrl: `https://The51DTSet.github.io`,
@@ -55,8 +55,8 @@ module.exports = {
           formats: ['auto', 'webp'],
           quality: 100,
           placeholder: 'blurred',
-        }
-      }
+        },
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -102,7 +102,7 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
-    
+
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

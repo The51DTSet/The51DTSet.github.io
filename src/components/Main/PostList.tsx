@@ -2,7 +2,9 @@ import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import PostItem from 'components/Main/PostItem'
 import { PostListItemType } from 'types/PostItem.types'
-import useInfiniteScroll, { useInfiniteScrollType } from 'hooks/useInfiniteScroll'
+import useInfiniteScroll, {
+  useInfiniteScrollType,
+} from 'hooks/useInfiniteScroll'
 
 export type PostType = {
   node: {
@@ -25,23 +27,24 @@ type PostListProps = {
 }
 
 const PostListWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 2rem;
   width: 768px;
   margin: 0 auto;
-  padding: 50px 0 100px;
+  padding: 3rem 0 10rem;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
     width: 100%;
-    padding: 50px 20px;
+    padding: 2rem 2rem 5rem;
   }
 `
 
 const PostList: FunctionComponent<PostListProps> = function ({
   selectedCategory,
-  posts
+  posts,
 }) {
   const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(
     selectedCategory,

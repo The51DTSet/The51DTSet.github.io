@@ -1,9 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react'
 import styled from '@emotion/styled'
-import GlobalStyle from 'components/Common/GlobalStyle'
-import Footer from 'components/Common/Footer'
 import CategoryList from 'components/Main/CategoryList'
-import Introduction from 'components/Main/Introduction'
+import MainHeader from 'components/Main/MainHeader'
 import PostList from 'components/Main/PostList'
 import Template from 'components/Common/Template'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
@@ -11,10 +9,8 @@ import { PostListItemType } from 'types/PostItem.types'
 import queryString, { ParsedQuery } from 'query-string'
 import { graphql, Link } from 'gatsby'
 
-
-
 type IndexPageProps = {
-   location: {
+  location: {
     search: string
   }
   data: {
@@ -37,12 +33,6 @@ type IndexPageProps = {
   }
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`
-
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
   data: {
@@ -63,7 +53,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       : parsed.category
 
   const categoryList = useMemo(
-    ()=>
+    () =>
       edges.reduce(
         (
           list: CategoryListProps['categoryList'],
@@ -74,19 +64,19 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
           }: PostType,
         ) => {
           categories.forEach(category => {
-            if (list[category] === undefined) list[category] = 1;
-            else list[category]++;
-          });
+            if (list[category] === undefined) list[category] = 1
+            else list[category]++
+          })
 
-          list['All']++;
+          list['All']++
 
-          return list;
+          return list
         },
         { All: 0 },
       ),
     [],
   )
-      
+
   return (
     <Template
       title={title}
@@ -94,7 +84,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       url={siteUrl}
       image={publicURL}
     >
-      <Introduction profileImage={gatsbyImageData} />
+      <MainHeader logoImage={gatsbyImageData} />
       <CategoryList
         selectedCategory={selectedCategory}
         categoryList={categoryList}
@@ -145,4 +135,4 @@ export const getPostList = graphql`
       publicURL
     }
   }
-`;
+`
