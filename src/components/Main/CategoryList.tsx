@@ -43,7 +43,6 @@ const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
   align-items: center;
   gap: 0.4rem;
   font-size: 1.6rem;
-  letter-spacing: 0;
   color: ${({ active }) =>
     active ? 'var(--fc-primary)' : 'var(--fc-default)'};
   font-weight: ${({ active }) => (active ? '800' : '400')};

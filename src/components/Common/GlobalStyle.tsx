@@ -4,7 +4,7 @@ import { Global, css } from '@emotion/react'
 // prettier-ignore
 const defaultStyle = css`
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 #___gatsby {
   width: 100%;
@@ -47,7 +47,6 @@ time, mark, audio, video {
   border: 0;
   color: inherit;
   font-family: 'Pretendard', Lato, 'Microsoft Yahei', sans-serif;;
-  letter-spacing: -0.024em;
   vertical-align: baseline;
   background: transparent;
   -webkit-box-sizing: border-box;
@@ -174,6 +173,15 @@ textarea {
   --bc-primary: #3a6bff;
   --bc-default: #ddd;
   --bc-sub: #eee;
+
+  --deckgo-highlight-code-font-family: 'Fira Code';
+  --deckgo-highlight-code-font-size: 1.4rem;
+  --deckgo-highlight-code-line-height: 1.4;
+  --deckgo-highlight-code-scroll: auto;
+  --deckgo-highlight-code-white-space: pre-wrap;
+  --deckgo-highlight-code-display: block;
+  --deckgo-highlight-code-height: 100%;
+  --deckgo-highlight-code-width: 100%;
 }
 `
 

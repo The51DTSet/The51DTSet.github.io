@@ -44,7 +44,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         },
       },
     },
-  } = edges[0];
+  } = edges[0]
 
   return (
     <Template title={title} description={summary} url={href} image={publicURL}>
@@ -59,7 +59,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
     </Template>
   )
 }
-
 
 export default PostTemplate
 

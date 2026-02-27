@@ -63,17 +63,19 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: 'carbon',
+              theme: 'dracula',
+            },
+          },
+          {
             resolve: 'gatsby-remark-smartypants',
             options: {
               dashes: 'oldschool',
             },
           },
-          {
-            resolve: 'gatsby-remark-prismjs',
-            options: {
-              classPrefix: 'language-',
-            },
-          },
+
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -102,7 +104,6 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
-
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

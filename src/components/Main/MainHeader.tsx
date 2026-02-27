@@ -36,7 +36,6 @@ const TitleWrap = styled.div`
 const Title = styled.div`
   font-size: 2.4rem;
   font-weight: 200;
-  letter-spacing: 0;
 
   @media (max-width: 768px) {
     font-size: 1.6rem;

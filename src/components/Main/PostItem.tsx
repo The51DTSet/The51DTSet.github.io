@@ -52,7 +52,6 @@ const Date = styled.div`
   font-size: 1.4rem;
   font-weight: 400;
   color: #717171;
-  letter-spacing: 0;
   margin-top: 2rem;
 `
 
@@ -68,7 +67,6 @@ const CategoryItem = styled.span`
   font-size: 1.2rem;
   color: var(--fc-primary);
   font-weight: 500;
-  letter-spacing: 0;
   border-radius: 6px;
   padding: 0.4rem 1rem;
   background: #fff;

@@ -20,6 +20,16 @@ Robots.txt 파일은 검색 엔진에 어떤 페이지를 크롤링해도 되는
 
 ---
 
+```js
+function() {
+  console.log('test');
+}
+```
+
+```html
+<div>test</div>
+```
+
 ## Source
 
 - SEO 기본 가이드
