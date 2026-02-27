@@ -1,0 +1,72 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // File Layout
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    // "types": [],
+    // For nodejs:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+
+    // Other Outputs
+    // "sourceMap": true,
+    // "declaration": true,
+    // "declarationMap": true,
+
+    // Stricter Typechecking Options
+
+    // Style Options
+    // "noImplicitOverride": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // Recommended Options
+    // "noUncheckedSideEffectImports": true,
+    // "moduleDetection": "force",
+
+     // ─── 언어 및 환경 ───────────────────────────────────────
+    "target": "ES5",  // esnext, ES2020
+    "module": "commonjs", // nodenext, ESNext
+    // "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // "moduleResolution": "bundler",
+
+    // ─── 경로 설정 ──────────────────────────────────────────
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": ["./components/*"],
+      "utils/*": ["./utils/*"],
+      "hooks/*": ["./hooks/*"]
+    },
+
+    // ─── JSX ────────────────────────────────────────────────
+    "jsx": "preserve",
+
+    // ─── 타입 검사 (Strict) ─────────────────────────────────
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    // "noUncheckedIndexedAccess": true,
+    // "exactOptionalPropertyTypes": true,
+
+    // ─── 모듈 동작 ──────────────────────────────────────────
+    "esModuleInterop": true,
+    // "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+
+    // ─── 기타 ───────────────────────────────────────────────
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true, //추가
+    // "isolatedModules": true,
+  },
+  // "include": ["src/**/*"],
+  // "exclude": ["node_modules", "dist"],
+  "include": ["src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}
