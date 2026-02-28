@@ -3,55 +3,62 @@
 .post-head {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 40rem;
 
-  .post-head-image {
+  .post-head-bg {
     position: absolute;
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
     filter: brightness(0.25);
   }
 
-  .post-head-inner {
+  .post-head-info {
     position: relative;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    width: 768px;
     height: 100%;
-    margin: 0 auto;
     padding: 60px 0;
     color: #fff;
+
+    .inner {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      max-width: 1024px;
+      height: 100%;
+      margin: 0 auto;
+    }
   }
 
   .btn-back {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #ffffff;
-    color: #000000;
+    flex: 0 0 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    aspect-ratio: 1;
     font-size: 2.2rem;
-    cursor: pointer;
+    color: var(--fc-default);
+    border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background: #fff;
   }
 
   .post-title {
     font-size: 45px;
-    font-weight: 800;
-    margin-top: auto;
+    font-weight: 700;
     @include clamp(2);
+    margin-top: auto;
   }
 
   .post-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 500;
+    opacity: 0.6;
+    margin-top: 1.6rem;
   }
 }
 
@@ -59,14 +66,14 @@
   // Renderer Style
   display: flex;
   flex-direction: column;
-  width: 768px;
+  // width: 1024px;
   margin: 0 auto;
   padding: 100px 0;
   word-break: break-all;
 
   // Markdown Style
   line-height: 1.8;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 400;
 
   // Apply Padding Attribute to All Elements
@@ -78,8 +85,8 @@
   h1,
   h2,
   h3 {
-    font-weight: 800;
-    margin-bottom: 30px;
+    // font-weight: 800;
+    // margin-bottom: 30px;
   }
 
   * + h1,
@@ -91,19 +98,43 @@
   hr + h1,
   hr + h2,
   hr + h3 {
-    margin-top: 0;
+    // margin-top: 0;
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 3rem 0 2rem;
   }
 
   h2 {
-    font-size: 25px;
+    font-size: 2.6rem;
+    font-weight: 500;
+    margin: 3rem 0 2rem;
   }
 
   h3 {
-    font-size: 20px;
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin: 3rem 0 2rem;
+  }
+
+  h4 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 3rem 0 2rem;
+  }
+
+  h5 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 3rem 0 2rem;
+  }
+
+  h6 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 3rem 0 2rem;
   }
 
   // Adjust Quotation Element Style
@@ -117,14 +148,39 @@
   // Adjust List Element Style
   ol,
   ul {
-    margin-left: 20px;
-    padding: 30px 0;
+    padding-inline-start: 1.75rem;
+    padding: 0 0 1rem 2rem;
+    list-style-type: disc;
+
+    li {
+      list-style-type: disc;
+      padding-left: 0.25rem;
+      margin: 0.25rem 0;
+
+      ul {
+        list-style-type: circle;
+
+        li {
+          list-style-type: circle;
+
+          ul {
+            list-style-type: square;
+
+            li {
+              list-style-type: square;
+            }
+          }
+        }
+      }
+    }
   }
 
   // Adjust Horizontal Rule style
   hr {
-    border: 1px solid #000000;
-    margin: 100px 0;
+    margin: 50px 0;
+    padding: 0;
+    border: 0 none;
+    border-top: 1px solid var(--bc-sub);
   }
 
   // Adjust Link Element Style
@@ -174,17 +230,20 @@
     }
 
     hr {
-      margin: 50px 0;
+      // margin: 50px 0;
+      // padding: 0;
+      // background: transparent;
+      // border: 0 none;
     }
   }
 }
 
 .comment-wrapper {
-  max-width: 768px;
-  margin: 0 auto;
+  // max-width: 768px;
+  // margin: 0 auto;
 
   .utterances {
-    width: 100%;
+    // width: 100%;
     max-width: none;
   }
 }
@@ -192,10 +251,6 @@
 @media (width <= 850px) {
   .post-head {
     height: 300px;
-
-    .post-head-image {
-      height: 300px;
-    }
 
     .post-head-inner {
       width: 100%;

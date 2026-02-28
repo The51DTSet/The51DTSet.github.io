@@ -14,11 +14,7 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
 }) {
   return (
     <div className="post-head">
-      <GatsbyImage
-        image={thumbnail}
-        alt="thumbnail"
-        className="post-head-image"
-      />
+      <GatsbyImage image={thumbnail} alt="thumbnail" className="post-head-bg" />
       <PostHeadInfo title={title} date={date} categories={categories} />
     </div>
   )

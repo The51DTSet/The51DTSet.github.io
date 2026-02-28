@@ -1,7 +1,7 @@
 ## 1. 작업 위치
 
 - develop 브랜치에서 작업
-- main 브랜치는 배포용으로 사용
+- main 브랜치는 배포용
 
 ## 2. 패키지 설치
 
@@ -9,7 +9,7 @@
 $ npm i
 ```
 
-## 3. gatsby-cli 설치하기
+## 3. gatsby-cli 설치
 
 ```shell
 $ (sudo) npm install -g gatsby-cli
@@ -27,10 +27,10 @@ $ gatsby develop
 $ npm run deploy
 ```
 
-## 벤치마킹
+## 벤치
 
-- https://tech.kakaopay.com/
-- https://blog.est.ai/
-- https://medium.com/daangn
-- https://hyperconnect.github.io/
-- https://meetup.nhncloud.com/
+- [kakaopay](https://tech.kakaopay.com/)
+- [est.ai](https://blog.est.ai/)
+- [medium](https://medium.com/daangn)
+- [hyperconnect](https://hyperconnect.github.io/)
+- [nhncloud](https://meetup.nhncloud.com/)

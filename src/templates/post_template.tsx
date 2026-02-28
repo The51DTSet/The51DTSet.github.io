@@ -54,8 +54,15 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         categories={categories}
         thumbnail={gatsbyImageData}
       />
-      <PostContent html={html} />
-      <CommentWidget />
+      <div id="container">
+        <div id="contents">
+          <div className="contents-left">
+            <PostContent html={html} />
+            <CommentWidget />
+          </div>
+          <div className="contents-right">ddd</div>
+        </div>
+      </div>
     </Template>
   )
 }

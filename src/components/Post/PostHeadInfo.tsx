@@ -16,14 +16,16 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
   const goBackPage = () => window.history.back()
 
   return (
-    <div className="post-head-inner">
-      <button type="button" onClick={goBackPage} className="btn-back">
-        <FontAwesomeIcon icon={faArrowLeft} />
-      </button>
-      <div className="post-title">{title}</div>
-      <div className="post-info">
-        <div>{categories.join(' / ')}</div>
-        <div>{date}</div>
+    <div className="post-head-info">
+      <div className="inner">
+        <button type="button" onClick={goBackPage} className="btn-back">
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+        <div className="post-title">{title}</div>
+        <div className="post-info">
+          <div>{categories.join(' / ')}</div>
+          <div>{date}</div>
+        </div>
       </div>
     </div>
   )
