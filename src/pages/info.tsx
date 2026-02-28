@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { graphql, Link } from 'gatsby'
-import { Global, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 type InfoPageProps = {
@@ -15,15 +15,6 @@ type InfoPageProps = {
   }
 }
 
-const globalStyle = css`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 20px;
-  }
-`
-
 const TextStyle = css`
   font-size: 18px;
   font-weight: 700px;
@@ -36,10 +27,10 @@ const Text1 = styled.div<{ disable: boolean }>`
   text-decoration: ${({ disable }) => (disable ? 'line-through' : 'none')};
 `
 
-const Text2 = styled('div')<{ disable: boolean }>(({ disable })=>({
+const Text2 = styled('div')<{ disable: boolean }>(({ disable }) => ({
   fontSize: '15px',
   color: 'blue',
-textDecoration: disable ? 'line-through' : 'none',
+  textDecoration: disable ? 'line-through' : 'none',
 }))
 
 const InfoPage: FunctionComponent<InfoPageProps> = function ({
@@ -51,10 +42,9 @@ const InfoPage: FunctionComponent<InfoPageProps> = function ({
 }) {
   return (
     <div>
-      <Global styles={globalStyle} />
-        <div css={TextStyle}>{title}</div>
-        <Text1 disable={true}>{description}</Text1>
-        <Text2 disable={true}>{author}</Text2>
+      <div css={TextStyle}>{title}</div>
+      <Text1 disable={true}>{description}</Text1>
+      <Text2 disable={true}>{author}</Text2>
       <Link to="/">To Main</Link>
     </div>
   )

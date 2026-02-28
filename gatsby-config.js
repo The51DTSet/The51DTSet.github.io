@@ -15,6 +15,7 @@ module.exports = {
     siteUrl: `https://The51DTSet.github.io`,
   },
   plugins: [
+    `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-plugin-typescript',
       options: {

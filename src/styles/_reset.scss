@@ -1,20 +1,12 @@
-import React, { FunctionComponent } from 'react'
-import { Global, css } from '@emotion/react'
 
-// prettier-ignore
-const defaultStyle = css`
+@use './mixins' as *;
+
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
-#___gatsby {
-  width: 100%;
-}
 
 body, html {
   width: 100%;
   min-height: 100%;
-  color: #222;
-  background-color: #fff;
 }
 
 html {
@@ -46,12 +38,13 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   color: inherit;
-  font-family: 'Pretendard', Lato, 'Microsoft Yahei', sans-serif;;
+  font-family: 'Pretendard', 'Lato', 'Microsoft Yahei', sans-serif;;
   vertical-align: baseline;
   background: transparent;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, main, section, summary {
@@ -101,6 +94,7 @@ img {
 a {
   display: inline-block;
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:focus,
@@ -147,46 +141,3 @@ input, button, select, optgroup, textarea {
 textarea {
   resize: none;
 }
-
-.blind {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  padding: 0;
-  margin: -1px;
-  border: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  clip: rect(0, 0, 0, 0);
-}
-
-:root {
-  --bg-primary: #3a6bff;
-  --bg-sub: #f3f3f3;
-
-  --fc-primary: #3a6bff;
-  --fc-default: #222;
-  --fc-sub: #757575;
-  --fc-sub2: #aaa;
-
-  --bc-primary: #3a6bff;
-  --bc-default: #ddd;
-  --bc-sub: #eee;
-
-  --deckgo-highlight-code-font-family: 'Fira Code';
-  --deckgo-highlight-code-font-size: 1.4rem;
-  --deckgo-highlight-code-line-height: 1.4;
-  --deckgo-highlight-code-scroll: auto;
-  --deckgo-highlight-code-white-space: pre-wrap;
-  --deckgo-highlight-code-display: block;
-  --deckgo-highlight-code-height: 100%;
-  --deckgo-highlight-code-width: 100%;
-}
-`
-
-const GlobalStyle: FunctionComponent = function () {
-  return <Global styles={defaultStyle} />
-}
-
-export default GlobalStyle

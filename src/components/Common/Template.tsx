@@ -1,6 +1,4 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import styled from '@emotion/styled'
-import GlobalStyle from 'components/Common/GlobalStyle'
 import Footer from 'components/Common/Footer'
 import { Helmet } from 'react-helmet'
 
@@ -9,24 +7,20 @@ type TemplateProps = {
   description: string
   url: string
   image: string
+  hasSidebar?: boolean
   children: ReactNode
 }
-
-const Container = styled.main`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`
 
 const Template: FunctionComponent<TemplateProps> = function ({
   title,
   description,
   url,
   image,
+  hasSidebar = false,
   children,
 }) {
   return (
-    <Container>
+    <div id="wrap" className={`${hasSidebar ? 'has-sidebar' : ''}`}>
       <Helmet>
         <html lang="ko" />
 
@@ -50,11 +44,9 @@ const Template: FunctionComponent<TemplateProps> = function ({
         <meta name="twitter:site" content="@사용자이름" />
         <meta name="twitter:creator" content="@사용자이름" />
       </Helmet>
-
-      <GlobalStyle />
       {children}
       <Footer />
-    </Container>
+    </div>
   )
 }
 

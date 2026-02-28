@@ -1,0 +1,41 @@
+@use './mixins' as *;
+
+:root {
+  --bg-primary: #3a6bff;
+  --bg-default: #fff;
+  --bg-sub: #f3f3f3;
+
+  --fc-primary: #3a6bff;
+  --fc-default: #222;
+  --fc-sub: #757575;
+  --fc-sub2: #aaa;
+
+  --bc-primary: #3a6bff;
+  --bc-default: #ddd;
+  --bc-sub: #eee;
+  --bc-input: #ddd;
+  --bc-input-focus: #999;
+
+  --aside-width: 30rem;
+  --container-left-padding: 30rem;
+  --rnb-width: 26rem;
+
+  --deckgo-highlight-code-font-family: 'Fira Code';
+  --deckgo-highlight-code-font-size: 1.4rem;
+  --deckgo-highlight-code-line-height: 1.4;
+  --deckgo-highlight-code-scroll: auto;
+  --deckgo-highlight-code-white-space: pre-wrap;
+  --deckgo-highlight-code-display: block;
+  --deckgo-highlight-code-height: 100%;
+  --deckgo-highlight-code-width: 100%;
+
+  // @include desktop {
+  //   --aside-width: 26rem;
+  //   --container-left-padding: 26rem;
+  //   --rnb-width: 22rem;
+  // }
+
+  // @include tablet-sm {
+  //   --container-left-padding: 0;
+  // }
+}

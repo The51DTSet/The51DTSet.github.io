@@ -1,13 +1,14 @@
-import React, { FunctionComponent, useMemo } from 'react'
-import styled from '@emotion/styled'
-import CategoryList from 'components/Main/CategoryList'
-import MainHeader from 'components/Main/MainHeader'
+import React, { FunctionComponent } from 'react'
+import Aside from 'components/Main/Aside'
+import TopBar from 'components/Main/TopBar'
 import PostList from 'components/Main/PostList'
 import Template from 'components/Common/Template'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/PostItem.types'
 import queryString, { ParsedQuery } from 'query-string'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import PostRecommended from 'components/Post/PostRecommended'
+import PostTags from 'components/Post/PostTags'
 
 type IndexPageProps = {
   location: {
@@ -52,44 +53,32 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       ? 'All'
       : parsed.category
 
-  const categoryList = useMemo(
-    () =>
-      edges.reduce(
-        (
-          list: CategoryListProps['categoryList'],
-          {
-            node: {
-              frontmatter: { categories },
-            },
-          }: PostType,
-        ) => {
-          categories.forEach(category => {
-            if (list[category] === undefined) list[category] = 1
-            else list[category]++
-          })
-
-          list['All']++
-
-          return list
-        },
-        { All: 0 },
-      ),
-    [],
-  )
-
   return (
     <Template
       title={title}
       description={description}
       url={siteUrl}
       image={publicURL}
+      hasSidebar
     >
-      <MainHeader logoImage={gatsbyImageData} />
-      <CategoryList
-        selectedCategory={selectedCategory}
-        categoryList={categoryList}
-      />
-      <PostList selectedCategory={selectedCategory} posts={edges} />
+      <Aside logoImage={gatsbyImageData} edges={edges} search={search} />
+      <div id="container">
+        <TopBar />
+        <div id="contents">
+          <div className="contents-left">
+            <PostList
+              selectedCategory={selectedCategory}
+              posts={edges}
+              // type={'thumbnail-type'}
+              type={'vertical-type'}
+            />
+          </div>
+          <div className="contents-right">
+            <PostRecommended />
+            <PostTags />
+          </div>
+        </div>
+      </div>
     </Template>
   )
 }
