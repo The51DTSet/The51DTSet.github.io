@@ -248,6 +248,57 @@
   }
 }
 
+.toc-container {
+  position: sticky;
+  top: 4rem;
+  max-height: calc(100vh - 12rem);
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 1rem 0 1rem 2rem;
+  border-left: 1px solid var(--bc-sub);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .toc-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .toc {
+    margin-top: 1.2rem;
+
+    ul {
+      li {
+        list-style: none;
+
+        a {
+          display: block;
+          font-size: 1.4rem;
+          color: var(--fc-sub);
+          padding: 0.4rem 0;
+          transition: color 0.2s;
+          @include clamp(2);
+
+          &:hover {
+            color: var(--fc-default);
+          }
+
+          &.toc-active {
+            color: var(--fc-primary);
+            font-weight: 700;
+          }
+        }
+
+        ul {
+          padding-left: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
 @media (width <= 850px) {
   .post-head {
     height: 300px;

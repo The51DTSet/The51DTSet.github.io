@@ -143,6 +143,7 @@ html {
 
   .contents-right {
     flex: 0 0 var(--rnb-width);
+    align-self: stretch;
   }
 }
 
@@ -178,7 +179,7 @@ html {
     display: none;
     align-items: center;
     justify-content: center;
-    width: 4.6rem;
+    width: 5.6rem;
     height: 4.6rem;
     font-size: 1.8rem;
     color: var(--fc-sub);
@@ -305,6 +306,10 @@ html {
   #wrap {
   }
 
+  #container {
+    padding: 0 2rem;
+  }
+
   #contents {
     margin: 2rem 0;
 
@@ -326,8 +331,15 @@ html {
   }
 
   #topbar {
-    width: 100%;
+    position: sticky;
+    top: 0;
+    width: calc(100% + 4rem);
     padding: 1.6rem 0;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 2;
 
     .title {
       display: flex;

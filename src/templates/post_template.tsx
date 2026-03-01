@@ -1,26 +1,20 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
-import { PostPageItemType } from 'types/PostItem.types' // 바로 아래에서 정의할 것입니다
+import { PostPageItemType } from 'types/PostItem.types'
 import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
+import PostToc from 'components/Post/PostToc'
 
 type PostTemplateProps = {
   data: {
     allMarkdownRemark: {
-      edges: PostPageItemType[] // 존재하지 않는 타입이므로 에러가 발생하지만 일단 작성해주세요
+      edges: PostPageItemType[]
     }
   }
   location: {
     href: string
-  }
-}
-
-export type PostPageItemType = {
-  node: {
-    html: string
-    frontmatter: PostFrontmatterType
   }
 }
 
@@ -33,6 +27,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   const {
     node: {
       html,
+      tableOfContents,
       frontmatter: {
         title,
         summary,
@@ -60,7 +55,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
             <PostContent html={html} />
             <CommentWidget />
           </div>
-          <div className="contents-right">ddd</div>
+          <div className="contents-right">
+            <PostToc tableOfContents={tableOfContents} />
+          </div>
         </div>
       </div>
     </Template>
@@ -75,6 +72,7 @@ export const queryMarkdownDataBySlug = graphql`
       edges {
         node {
           html
+          tableOfContents(maxDepth: 4)
           frontmatter {
             title
             summary

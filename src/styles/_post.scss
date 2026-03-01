@@ -166,6 +166,38 @@
 
 @media (width <= 620px) {
   .post-lists {
+    &.vertical-type {
+      .post-item {
+        gap: 2rem;
+
+        .thumbnail {
+          flex: 0 0 40%;
+          min-width: auto;
+        }
+
+        .text-wrapper {
+          padding: 0;
+
+          .title {
+            font-size: 1.6rem;
+          }
+
+          .desc {
+            font-size: 1.4rem;
+          }
+
+          .info-wrapper {
+            display: block;
+            margin-top: 1.6rem;
+
+            div {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+
     &.thumbnail-type {
       .post-item {
         width: 100%;

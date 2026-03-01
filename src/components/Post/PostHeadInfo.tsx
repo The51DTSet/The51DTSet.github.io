@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -13,7 +13,15 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
   date,
   categories,
 }) {
-  const goBackPage = () => window.history.back()
+  const initialHistoryLength = useRef(0)
+
+  useEffect(() => {
+    initialHistoryLength.current = history.length
+  }, [])
+
+  const goBackPage = () => {
+    history.go(-(history.length - initialHistoryLength.current + 1))
+  }
 
   return (
     <div className="post-head-info">
