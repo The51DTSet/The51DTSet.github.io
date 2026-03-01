@@ -15,6 +15,45 @@ module.exports = {
     siteUrl: `https://The51DTSet.github.io`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-fusejs`,
+      options: {
+        query: `
+          {
+            allMarkdownRemark {
+              nodes {
+                id
+                rawMarkdownBody
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                  date(formatString: "YYYY.MM.DD")
+                  categories
+                  summary
+                  thumbnail {
+                    publicURL
+                  }
+                }
+              }
+            }
+          }
+        `,
+        keys: ['title', 'body'],
+        normalizer: ({ data }) =>
+          data.allMarkdownRemark.nodes.map(node => ({
+            id: node.id,
+            title: node.frontmatter.title,
+            body: node.rawMarkdownBody,
+            slug: node.fields.slug,
+            date: node.frontmatter.date,
+            categories: node.frontmatter.categories,
+            summary: node.frontmatter.summary,
+            thumbnail: node.frontmatter.thumbnail?.publicURL,
+          })),
+      },
+    },
     `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-plugin-typescript',
@@ -117,19 +156,5 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `gatsby-starter-default`,
-    //     short_name: `starter`,
-    //     start_url: `/`,
-    //     background_color: `#663399`,
-    //     // This will impact how browsers show your PWA/website
-    //     // https://css-tricks.com/meta-theme-color-and-trickery/
-    //     // theme_color: `#663399`,
-    //     display: `minimal-ui`,
-    //     icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
   ],
 }

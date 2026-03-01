@@ -67,6 +67,6 @@
   },
   // "include": ["src/**/*"],
   // "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*.tsx"],
+  "include": ["src/**/*.tsx", "src/**/*.ts"],
   "exclude": ["node_modules"]
 }

@@ -17,6 +17,12 @@
       }
 
       &:hover {
+        .thumbnail {
+          img {
+            transform: scale(1.1);
+          }
+        }
+
         .text-wrapper {
           .title {
             color: var(--fc-primary);
@@ -32,6 +38,11 @@
         width: 100%;
         aspect-ratio: 16 / 9;
         border-radius: 1rem;
+        overflow: hidden;
+
+        img {
+          transition: transform 0.3s;
+        }
       }
 
       .text-wrapper {

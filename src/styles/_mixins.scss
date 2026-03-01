@@ -59,6 +59,6 @@ $mobile-sm: 320px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: $line;
   overflow: hidden;
 }
