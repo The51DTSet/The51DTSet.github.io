@@ -1,0 +1,16 @@
+[
+  {
+    "id": "example",
+    "name": "Example Author",
+    "bio": "Frontend Developer @ The51X DT Center Set",
+    "homepage": "https://github.com/example",
+    "photo": "/images/example.png"
+  },
+  {
+    "id": "aluvy",
+    "name": "mioksong",
+    "bio": "Frontend Developer @ The51X DT Center Set",
+    "homepage": "https://github.com/aluvy",
+    "photo": "https://avatars.githubusercontent.com/u/86095532"
+  }
+]

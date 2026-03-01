@@ -35,3 +35,10 @@ $ npm run deploy
 - [medium](https://medium.com/daangn)
 - [hyperconnect](https://hyperconnect.github.io/)
 - [nhncloud](https://meetup.nhncloud.com/)
+
+## TODO
+
+- 프로필 이미지 처리방식
+- 추천 게시물 구현
+- 태그 구현
+- 스타일 정리

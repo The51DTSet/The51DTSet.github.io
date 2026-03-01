@@ -40,7 +40,8 @@
     "paths": {
       "components/*": ["./components/*"],
       "utils/*": ["./utils/*"],
-      "hooks/*": ["./hooks/*"]
+      "hooks/*": ["./hooks/*"],
+      "data/*": ["./data/*"]
     },
 
     // ─── JSX ────────────────────────────────────────────────

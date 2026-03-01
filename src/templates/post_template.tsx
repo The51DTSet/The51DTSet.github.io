@@ -6,6 +6,7 @@ import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
 import PostToc from 'components/Post/PostToc'
+import PostAuthor from 'components/Post/PostAuthor'
 
 type PostTemplateProps = {
   data: {
@@ -33,6 +34,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         summary,
         date,
         categories,
+        author,
         thumbnail: {
           childImageSharp: { gatsbyImageData },
           publicURL,
@@ -52,6 +54,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
       <div id="container">
         <div id="contents">
           <div className="contents-left">
+            {author && author.length > 0 && (
+              <PostAuthor authorIds={author} />
+            )}
             <PostContent html={html} />
             <CommentWidget />
           </div>
@@ -78,6 +83,7 @@ export const queryMarkdownDataBySlug = graphql`
             summary
             date(formatString: "YYYY.MM.DD")
             categories
+            author
             thumbnail {
               childImageSharp {
                 gatsbyImageData
