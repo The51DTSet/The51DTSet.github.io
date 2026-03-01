@@ -430,6 +430,67 @@ html {
   }
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 4rem;
+
+  .pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3rem;
+    height: 3rem;
+    padding: 0 0.8rem;
+    border-radius: 0.6rem;
+    font-size: 1.4rem;
+    color: var(--fc-sub);
+    background: none;
+    cursor: pointer;
+    transition:
+      border-color 0.15s,
+      color 0.15s;
+
+    &.pagination-prev {
+      margin-right: 1rem;
+    }
+
+    &.pagination-next {
+      margin-left: 1rem;
+    }
+
+    &:hover:not(:disabled) {
+      color: var(--fc-primary);
+    }
+
+    &.active {
+      background: var(--bg-primary);
+      // border-color: var(--bg-primary);
+      // color: #fff;
+      font-weight: 700;
+      background: var(--bg-sub);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+
+  .pagination-ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.6rem;
+    height: 3.6rem;
+    font-size: 1.4rem;
+    color: var(--fc-sub2);
+    letter-spacing: 0.1em;
+  }
+}
+
 @media (width <= 1650px) {
   #wrap {
     &.has-sidebar {
