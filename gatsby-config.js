@@ -64,7 +64,6 @@ module.exports = {
     },
     `gatsby-plugin-image`,
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-react-helmet`,
     'gatsby-plugin-sitemap',
     `gatsby-transformer-sharp`,
     {

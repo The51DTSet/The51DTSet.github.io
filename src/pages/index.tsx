@@ -3,6 +3,7 @@ import Aside from 'components/Main/Aside'
 import TopBar from 'components/Main/TopBar'
 import PostList from 'components/Main/PostList'
 import Template from 'components/Common/Template'
+import Seo from 'components/Common/Seo'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/PostItem.types'
 import queryString, { ParsedQuery } from 'query-string'
@@ -37,13 +38,9 @@ type IndexPageProps = {
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
   data: {
-    site: {
-      siteMetadata: { title, description, siteUrl },
-    },
     allMarkdownRemark: { edges },
     file: {
       childImageSharp: { gatsbyImageData },
-      publicURL,
     },
   },
 }) {
@@ -54,13 +51,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       : parsed.category
 
   return (
-    <Template
-      title={title}
-      description={description}
-      url={siteUrl}
-      image={publicURL}
-      hasSidebar
-    >
+    <Template hasSidebar>
       <Aside logoImage={gatsbyImageData} edges={edges} search={search} />
       <div id="container">
         <TopBar />
@@ -84,6 +75,17 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
 }
 
 export default IndexPage
+
+export const Head = ({
+  data: {
+    site: {
+      siteMetadata: { title, description, siteUrl },
+    },
+    file: { publicURL },
+  },
+}: IndexPageProps) => (
+  <Seo title={title} description={description} url={siteUrl} image={publicURL} />
+)
 
 export const getPostList = graphql`
   query getPostList {

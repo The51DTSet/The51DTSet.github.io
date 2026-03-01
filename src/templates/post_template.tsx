@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
 import { PostPageItemType } from 'types/PostItem.types'
 import Template from 'components/Common/Template'
+import Seo from 'components/Common/Seo'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
@@ -23,7 +24,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   data: {
     allMarkdownRemark: { edges },
   },
-  location: { href },
 }) {
   const {
     node: {
@@ -31,20 +31,18 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
       tableOfContents,
       frontmatter: {
         title,
-        summary,
         date,
         categories,
         author,
         thumbnail: {
           childImageSharp: { gatsbyImageData },
-          publicURL,
         },
       },
     },
   } = edges[0]
 
   return (
-    <Template title={title} description={summary} url={href} image={publicURL}>
+    <Template>
       <PostHead
         title={title}
         date={date}
@@ -70,6 +68,31 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
 }
 
 export default PostTemplate
+
+export const Head = ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+  location,
+}: PostTemplateProps) => {
+  const {
+    node: {
+      frontmatter: {
+        title,
+        summary,
+        thumbnail: { publicURL },
+      },
+    },
+  } = edges[0]
+  return (
+    <Seo
+      title={title}
+      description={summary}
+      url={location.href}
+      image={publicURL}
+    />
+  )
+}
 
 export const queryMarkdownDataBySlug = graphql`
   query queryMarkdownDataBySlug($slug: String) {
