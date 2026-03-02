@@ -7,7 +7,12 @@ type SeoProps = {
   image: string
 }
 
-const Seo: FunctionComponent<SeoProps> = ({ title, description, url, image }) => (
+const Seo: FunctionComponent<SeoProps> = ({
+  title,
+  description,
+  url,
+  image,
+}) => (
   <>
     <html lang="ko" />
     <title>{title}</title>
@@ -26,8 +31,8 @@ const Seo: FunctionComponent<SeoProps> = ({ title, description, url, image }) =>
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
-    <meta name="twitter:site" content="@사용자이름" />
-    <meta name="twitter:creator" content="@사용자이름" />
+    <meta name="twitter:site" content="@the51dtset" />
+    <meta name="twitter:creator" content="@the51dtset" />
   </>
 )
 

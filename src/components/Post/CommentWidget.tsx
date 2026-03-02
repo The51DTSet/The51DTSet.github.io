@@ -1,4 +1,4 @@
-import React, { createRef, FunctionComponent, useEffect } from 'react'
+import React, { useRef, FunctionComponent, useEffect } from 'react'
 
 const src = 'https://utteranc.es/client.js'
 const repo = 'The51DTSet/The51DTSet.github.io' // 자신 계정의 레포지토리로 설정
@@ -14,10 +14,10 @@ type UtterancesAttributesType = {
 }
 
 const CommentWidget: FunctionComponent = function () {
-  const element = createRef<HTMLDivElement>()
+  const element = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (element.current === null) return
+    if (!element.current) return
 
     const utterances: HTMLScriptElement = document.createElement('script')
 

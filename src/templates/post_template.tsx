@@ -25,6 +25,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
     allMarkdownRemark: { edges },
   },
 }) {
+  const post = edges[0]
+  if (!post) return null
+
   const {
     node: {
       html,
@@ -40,7 +43,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         },
       },
     },
-  } = edges[0]
+  } = post
 
   return (
     <Template>
@@ -75,6 +78,9 @@ export const Head = ({
   },
   location,
 }: PostTemplateProps) => {
+  const post = edges[0]
+  if (!post) return null
+
   const {
     node: {
       frontmatter: {
@@ -83,7 +89,8 @@ export const Head = ({
         thumbnail: { publicURL },
       },
     },
-  } = edges[0]
+  } = post
+
   return (
     <Seo
       title={title}

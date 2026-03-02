@@ -28,16 +28,23 @@ const CategoryList: FunctionComponent<CategoryListProps> = function ({
             HOME
           </Link>
         </li>
-        {Object.entries(categoryList).map(([name, count]) => (
-          <li key={name}>
-            <Link
-              to={`/?category=${name}`}
-              className={`post-link ${name === selectedCategory ? 'on' : ''}`}
-            >
-              {name} <span>{count}</span>
-            </Link>
-          </li>
-        ))}
+        {Object.entries(categoryList).map(([name, count]) => {
+          const isActive =
+            name === 'All'
+              ? search.includes('category=All')
+              : name === selectedCategory
+          return (
+            <li key={name}>
+              <Link
+                to={`/?category=${name}`}
+                className={`post-link ${isActive ? 'on' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {name} <span>{count}</span>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )

@@ -7,27 +7,29 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import BreadCrumb from 'components/Common/BreadCrumb'
 import PostSearch from 'components/Common/PostSearch'
-
-const handleMenuClick = () => {
-  document.getElementById('wrap')?.classList.toggle('open-sidebar')
-  // document.getElementById('aside')?.classList.toggle('open-sidebar')
-}
-
-const handleSearchClick = () => {
-  document.getElementById('wrap')?.classList.toggle('open-search')
-  document.getElementById('search')?.classList.toggle('open-search')
-  // document.getElementById('aside')?.classList.toggle('open-sidebar')
-}
+import { useLayout } from 'contexts/LayoutContext'
 
 const TabBar: FunctionComponent = function () {
+  const { toggleSidebar, toggleSearch } = useLayout()
+
   return (
     <div id="topbar">
       <BreadCrumb />
-      <button type="button" className="btn-menu" onClick={handleMenuClick}>
+      <button
+        type="button"
+        className="btn-menu"
+        aria-label="메뉴 열기"
+        onClick={toggleSidebar}
+      >
         <FontAwesomeIcon icon={faBars} />
       </button>
       <div className="title">Title</div>
-      <button type="button" className="btn-search" onClick={handleSearchClick}>
+      <button
+        type="button"
+        className="btn-search"
+        aria-label="검색"
+        onClick={toggleSearch}
+      >
         <FontAwesomeIcon icon={faMagnifyingGlass} className="ico-search" />
         <FontAwesomeIcon icon={faXmark} className="ico-close" />
       </button>

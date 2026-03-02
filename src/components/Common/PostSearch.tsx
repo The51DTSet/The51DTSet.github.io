@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { useGatsbyPluginFusejs } from 'react-use-fusejs'
+import { useLayout } from 'contexts/LayoutContext'
 
 type SearchResultItem = {
   id: string
@@ -20,6 +21,7 @@ type SearchResultItem = {
 }
 
 export function Search() {
+  const { searchOpen } = useLayout()
   const data = useStaticQuery(graphql`
     {
       fusejs {
@@ -35,7 +37,7 @@ export function Search() {
   }>
 
   return (
-    <div className="search-wrapper" id="search">
+    <div className={`search-wrapper${searchOpen ? ' open-search' : ''}`} id="search">
       <div className="inner">
         <div className="input-item">
           <div className="btn-submit">

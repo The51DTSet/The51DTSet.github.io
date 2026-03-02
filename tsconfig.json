@@ -41,7 +41,8 @@
       "components/*": ["./components/*"],
       "utils/*": ["./utils/*"],
       "hooks/*": ["./hooks/*"],
-      "data/*": ["./data/*"]
+      "data/*": ["./data/*"],
+      "contexts/*": ["./contexts/*"]
     },
 
     // ─── JSX ────────────────────────────────────────────────

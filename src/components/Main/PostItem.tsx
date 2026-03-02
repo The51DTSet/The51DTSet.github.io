@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, memo } from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { PostFrontmatterType } from 'types/PostItem.types'
 import { Link } from 'gatsby'
@@ -46,4 +46,4 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
   )
 }
 
-export default PostItem
+export default memo(PostItem)

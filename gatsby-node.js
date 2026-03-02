@@ -9,8 +9,25 @@
  */
 
 const path = require('path');
-const { spawnSync } = require('child_process');
+const { spawn } = require('child_process');
 const { createFilePath } = require(`gatsby-source-filesystem`);
+
+function getGitLastModified(filePath) {
+  return new Promise(resolve => {
+    const proc = spawn(
+      'git',
+      ['log', '-1', '--format=%aI', '--', filePath],
+      { cwd: __dirname },
+    );
+    let output = '';
+    proc.stdout.on('data', data => { output += data.toString(); });
+    proc.on('close', code => {
+      const dateStr = output.trim();
+      resolve(code === 0 && dateStr ? dateStr : null);
+    });
+    proc.on('error', () => resolve(null));
+  });
+}
 
 // exports.createPages = async ({ actions }) => {
 //   const { createPage } = actions
@@ -33,6 +50,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
         components: path.resolve(__dirname, 'src/components'),
         utils: path.resolve(__dirname, 'src/utils'),
         hooks: path.resolve(__dirname, 'src/hooks'),
+        contexts: path.resolve(__dirname, 'src/contexts'),
       },
     },
   });
@@ -50,27 +68,19 @@ exports.createSchemaCustomization = ({ actions }) => {
 };
 
 // Generate a Slug Each Post Data
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = async ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode });
     createNodeField({ node, name: 'slug', value: slug });
 
-    // Auto-detect last modified date from git history
+    // Auto-detect last modified date from git history (non-blocking)
     const parent = getNode(node.parent);
     let gitLastModified = null;
 
     if (parent && parent.absolutePath) {
-      const result = spawnSync(
-        'git',
-        ['log', '-1', '--format=%aI', '--', parent.absolutePath],
-        { cwd: __dirname },
-      );
-      if (result.status === 0 && result.stdout) {
-        const dateStr = result.stdout.toString().trim();
-        if (dateStr) gitLastModified = dateStr;
-      }
+      gitLastModified = await getGitLastModified(parent.absolutePath);
     }
 
     createNodeField({ node, name: 'gitLastModified', value: gitLastModified });

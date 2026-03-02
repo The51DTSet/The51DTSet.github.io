@@ -30,17 +30,6 @@ html {
   }
 }
 
-#wrap.open-sidebar {
-  // transform: translateX(26rem);
-
-  #aside {
-    transform: translateX(0);
-  }
-  #container {
-    transform: translateX(26rem);
-  }
-}
-
 #aside {
   position: fixed;
   left: 0;
@@ -549,6 +538,17 @@ html {
 
   #aside {
     transform: translateX(-100%);
+  }
+
+  #wrap.open-sidebar {
+    // transform: translateX(26rem);
+
+    #aside {
+      transform: translateX(0);
+    }
+    #container {
+      transform: translateX(26rem);
+    }
   }
 
   #topbar {
