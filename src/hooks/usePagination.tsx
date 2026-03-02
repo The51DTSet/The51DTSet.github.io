@@ -3,27 +3,31 @@ import { PostListItemType } from 'types/PostItem.types'
 
 const ITEMS_PER_PAGE = 10
 
-const usePagination = (selectedCategory: string, posts: PostListItemType[]) => {
+const usePagination = (
+  selectedCategory: string,
+  selectedTag: string,
+  posts: PostListItemType[],
+) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const filteredPosts = useMemo(
     () =>
-      posts.filter(
-        ({
-          node: {
-            frontmatter: { categories },
-          },
-        }) =>
+      posts.filter(({ node: { frontmatter: { categories, tags } } }) => {
+        const categoryMatch =
           selectedCategory !== 'All'
             ? categories.includes(selectedCategory)
-            : true,
-      ),
-    [selectedCategory, posts],
+            : true
+        const tagMatch = selectedTag
+          ? Array.isArray(tags) && tags.includes(selectedTag)
+          : true
+        return categoryMatch && tagMatch
+      }),
+    [selectedCategory, selectedTag, posts],
   )
 
   useEffect(() => {
     setCurrentPage(1)
-  }, [selectedCategory])
+  }, [selectedCategory, selectedTag])
 
   const totalPages = Math.ceil(filteredPosts.length / ITEMS_PER_PAGE)
 

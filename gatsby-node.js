@@ -9,6 +9,7 @@
  */
 
 const path = require('path');
+const { spawnSync } = require('child_process');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 // exports.createPages = async ({ actions }) => {
@@ -37,14 +38,42 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
   });
 };
 
+// Declare gitLastModified as a Date type so formatString works in GraphQL
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type MarkdownRemarkFields {
+      slug: String
+      gitLastModified: Date @dateformat
+    }
+  `);
+};
+
 // Generate a Slug Each Post Data
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode });
-
     createNodeField({ node, name: 'slug', value: slug });
+
+    // Auto-detect last modified date from git history
+    const parent = getNode(node.parent);
+    let gitLastModified = null;
+
+    if (parent && parent.absolutePath) {
+      const result = spawnSync(
+        'git',
+        ['log', '-1', '--format=%aI', '--', parent.absolutePath],
+        { cwd: __dirname },
+      );
+      if (result.status === 0 && result.stdout) {
+        const dateStr = result.stdout.toString().trim();
+        if (dateStr) gitLastModified = dateStr;
+      }
+    }
+
+    createNodeField({ node, name: 'gitLastModified', value: gitLastModified });
   }
 };
 

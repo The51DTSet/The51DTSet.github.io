@@ -9,13 +9,14 @@ type PostHeadProps = PostHeadInfoProps & {
 const PostHead: FunctionComponent<PostHeadProps> = function ({
   title,
   date,
+  updatedAt,
   categories,
   thumbnail,
 }) {
   return (
     <div className="post-head">
       <GatsbyImage image={thumbnail} alt="thumbnail" className="post-head-bg" />
-      <PostHeadInfo title={title} date={date} categories={categories} />
+      <PostHeadInfo title={title} date={date} updatedAt={updatedAt} categories={categories} />
     </div>
   )
 }

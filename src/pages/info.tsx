@@ -1,65 +1,127 @@
 import React, { FunctionComponent } from 'react'
-import { graphql, Link } from 'gatsby'
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
+import Aside from 'components/Main/Aside'
+import TopBar from 'components/Main/TopBar'
+import Template from 'components/Common/Template'
+import Seo from 'components/Common/Seo'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { PostListItemType } from 'types/PostItem.types'
+import { graphql } from 'gatsby'
+import PostRecommended from 'components/Post/PostRecommended'
+import PostTags from 'components/Post/PostTags'
 
-type InfoPageProps = {
+type IndexPageProps = {
+  location: {
+    search: string
+  }
   data: {
     site: {
       siteMetadata: {
         title: string
         description: string
-        author: string
+        siteUrl: string
       }
+    }
+    allMarkdownRemark: {
+      edges: PostListItemType[]
+    }
+    file: {
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData
+      }
+      publicURL: string
+    }
+    ogImage: {
+      publicURL: string
     }
   }
 }
 
-const TextStyle = css`
-  font-size: 18px;
-  font-weight: 700px;
-  color: gray;
-`
-
-const Text1 = styled.div<{ disable: boolean }>`
-  font-size: 20px;
-  font-weight: 700;
-  text-decoration: ${({ disable }) => (disable ? 'line-through' : 'none')};
-`
-
-const Text2 = styled('div')<{ disable: boolean }>(({ disable }) => ({
-  fontSize: '15px',
-  color: 'blue',
-  textDecoration: disable ? 'line-through' : 'none',
-}))
-
-const InfoPage: FunctionComponent<InfoPageProps> = function ({
+const IndexPage: FunctionComponent<IndexPageProps> = function ({
+  location: { search },
   data: {
-    site: {
-      siteMetadata: { title, description, author },
+    allMarkdownRemark: { edges },
+    file: {
+      childImageSharp: { gatsbyImageData },
     },
   },
 }) {
   return (
-    <div>
-      <div css={TextStyle}>{title}</div>
-      <Text1 disable={true}>{description}</Text1>
-      <Text2 disable={true}>{author}</Text2>
-      <Link to="/">To Main</Link>
-    </div>
+    <Template hasSidebar>
+      <Aside logoImage={gatsbyImageData} edges={edges} search={search} />
+      <div id="container">
+        <TopBar />
+        <div id="contents">
+          <div className="contents-left">dddddddd</div>
+          <div className="contents-right">
+            <PostRecommended edges={edges} />
+            <PostTags edges={edges} selectedTag="" />
+          </div>
+        </div>
+      </div>
+    </Template>
   )
 }
 
-export default InfoPage
+export default IndexPage
 
-export const metadataQuery = graphql`
-  {
+export const Head = ({
+  data: {
+    site: {
+      siteMetadata: { title, description, siteUrl },
+    },
+    ogImage: { publicURL },
+  },
+}: IndexPageProps) => (
+  <Seo
+    title={title}
+    description={description}
+    url={siteUrl}
+    image={publicURL}
+  />
+)
+
+export const getPostList = graphql`
+  query getPostList {
     site {
       siteMetadata {
         title
         description
-        author
+        siteUrl
       }
+    }
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+            gitLastModified(formatString: "YYYY.MM.DD.")
+          }
+          frontmatter {
+            title
+            summary
+            date(formatString: "YYYY.MM.DD.")
+            categories
+            tags
+            thumbnail {
+              childImageSharp {
+                gatsbyImageData(width: 768, height: 400)
+              }
+            }
+          }
+        }
+      }
+    }
+    file(name: { eq: "profile-image" }) {
+      childImageSharp {
+        gatsbyImageData(width: 120, height: 120)
+      }
+      publicURL
+    }
+    ogImage: file(name: { eq: "og-image" }) {
+      publicURL
     }
   }
 `

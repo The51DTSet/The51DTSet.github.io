@@ -4,6 +4,7 @@ export type PostFrontmatterType = {
   title: string
   date: string
   categories: string[]
+  tags?: string[]
   summary: string
   author?: string[]
   thumbnail: {
@@ -19,6 +20,7 @@ export type PostListItemType = {
     id: string
     fields: {
       slug: string
+      gitLastModified?: string | null
     }
     frontmatter: PostFrontmatterType
   }
@@ -28,6 +30,9 @@ export type PostPageItemType = {
   node: {
     html: string
     tableOfContents: string
+    fields: {
+      gitLastModified?: string | null
+    }
     frontmatter: PostFrontmatterType
   }
 }

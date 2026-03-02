@@ -2,6 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import queryString, { ParsedQuery } from 'query-string'
 import { Link } from 'gatsby'
+import { useLocation } from '@reach/router'
 import LogoImage from 'components/Main/LogoImage'
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList'
 import { PostListItemType } from 'types/PostItem.types'
@@ -47,12 +48,15 @@ const Aside: FunctionComponent<AsideProps> = function ({
       ),
     [edges],
   )
+  const { pathname } = useLocation()
 
   return (
     <aside id="aside">
       <div className="inner">
         <div className="aside-head">
-          <LogoImage logoImage={logoImage} />
+          <Link to="/">
+            <LogoImage logoImage={logoImage} />
+          </Link>
           <Link to="/" className="line-home">
             <h1>The51X DT</h1>
             <p className="desc">The51X DTCenter Set Team Blog</p>
@@ -66,8 +70,12 @@ const Aside: FunctionComponent<AsideProps> = function ({
           <div className="page-list">
             <ul>
               <li>
-                <Link to="/" className="page-link">
-                  Pages1
+                <Link
+                  to="/info/"
+                  key="info"
+                  className={`post-link ${pathname === '/info/' ? 'on' : ''}`}
+                >
+                  Info
                 </Link>
               </li>
               <li>

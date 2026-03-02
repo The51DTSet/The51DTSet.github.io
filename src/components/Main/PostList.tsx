@@ -10,6 +10,7 @@ import {
 
 type PostListProps = {
   selectedCategory: string
+  selectedTag: string
   posts: PostListItemType[]
   type: string
 }
@@ -37,11 +38,13 @@ const getPaginationPages = (
 
 const PostList: FunctionComponent<PostListProps> = ({
   selectedCategory,
+  selectedTag,
   posts,
   type,
 }) => {
   const { postList, currentPage, totalPages, setCurrentPage } = usePagination(
     selectedCategory,
+    selectedTag,
     posts,
   )
 

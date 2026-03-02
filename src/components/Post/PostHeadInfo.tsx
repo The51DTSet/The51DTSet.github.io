@@ -5,12 +5,14 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 export type PostHeadInfoProps = {
   title: string
   date: string
+  updatedAt?: string
   categories: string[]
 }
 
 const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
   title,
   date,
+  updatedAt,
   categories,
 }) {
   const initialHistoryLength = useRef(0)
@@ -32,7 +34,12 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
         <div className="post-title">{title}</div>
         <div className="post-info">
           <div>{categories.join(' / ')}</div>
-          <div>{date}</div>
+          <div className="post-dates">
+            <span>Posted: {date}</span>
+            {updatedAt && updatedAt !== date && (
+              <span>Updated: {updatedAt}</span>
+            )}
+          </div>
         </div>
       </div>
     </div>

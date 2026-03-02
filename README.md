@@ -38,8 +38,4 @@ $ npm run deploy
 
 ## TODO
 
-- 추천 게시물 구현
-- 태그 구현
 - 스타일 정리
-- 포스팅 이미지에 figcaption 추가
-- {: } 기능

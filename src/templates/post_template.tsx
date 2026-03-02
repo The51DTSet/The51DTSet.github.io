@@ -29,6 +29,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
     node: {
       html,
       tableOfContents,
+      fields: { gitLastModified },
       frontmatter: {
         title,
         date,
@@ -46,6 +47,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
       <PostHead
         title={title}
         date={date}
+        updatedAt={gitLastModified ?? undefined}
         categories={categories}
         thumbnail={gatsbyImageData}
       />
@@ -99,6 +101,9 @@ export const queryMarkdownDataBySlug = graphql`
         node {
           html
           tableOfContents(maxDepth: 4)
+          fields {
+            gitLastModified(formatString: "YYYY.MM.DD")
+          }
           frontmatter {
             title
             summary

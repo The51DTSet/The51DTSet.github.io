@@ -52,6 +52,8 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     typeof parsed.category !== 'string' || !parsed.category
       ? 'All'
       : parsed.category
+  const selectedTag: string =
+    typeof parsed.tag !== 'string' || !parsed.tag ? '' : parsed.tag
 
   return (
     <Template hasSidebar>
@@ -62,14 +64,15 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
           <div className="contents-left">
             <PostList
               selectedCategory={selectedCategory}
+              selectedTag={selectedTag}
               posts={edges}
               // type={'thumbnail-type'}
               type={'vertical-type'}
             />
           </div>
           <div className="contents-right">
-            <PostRecommended />
-            <PostTags />
+            <PostRecommended edges={edges} />
+            <PostTags edges={edges} selectedTag={selectedTag} />
           </div>
         </div>
       </div>
@@ -87,7 +90,12 @@ export const Head = ({
     ogImage: { publicURL },
   },
 }: IndexPageProps) => (
-  <Seo title={title} description={description} url={siteUrl} image={publicURL} />
+  <Seo
+    title={title}
+    description={description}
+    url={siteUrl}
+    image={publicURL}
+  />
 )
 
 export const getPostList = graphql`
@@ -107,12 +115,14 @@ export const getPostList = graphql`
           id
           fields {
             slug
+            gitLastModified(formatString: "YYYY.MM.DD.")
           }
           frontmatter {
             title
             summary
             date(formatString: "YYYY.MM.DD.")
             categories
+            tags
             thumbnail {
               childImageSharp {
                 gatsbyImageData(width: 768, height: 400)
