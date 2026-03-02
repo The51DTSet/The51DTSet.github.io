@@ -114,7 +114,10 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-highlight-code`,
+            resolve: `${__dirname}/plugins/gatsby-remark-block-attrs`,
+          },
+          {
+            resolve: `${__dirname}/plugins/gatsby-remark-code-blocks`,
             options: {
               terminal: 'carbon',
               theme: 'dracula',

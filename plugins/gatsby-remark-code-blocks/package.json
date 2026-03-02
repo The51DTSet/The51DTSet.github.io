@@ -1,0 +1,7 @@
+{
+  "name": "gatsby-remark-code-blocks",
+  "version": "1.0.0",
+  "description": "Code block with language badge and filename header",
+  "main": "index.js",
+  "keywords": ["gatsby", "gatsby-plugin", "gatsby-remark"]
+}

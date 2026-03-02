@@ -12,6 +12,10 @@ thumbnail: './cover.png'
 
 Node.js는 백엔드를 구현하는 기술이라고 생각했을지 모른다. 웹 어플리케이션 개발에 직접적으로 사용하는 것은 아니지만 개발 환경을 이해하고 구성하는데 Node.js를 모르면 언젠가는 한계에 부딪히게 될 것이다.
 
+> tip   
+> Node.js는 백엔드를 구현하는 기술이라고 생각했을지 모른다. 웹 어플리케이션 개발에 직접적으로 사용하는 것은 아니지만 개발 환경을 이해하고 구성하는데 Node.js를 모르면 언젠가는 한계에 부딪히게 될 것이다.
+{: .prompt-tip}
+
 ## 1. 프론트엔드 개발에 Node.js 가 필요한 이유
 
 **최신 스펙으로 개발할 수 있다.**  
@@ -51,6 +55,70 @@ $ node
 3
 ```
 
+```javascript
+console.log('test')
+```
+
+```typescript
+const foo = 'bar'
+```
+{: file="MyComponent.tsx"}
+
+
+```javascript
+console.log('test')
+console.log('test')
+console.log('test')
+console.log('test')
+console.log('test')
+console.log('test')
+console.log('test')
+```
+
+---
+
+기존 콜론 방식(javascript:파일명.tsx)을
+제거하고, Jekyll/Chirpy 스타일의 {:file="..."} 방식으로 변경했습니다.
+
+---
+
+마크다운 사용법
+
+언어명만 표시 (파일명 없음)
+
+````javascript
+const foo = 'bar'
+````
+→ 헤더에 `javascript` 배지만 표시
+
+**언어명 + 파일명**
+````js
+const foo = 'bar'
+````
+{: file="MyComponent.tsx"}
+
+→ 헤더에 `javascript` 배지 + `MyComponent.tsx` 파일명 표시
+
+
+**하이라이트 라인과 함께도 가능**
+````js
+const foo = 'bar'
+````
+{: file="MyComponent.tsx"}
+
+---
+
+### 동작 원리
+   
+`{: file="..."}` 단락은 렌더링 시 AST에서
+ 자동으로 제거되어 HTML 출력에 나타나지
+않습니다. 코드 블록 헤더에만 파일명이
+표시됩니다.
+
+---
+
+
+
 `>` 프롬프트와 함께 입력 대기화면이 나온다. 정수를 계산하는 짧은 코드를 입력하면 결과 3을 출력한다.
 
 이것을 노드 REPL (read-eval-print loop)이라고 부르는데, 자바스크립트 코드를 입력하고 즉시 결과를 확인할 수 있는 프로그램이다. 파이썬이나 PHP 같은 언어에도 제공하는 기능이다.
@@ -59,13 +127,13 @@ $ node
 
 - 이번에는 `--version` 옵션을 추가해 설치한 노드 버전을 확인해 보자.
 
-  ```shell
-  $ node --version
-  v13.1.0
+```shell
+$ node --version
+v13.1.0
 
-  $ npm --version
-  6.12.1
-  ```
+$ npm --version
+6.12.1
+````
 
 - NPM (Node Package Manage) 명령어도 확인해 보자.
 
@@ -165,7 +233,6 @@ npm ERR! Test failed. See above for more details.
   }
 }
 ```
-
 {: file="package.json"}
 
 echo 명령어로 메세지 “Error: no test specified”를 출력한 뒤 에러 코드 1을 던지면서 종료하는 동작이다. 에러 코드 1을 확인하면 에러 (“npm ERR!…“)를 출력한다.
@@ -205,7 +272,6 @@ where <command> is one of:
   }
 }
 ```
-
 {: file="package.json"}
 
 커스텀으로 등록한 명령어는 아래 형식으로 run을 추가해서 실행한다.
@@ -254,7 +320,6 @@ package.json 에는 설치한 패키지 정보를 기록한다.
   }
 }
 ```
-
 {: file="package.json"}
 
 버전 16.12.0을 설치했다는 의미다.

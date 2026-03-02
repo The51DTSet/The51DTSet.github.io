@@ -1,0 +1,7 @@
+{
+  "name": "gatsby-remark-block-attrs",
+  "version": "1.0.0",
+  "description": "Add classes to block elements via {: .classname} syntax",
+  "main": "index.js",
+  "keywords": ["gatsby", "gatsby-plugin", "gatsby-remark"]
+}

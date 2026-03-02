@@ -83,24 +83,10 @@
     padding: 3px 0;
   }
 
-  // Adjust Heading Element Style
-  h1,
-  h2,
-  h3 {
-    // font-weight: 800;
-    // margin-bottom: 30px;
-  }
-
   * + h1,
   * + h2,
   * + h3 {
     margin-top: 80px;
-  }
-
-  hr + h1,
-  hr + h2,
-  hr + h3 {
-    // margin-top: 0;
   }
 
   h1 {
@@ -145,6 +131,73 @@
     padding: 5px 15px;
     border-left: 2px solid #000000;
     font-weight: 800;
+  }
+
+  // {: .prompt-*} 스타일 — blockquote 등에 적용
+  %prompt-base {
+    display: flex;
+    gap: 0.8rem;
+    margin: 2rem 0;
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.6rem;
+    border-left: 4px solid;
+    font-weight: 400;
+    line-height: 1.7;
+
+    &::before {
+      flex-shrink: 0;
+      font-size: 1.6rem;
+      line-height: 1.7;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  blockquote.prompt-tip {
+    @extend %prompt-base;
+    background: rgba(40, 200, 64, 0.08);
+    border-color: #28c840;
+    color: var(--fc-default);
+
+    &::before {
+      content: '💡';
+    }
+  }
+
+  blockquote.prompt-info {
+    @extend %prompt-base;
+    background: rgba(58, 107, 255, 0.08);
+    border-color: #3a6bff;
+    color: var(--fc-default);
+
+    &::before {
+      content: 'ℹ️';
+    }
+  }
+
+  blockquote.prompt-warning {
+    @extend %prompt-base;
+    background: rgba(254, 188, 46, 0.1);
+    border-color: #febc2e;
+    color: var(--fc-default);
+
+    &::before {
+      content: '⚠️';
+    }
+  }
+
+  blockquote.prompt-danger {
+    @extend %prompt-base;
+    background: rgba(255, 95, 87, 0.08);
+    border-color: #ff5f57;
+    color: var(--fc-default);
+
+    &::before {
+      content: '🚨';
+    }
   }
 
   // Adjust List Element Style
@@ -208,6 +261,107 @@
     tab-size: 2;
   }
 
+  // Code block wrapper (with language/filename header)
+  .code-block {
+    position: relative;
+    margin: 30px 0;
+    border-radius: 8px;
+    overflow: hidden;
+
+    deckgo-highlight-code {
+      --deckgo-highlight-code-margin: 0;
+      display: block;
+      margin-top: 0;
+      margin-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: none;
+    }
+
+    // 커스텀 헤더가 있을 때 deckgo 내부 .carbon(● ● ●) 숨김
+    .code-block-header + deckgo-highlight-code {
+      --deckgo-highlight-code-carbon-toolbar-display: none;
+    }
+
+    // 복사 버튼
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.07);
+      color: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition:
+        background 0.15s,
+        color 0.15s;
+
+      svg {
+        width: 15px;
+        height: 15px;
+        pointer-events: none;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      &.copied {
+        color: #28c840;
+      }
+    }
+  }
+
+  .code-block-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.7rem 1.4rem;
+    background: #1e1e2e;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    // carbon terminal 스타일 ● ● ● 점
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ff5f57;
+      box-shadow:
+        20px 0 0 #febc2e,
+        40px 0 0 #28c840;
+      flex-shrink: 0;
+      margin-right: 20px;
+    }
+
+    .code-lang {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #89b4fa;
+      background: rgba(137, 180, 250, 0.12);
+      padding: 0.2rem 0.7rem;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .code-filename {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.2rem;
+      color: #cdd6f4;
+      opacity: 0.7;
+    }
+  }
+
   // Markdown Responsive Design
   @media (max-width: 768px) {
     width: 100%;
@@ -232,10 +386,7 @@
     }
 
     hr {
-      // margin: 50px 0;
-      // padding: 0;
-      // background: transparent;
-      // border: 0 none;
+      margin: 30px 0;
     }
   }
 }
