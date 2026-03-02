@@ -32,6 +32,9 @@ type IndexPageProps = {
       }
       publicURL: string
     }
+    ogImage: {
+      publicURL: string
+    }
   }
 }
 
@@ -81,7 +84,7 @@ export const Head = ({
     site: {
       siteMetadata: { title, description, siteUrl },
     },
-    file: { publicURL },
+    ogImage: { publicURL },
   },
 }: IndexPageProps) => (
   <Seo title={title} description={description} url={siteUrl} image={publicURL} />
@@ -123,6 +126,9 @@ export const getPostList = graphql`
       childImageSharp {
         gatsbyImageData(width: 120, height: 120)
       }
+      publicURL
+    }
+    ogImage: file(name: { eq: "og-image" }) {
       publicURL
     }
   }

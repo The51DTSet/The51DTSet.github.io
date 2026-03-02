@@ -11,6 +11,8 @@ const Seo: FunctionComponent<SeoProps> = ({ title, description, url, image }) =>
   <>
     <html lang="ko" />
     <title>{title}</title>
+    <link rel="icon" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
