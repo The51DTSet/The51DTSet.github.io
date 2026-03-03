@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
 import { PostPageItemType } from 'types/PostItem.types'
-import Template from 'components/Common/Template'
+import Template from 'templates/index-template'
 import Seo from 'components/Common/Seo'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'

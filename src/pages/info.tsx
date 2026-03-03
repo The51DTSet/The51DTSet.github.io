@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import Aside from 'components/Main/Aside'
 import TopBar from 'components/Main/TopBar'
-import Template from 'components/Common/Template'
+import Template from 'templates/index-template'
 import Seo from 'components/Common/Seo'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/PostItem.types'

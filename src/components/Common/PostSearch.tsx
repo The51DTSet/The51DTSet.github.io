@@ -1,13 +1,9 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faMagnifyingGlass,
-  faCalendar,
-  faFolderOpen,
-} from '@fortawesome/free-solid-svg-icons'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { useGatsbyPluginFusejs } from 'react-use-fusejs'
 import { useLayout } from 'contexts/LayoutContext'
+
+import { Icon } from 'components/Common/icon'
 
 type SearchResultItem = {
   id: string
@@ -37,11 +33,14 @@ export function Search() {
   }>
 
   return (
-    <div className={`search-wrapper${searchOpen ? ' open-search' : ''}`} id="search">
+    <div
+      className={`search-wrapper${searchOpen ? ' open-search' : ''}`}
+      id="search"
+    >
       <div className="inner">
         <div className="input-item">
           <div className="btn-submit">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <Icon name="search" className="ico ico-search"></Icon>
           </div>
           <input
             value={query}
@@ -73,13 +72,13 @@ export function Search() {
                     <div className="search-result-info">
                       {item.date && (
                         <span className="search-result-date">
-                          <FontAwesomeIcon icon={faCalendar} />
+                          <Icon name="calendar" className="ico ico-calendar" />
                           {item.date}
                         </span>
                       )}
                       {item.categories?.length > 0 && (
                         <span className="search-result-categories">
-                          <FontAwesomeIcon icon={faFolderOpen} />
+                          <Icon name="folder" className="ico ico-folder" />
                           {item.categories.join(' / ')}
                         </span>
                       )}

@@ -8,122 +8,109 @@
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 
-const path = require('path');
-const { spawn } = require('child_process');
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require('path')
+const { spawn } = require('child_process')
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 function getGitLastModified(filePath) {
   return new Promise(resolve => {
-    const proc = spawn(
-      'git',
-      ['log', '-1', '--format=%aI', '--', filePath],
-      { cwd: __dirname },
-    );
-    let output = '';
-    proc.stdout.on('data', data => { output += data.toString(); });
+    const proc = spawn('git', ['log', '-1', '--format=%aI', '--', filePath], {
+      cwd: __dirname,
+    })
+    let output = ''
+    proc.stdout.on('data', data => {
+      output += data.toString()
+    })
     proc.on('close', code => {
-      const dateStr = output.trim();
-      resolve(code === 0 && dateStr ? dateStr : null);
-    });
-    proc.on('error', () => resolve(null));
-  });
+      const dateStr = output.trim()
+      resolve(code === 0 && dateStr ? dateStr : null)
+    })
+    proc.on('error', () => resolve(null))
+  })
 }
-
-// exports.createPages = async ({ actions }) => {
-//   const { createPage } = actions
-//   createPage({
-//     path: "/using-dsg",
-//     component: require.resolve("./src/templates/using-dsg.js"),
-//     context: {},
-//     defer: true,
-//   })
-// }
 
 // Setup Import Alias
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
-  const output = getConfig().output || {};
+  const output = getConfig().output || {}
 
   actions.setWebpackConfig({
     output,
     resolve: {
       alias: {
+        templates: path.resolve(__dirname, 'src/templates'),
         components: path.resolve(__dirname, 'src/components'),
         utils: path.resolve(__dirname, 'src/utils'),
         hooks: path.resolve(__dirname, 'src/hooks'),
         contexts: path.resolve(__dirname, 'src/contexts'),
+        constants: path.resolve(__dirname, 'src/constants'),
       },
     },
-  });
-};
+  })
+}
 
 // Declare gitLastModified as a Date type so formatString works in GraphQL
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
+  const { createTypes } = actions
   createTypes(`
     type MarkdownRemarkFields {
       slug: String
       gitLastModified: Date @dateformat
     }
-  `);
-};
+  `)
+}
 
 // Generate a Slug Each Post Data
 exports.onCreateNode = async ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
+  const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode });
-    createNodeField({ node, name: 'slug', value: slug });
+    const slug = createFilePath({ node, getNode })
+    createNodeField({ node, name: 'slug', value: slug })
 
     // Auto-detect last modified date from git history (non-blocking)
-    const parent = getNode(node.parent);
-    let gitLastModified = null;
+    const parent = getNode(node.parent)
+    let gitLastModified = null
 
     if (parent && parent.absolutePath) {
-      gitLastModified = await getGitLastModified(parent.absolutePath);
+      gitLastModified = await getGitLastModified(parent.absolutePath)
     }
 
-    createNodeField({ node, name: 'gitLastModified', value: gitLastModified });
+    createNodeField({ node, name: 'gitLastModified', value: gitLastModified })
   }
-};
+}
 
 // Generate Post Page Through Markdown Data
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
   // Get All Markdown File For Paging
-  const queryAllMarkdownData = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: {
-            order: DESC
-            fields: [frontmatter___date, frontmatter___title]
-          }
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
+  const queryAllMarkdownData = await graphql(`
+    {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
+      ) {
+        edges {
+          node {
+            fields {
+              slug
             }
           }
         }
       }
-    `,
-  );
+    }
+  `)
 
   // Handling GraphQL Query Error
   if (queryAllMarkdownData.errors) {
-    reporter.panicOnBuild(`Error while running query`);
-    return;
+    reporter.panicOnBuild(`Error while running query`)
+    return
   }
 
   // Import Post Template Component
   const PostTemplateComponent = path.resolve(
     __dirname,
-    'src/templates/post_template.tsx',
-  );
+    'src/templates/post-template.tsx',
+  )
 
   // Page Generating Function
   const generatePostPage = ({
@@ -135,11 +122,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       path: slug,
       component: PostTemplateComponent,
       context: { slug },
-    };
+    }
 
-    createPage(pageOptions);
-  };
+    createPage(pageOptions)
+  }
 
   // Generate Post Page And Passing Slug Props for Query
-  queryAllMarkdownData.data.allMarkdownRemark.edges.forEach(generatePostPage);
-};
+  queryAllMarkdownData.data.allMarkdownRemark.edges.forEach(generatePostPage)
+}

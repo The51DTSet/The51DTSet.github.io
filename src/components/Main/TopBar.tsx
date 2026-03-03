@@ -1,13 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faMagnifyingGlass,
-  faBars,
-  faXmark,
-} from '@fortawesome/free-solid-svg-icons'
 import BreadCrumb from 'components/Common/BreadCrumb'
 import PostSearch from 'components/Common/PostSearch'
 import { useLayout } from 'contexts/LayoutContext'
+
+import { Icon } from 'components/Common/icon'
 
 const TabBar: FunctionComponent = function () {
   const { toggleSidebar, toggleSearch } = useLayout()
@@ -21,7 +17,7 @@ const TabBar: FunctionComponent = function () {
         aria-label="메뉴 열기"
         onClick={toggleSidebar}
       >
-        <FontAwesomeIcon icon={faBars} />
+        <Icon name="menu" className="ico ico-menu" />
       </button>
       <div className="title">Title</div>
       <button
@@ -30,8 +26,8 @@ const TabBar: FunctionComponent = function () {
         aria-label="검색"
         onClick={toggleSearch}
       >
-        <FontAwesomeIcon icon={faMagnifyingGlass} className="ico-search" />
-        <FontAwesomeIcon icon={faXmark} className="ico-close" />
+        <Icon name="search" className="ico ico-search" />
+        <Icon name="searchClose" className="ico ico-close" />
       </button>
       <PostSearch />
     </div>

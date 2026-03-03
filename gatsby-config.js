@@ -9,12 +9,24 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `BLOG | The51X DT Center Set`,
-    description: `The51X DT Center Set Team Blog`,
-    author: `@The51DTSet`,
+    title: `The51X DT Center Set Team | BLOG |`,
+    description: `The51X DT Center Set Team BLOG`,
+    author: `@The51XDTSet`,
     siteUrl: `https://The51DTSet.github.io`,
   },
   plugins: [
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-emotion`,
+    'gatsby-plugin-sitemap',
+    `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-fusejs`,
       options: {
@@ -54,18 +66,6 @@ module.exports = {
           })),
       },
     },
-    `gatsby-plugin-sass`,
-    {
-      resolve: 'gatsby-plugin-typescript',
-      options: {
-        isTSX: true,
-        allExtensions: true,
-      },
-    },
-    `gatsby-plugin-image`,
-    `gatsby-plugin-emotion`,
-    'gatsby-plugin-sitemap',
-    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
@@ -129,7 +129,6 @@ module.exports = {
               dashes: 'oldschool',
             },
           },
-
           {
             resolve: 'gatsby-remark-images',
             options: {

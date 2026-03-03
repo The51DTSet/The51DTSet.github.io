@@ -1,0 +1,16 @@
+@use './mixins' as *;
+
+body,
+html {
+  color: var(--fc-default);
+  background-color: var(--bg-default);
+}
+
+#___gatsby,
+#gatsby-focus-wrapper {
+  width: 100%;
+}
+
+.blind {
+  @include blind;
+}

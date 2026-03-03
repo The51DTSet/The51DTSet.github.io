@@ -2,11 +2,8 @@ import React, { FunctionComponent } from 'react'
 import PostItem from 'components/Main/PostItem'
 import { PostListItemType } from 'types/PostItem.types'
 import usePagination from 'hooks/usePagination'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons'
+
+import { Icon } from 'components/Common/icon'
 
 type PostListProps = {
   selectedCategory: string
@@ -73,7 +70,7 @@ const PostList: FunctionComponent<PostListProps> = ({
             disabled={currentPage === 1}
             aria-label="이전 페이지"
           >
-            <FontAwesomeIcon icon={faChevronLeft} />
+            <Icon name="left" className="ico ico-left" />
           </button>
           {pages.map((page, i) =>
             page === '...' ? (
@@ -96,7 +93,7 @@ const PostList: FunctionComponent<PostListProps> = ({
             disabled={currentPage === totalPages}
             aria-label="다음 페이지"
           >
-            <FontAwesomeIcon icon={faChevronRight} />
+            <Icon name="right" className="ico ico-right" />
           </button>
         </div>
       )}
