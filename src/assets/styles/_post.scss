@@ -6,8 +6,9 @@
       display: flex;
       align-items: flex-start;
       gap: 4rem;
-      padding-top: 3rem;
-      margin-top: 3rem;
+      padding: 2.4rem 1rem;
+      // padding-top: 3rem;
+      // margin-top: 3rem;
       border-top: 1px solid var(--bc-sub);
 
       &:first-child {
@@ -52,7 +53,7 @@
 
         .title {
           font-size: 2rem;
-          font-weight: 500;
+          // font-weight: 500;
           @include clamp(2);
           transition: color 0.3s;
         }
@@ -190,19 +191,19 @@
           padding: 0;
 
           .title {
-            font-size: 1.6rem;
+            // font-size: 1.8rem;
           }
 
           .desc {
-            font-size: 1.4rem;
+            // font-size: 1.6rem;
           }
 
           .info-wrapper {
-            display: block;
-            margin-top: 1.6rem;
+            // display: block;
+            // margin-top: 1.6rem;
 
             div {
-              font-size: 1.2rem;
+              // font-size: 1.2rem;
             }
           }
         }
@@ -212,6 +213,18 @@
     &.thumbnail-type {
       .post-item {
         width: 100%;
+      }
+    }
+  }
+}
+
+@media (width <= 480px) {
+  .post-lists {
+    &.vertical-type {
+      .post-item {
+        .thumbnail {
+          display: none;
+        }
       }
     }
   }

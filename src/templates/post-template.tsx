@@ -57,8 +57,8 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
       <div id="container">
         <div id="contents">
           <div className="contents-left">
-            {author && author.length > 0 && <PostAuthor authorIds={author} />}
             <PostContent html={html} />
+            {author && author.length > 0 && <PostAuthor authorIds={author} />}
             <CommentWidget />
           </div>
           <div className="contents-right">

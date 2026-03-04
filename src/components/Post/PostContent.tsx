@@ -13,44 +13,46 @@ const PostContent: FunctionComponent<PostContentProps> = function ({ html }) {
   useEffect(() => {
     if (!ref.current) return
 
-    ref.current.querySelectorAll<HTMLElement>('.code-block').forEach(block => {
-      if (block.querySelector('.copy-btn')) return
+    ref.current
+      .querySelectorAll<HTMLElement>('.code-block .code-block-header')
+      .forEach(block => {
+        if (block.querySelector('.copy-btn')) return
 
-      const btn = document.createElement('button')
-      btn.className = 'copy-btn'
-      btn.setAttribute('aria-label', 'Copy code to clipboard')
-      btn.innerHTML = COPY_ICON
+        const btn = document.createElement('button')
+        btn.className = 'copy-btn'
+        btn.setAttribute('aria-label', 'Copy code to clipboard')
+        btn.innerHTML = COPY_ICON
 
-      btn.addEventListener('click', async () => {
-        const codeEl = block.querySelector(
-          'deckgo-highlight-code > code[slot="code"]',
-        )
-        const text = codeEl?.textContent?.trim() ?? ''
+        btn.addEventListener('click', async () => {
+          const codeEl = block.querySelector(
+            'deckgo-highlight-code > code[slot="code"]',
+          )
+          const text = codeEl?.textContent?.trim() ?? ''
 
-        try {
-          await navigator.clipboard.writeText(text)
-        } catch {
-          // clipboard API 미지원 브라우저 fallback
-          const ta = document.createElement('textarea')
-          ta.value = text
-          ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0'
-          document.body.appendChild(ta)
-          ta.focus()
-          ta.select()
-          document.execCommand('copy')
-          document.body.removeChild(ta)
-        }
+          try {
+            await navigator.clipboard.writeText(text)
+          } catch {
+            // clipboard API 미지원 브라우저 fallback
+            const ta = document.createElement('textarea')
+            ta.value = text
+            ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0'
+            document.body.appendChild(ta)
+            ta.focus()
+            ta.select()
+            document.execCommand('copy')
+            document.body.removeChild(ta)
+          }
 
-        btn.innerHTML = CHECK_ICON
-        btn.classList.add('copied')
-        setTimeout(() => {
-          btn.innerHTML = COPY_ICON
-          btn.classList.remove('copied')
-        }, 2000)
+          btn.innerHTML = CHECK_ICON
+          btn.classList.add('copied')
+          setTimeout(() => {
+            btn.innerHTML = COPY_ICON
+            btn.classList.remove('copied')
+          }, 2000)
+        })
+
+        block.appendChild(btn)
       })
-
-      block.appendChild(btn)
-    })
   }, [html])
 
   return (
