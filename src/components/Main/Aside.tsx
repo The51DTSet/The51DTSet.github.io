@@ -6,6 +6,7 @@ import { useLocation } from '@reach/router'
 import LogoImage from 'components/Main/LogoImage'
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList'
 import { PostListItemType } from 'types/PostItem.types'
+import { useLayout } from 'contexts/LayoutContext'
 
 type AsideProps = {
   logoImage: IGatsbyImageData
@@ -18,6 +19,7 @@ const Aside: FunctionComponent<AsideProps> = function ({
   edges,
   search,
 }) {
+  const { closeSidebar } = useLayout()
   const parsed: ParsedQuery<string> = queryString.parse(search)
   const selectedCategory: string =
     typeof parsed.category !== 'string' || !parsed.category
@@ -50,8 +52,12 @@ const Aside: FunctionComponent<AsideProps> = function ({
   )
   const { pathname } = useLocation()
 
+  const handleClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('a')) closeSidebar()
+  }
+
   return (
-    <aside id="aside">
+    <aside id="aside" onClick={handleClick}>
       <div className="inner">
         <div className="aside-head">
           <Link to="/">

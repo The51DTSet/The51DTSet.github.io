@@ -29,6 +29,7 @@ const Template: FunctionComponent<TemplateProps> = function ({
         searchOpen,
         toggleSidebar: () => setSidebarOpen(v => !v),
         toggleSearch: () => setSearchOpen(v => !v),
+        closeSidebar: () => setSidebarOpen(false),
       }}
     >
       <div id="wrap" className={classList}>
