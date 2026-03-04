@@ -711,7 +711,7 @@
 
 @media (width <= 620px) {
   .post-contents {
-    .code-block {
+    & > div.code-block {
       margin-left: -2rem;
       margin-right: -2rem;
       border-radius: 0;
