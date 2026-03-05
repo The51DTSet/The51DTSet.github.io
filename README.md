@@ -28,6 +28,9 @@ $ gatsby develop -H 192.188.x.x
 $ npm run deploy
 ```
 
+## 6. 익스텐션
+- Markdown All in One
+
 ## 벤치
 
 - [kakaopay](https://tech.kakaopay.com/)

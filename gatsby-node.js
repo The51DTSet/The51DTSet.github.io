@@ -64,7 +64,9 @@ exports.onCreateNode = async ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode })
+    const rawSlug = createFilePath({ node, getNode })
+    // 날짜 접두사 제거: /posts/javascript/2026-03-05--제목/ → /posts/javascript/제목/
+    const slug = rawSlug.replace(/\/\d{4}-\d{2}-\d{2}--/, '/')
     createNodeField({ node, name: 'slug', value: slug })
 
     // Auto-detect last modified date from git history (non-blocking)

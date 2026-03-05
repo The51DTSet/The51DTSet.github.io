@@ -9,6 +9,10 @@
   --fc-default: #222;
   --fc-sub: #757575;
   --fc-sub2: #aaa;
+  --fc-success: #2fb075;
+  --fc-danger: #ed6767;
+  --fc-pink: #d63384;
+  --fc-marker-success: #e9ff47;
 
   --bc-primary: #1a73e8;
   --bc-default: #ddd;
@@ -24,18 +28,6 @@
   --aside-width: 30rem;
   --container-left-padding: 30rem;
   --rnb-width: 26rem;
-
-  --deckgo-highlight-code-font-family: 'Fira Code';
-  --deckgo-highlight-code-font-size: 1.4rem;
-  --deckgo-highlight-code-line-height: 1.4;
-  --deckgo-highlight-code-scroll: auto;
-  --deckgo-highlight-code-white-space: pre-wrap;
-  --deckgo-highlight-code-display: block;
-  --deckgo-highlight-code-height: 100%;
-  --deckgo-highlight-code-width: 100%;
-
-  --deckgo-highlight-code-carbon-header-padding: 0;
-  --deckgo-highlight-code-carbon-header-margin: 0;
 
   // @include desktop {
   //   --aside-width: 26rem;

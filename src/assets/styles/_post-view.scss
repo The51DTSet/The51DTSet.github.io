@@ -4,6 +4,7 @@
   position: relative;
   width: 100%;
   // min-height: 40rem;
+  background: rgba(0, 0, 0, 0.4);
 
   .post-head-bg {
     position: absolute;
@@ -143,7 +144,7 @@
   // Markdown Style
   line-height: 1.76;
   font-size: 1.6rem;
-  font-weight: 300;
+  // font-weight: 300;
 
   // Apply Padding Attribute to All Elements
   p {
@@ -395,145 +396,6 @@
     border-top: 1px solid var(--bc-sub);
   }
 
-  // Adjust Link Element Style
-
-  // Adjust Code Style
-  pre[class*='language-'] {
-    margin: 30px 0;
-    padding: 15px;
-    font-size: 15px;
-
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 3px;
-    }
-  }
-
-  code[class*='language-'],
-  pre[class*='language-'] {
-    tab-size: 2;
-  }
-
-  // Code block wrapper (with language/filename header)
-  .code-block {
-    position: relative;
-    margin: 0 0 2rem;
-    border-radius: 10px;
-    overflow: hidden;
-
-    deckgo-highlight-code {
-      margin: 0;
-      padding: 0.8rem 0 1.6rem;
-      border-radius: 0;
-
-      --deckgo-highlight-code-margin: 0;
-      display: block;
-      margin-top: 0;
-      margin-top: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      box-shadow: none;
-    }
-
-    div.carbon {
-      display: none !important;
-    }
-
-    // 커스텀 헤더가 있을 때 deckgo 내부 .carbon(● ● ●) 숨김
-    .code-block-header + deckgo-highlight-code {
-      --deckgo-highlight-code-carbon-toolbar-display: none;
-      .carbon {
-        display: none;
-        padding: 0;
-      }
-    }
-
-    // 복사 버튼
-    .copy-btn {
-      position: absolute;
-      right: 0.6rem;
-      // top: 4.6rem;
-      // right: 0.8rem;
-      // z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.4rem;
-      aspect-ratio: 1;
-      border: none;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.07);
-      color: rgba(255, 255, 255, 0.4);
-      // cursor: pointer;
-      transition:
-        background 0.15s,
-        color 0.15s;
-
-      svg {
-        width: 1.5rem;
-        aspect-ratio: 1;
-        pointer-events: none;
-      }
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.15);
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      &.copied {
-        color: #28c840;
-      }
-    }
-  }
-
-  .code-block-header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    height: 3.6rem;
-    // padding: 0.6rem 1.4rem;
-    // padding-right: 0.7rem;
-    background: #1e1e2e;
-    // border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    // carbon terminal 스타일 ● ● ● 점
-    &::before {
-      position: absolute;
-      left: 1.4rem;
-      content: '';
-      display: inline-block;
-      width: 1rem;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: #ff5f57;
-      box-shadow:
-        1.6rem 0 0 #febc2e,
-        3.2rem 0 0 #28c840;
-      flex-shrink: 0;
-      // margin-right: auto;
-    }
-
-    .code-lang {
-      font-family: 'Fira Code', monospace;
-      font-size: 1.2rem;
-      // font-weight: 500;
-      color: #89b4fa;
-      // background: rgba(137, 180, 250, 0.12);
-      // padding: 0.2rem 0.7rem;
-      // border-radius: 4px;
-      // letter-spacing: 0.03em;
-    }
-
-    .code-filename {
-      font-family: 'Fira Code', monospace;
-      font-size: 1.2rem;
-      color: #cdd6f4;
-      opacity: 0.7;
-    }
-  }
-
   // Markdown Responsive Design
   @media (max-width: 768px) {
     // width: 100%;
@@ -712,7 +574,7 @@
     }
 
     .post-title {
-      font-size: 3.52rem;;
+      font-size: 3.52rem;
       // font-size: 2.2rem;
     }
 
@@ -726,14 +588,6 @@
 }
 
 @media (width <= 620px) {
-  .post-contents {
-    & > div.code-block {
-      margin-left: -2rem;
-      margin-right: -2rem;
-      border-radius: 0;
-    }
-  }
-
   .comment-wrapper {
     padding: 0 2rem;
   }

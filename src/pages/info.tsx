@@ -6,8 +6,8 @@ import Seo from 'components/Common/Seo'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/PostItem.types'
 import { graphql } from 'gatsby'
-import PostRecommended from 'components/Post/PostRecommended'
-import PostTags from 'components/Post/PostTags'
+import PostRecommended from 'components/Main/PostRecommended'
+import PostTags from 'components/Main/PostTags'
 
 type IndexPageProps = {
   location: {

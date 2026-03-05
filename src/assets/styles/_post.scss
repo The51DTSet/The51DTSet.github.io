@@ -41,6 +41,10 @@
         border-radius: 1rem;
         overflow: hidden;
 
+        &.thumbnail--none {
+          display: none;
+        }
+
         img {
           transition: transform 0.3s;
         }

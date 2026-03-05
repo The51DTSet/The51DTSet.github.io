@@ -3,7 +3,7 @@ import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import PostHeadInfo, { PostHeadInfoProps } from 'components/Post/PostHeadInfo'
 
 type PostHeadProps = PostHeadInfoProps & {
-  thumbnail: IGatsbyImageData
+  thumbnail?: IGatsbyImageData
 }
 
 const PostHead: FunctionComponent<PostHeadProps> = function ({
@@ -15,7 +15,9 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
 }) {
   return (
     <div className="post-head">
-      <GatsbyImage image={thumbnail} alt="thumbnail" className="post-head-bg" />
+      {thumbnail && (
+        <GatsbyImage image={thumbnail} alt="thumbnail" className="post-head-bg" />
+      )}
       <PostHeadInfo title={title} date={date} updatedAt={updatedAt} categories={categories} />
     </div>
   )

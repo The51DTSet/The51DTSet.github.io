@@ -1,6 +1,12 @@
 {
   "editor.formatOnSave": true,
   "[markdown]": {
-    "editor.formatOnSave": false
-  }
+    "editor.formatOnSave": false,
+    "editor.quickSuggestions": false,
+    "editor.wordWrap": "on"
+  },
+  "markdown.extension.list.indentationSize": "inherit",
+  "markdown.extension.toc.orderedList": false,
+  "markdown.extension.italic.indicator": "*",
+  "markdown.extension.bold.indicator": "**"
 }

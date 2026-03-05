@@ -33,17 +33,11 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
       html,
       tableOfContents,
       fields: { gitLastModified },
-      frontmatter: {
-        title,
-        date,
-        categories,
-        author,
-        thumbnail: {
-          childImageSharp: { gatsbyImageData },
-        },
-      },
+      frontmatter: { title, date, categories, author, thumbnail },
     },
   } = post
+
+  const gatsbyImageData = thumbnail?.childImageSharp?.gatsbyImageData
 
   return (
     <Template>
@@ -83,11 +77,7 @@ export const Head = ({
 
   const {
     node: {
-      frontmatter: {
-        title,
-        summary,
-        thumbnail: { publicURL },
-      },
+      frontmatter: { title, summary, thumbnail },
     },
   } = post
 
@@ -96,7 +86,7 @@ export const Head = ({
       title={title}
       description={summary}
       url={location.href}
-      image={publicURL}
+      image={thumbnail?.publicURL}
     />
   )
 }

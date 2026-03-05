@@ -8,6 +8,25 @@ tags: ['JavaScript']
 thumbnail: './cover.png'
 ---
 
+
+
+
+
+```javascript:title=파일명.js
+alert('파일명을 추가했습니다.');
+```
+
+
+
+```js
+alert('how cool is this');
+```
+
+버튼을 표시하지 않음
+```js:clipboard=false
+alert('will not be copied 💾');
+```
+
 ## 기본설명
 
 Custom Elements는 사용자 HTML Element를 만들게 해준다. 그리고 이는 DOM의 모든 기능을 다 사용할 수 있다.
@@ -204,7 +223,7 @@ customElements.define('input-component', InputComponent);
 </html>
 ````
 
-````javascript
+````javascript:title=components/header-component.js
 class HeaderComponent extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
@@ -225,7 +244,6 @@ class HeaderComponent extends HTMLElement {
 }
 customElements.define('header-component', HeaderComponent);
 ````
-{: file="components/header-component.js"}
 
 
 

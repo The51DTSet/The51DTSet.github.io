@@ -22,6 +22,8 @@
     "gatsby-plugin-sitemap": "^6.16.0",
     "gatsby-plugin-typescript": "^5.16.0",
     "gatsby-remark-autolink-headers": "^6.16.0",
+    "gatsby-remark-code-buttons": "^2.0.7",
+    "gatsby-remark-code-titles": "^1.1.0",
     "gatsby-remark-copy-linked-files": "^6.16.0",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-highlight-code": "^3.3.0",
