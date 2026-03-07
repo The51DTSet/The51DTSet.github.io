@@ -30,10 +30,10 @@ function getGitLastModified(filePath) {
 }
 
 // Setup Import Alias
-exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
+exports.onCreateWebpackConfig = ({ getConfig, actions, stage }) => {
   const output = getConfig().output || {}
 
-  actions.setWebpackConfig({
+  const config = {
     output,
     resolve: {
       alias: {
@@ -45,7 +45,16 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
         constants: path.resolve(__dirname, 'src/constants'),
       },
     },
-  })
+  }
+
+  if (stage === 'develop') {
+    config.watchOptions = {
+      poll: 1000,
+      aggregateTimeout: 300,
+    }
+  }
+
+  actions.setWebpackConfig(config)
 }
 
 // Declare gitLastModified as a Date type so formatString works in GraphQL
