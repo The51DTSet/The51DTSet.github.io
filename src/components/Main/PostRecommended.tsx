@@ -20,22 +20,26 @@ const PostRecommended: FunctionComponent<PostRecommendedProps> = function ({
   }, [edges])
 
   return (
-    <div className="post-recommended">
-      <h3>Recently Updated</h3>
-      <div className="post-recommended-lists">
-        {recommended.map(
-          ({
-            node: {
-              id,
-              fields: { slug },
-              frontmatter: { title },
-            },
-          }) => (
-            <Link key={id} to={slug} className="post-recommended-item">
-              {title}
-            </Link>
-          ),
-        )}
+    <div className="cont-wrap post-recommended">
+      <div className="cont-ttl">
+        <h3>Recently Updated</h3>
+      </div>
+      <div className="cont-box">
+        <div className="post-recommended">
+          {recommended.map(
+            ({
+              node: {
+                id,
+                fields: { slug },
+                frontmatter: { title },
+              },
+            }) => (
+              <Link key={id} to={slug} className="post-recommended-item">
+                {title}
+              </Link>
+            ),
+          )}
+        </div>
       </div>
     </div>
   )

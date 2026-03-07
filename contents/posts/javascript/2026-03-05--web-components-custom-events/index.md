@@ -22,8 +22,7 @@ alert('파일명을 추가했습니다.');
 alert('how cool is this');
 ```
 
-버튼을 표시하지 않음
-```js:clipboard=false
+```js
 alert('will not be copied 💾');
 ```
 

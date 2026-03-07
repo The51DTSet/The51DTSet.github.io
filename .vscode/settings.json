@@ -2,7 +2,11 @@
   "editor.formatOnSave": true,
   "[markdown]": {
     "editor.formatOnSave": false,
-    "editor.quickSuggestions": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
     "editor.wordWrap": "on"
   },
   "markdown.extension.list.indentationSize": "inherit",

@@ -3,6 +3,7 @@ import Aside from 'components/Main/Aside'
 import TopBar from 'components/Main/TopBar'
 import Template from 'templates/index-template'
 import Seo from 'components/Common/Seo'
+import Footer from 'components/Common/Footer'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/PostItem.types'
 import { graphql } from 'gatsby'
@@ -57,6 +58,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
             <PostTags edges={edges} selectedTag="" />
           </div>
         </div>
+        <Footer />
       </div>
     </Template>
   )

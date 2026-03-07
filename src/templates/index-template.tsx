@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
-import Footer from 'components/Common/Footer'
 import { LayoutContext } from 'contexts/LayoutContext'
 
 type TemplateProps = {
@@ -13,11 +12,13 @@ const Template: FunctionComponent<TemplateProps> = function ({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [tocOpen, setTocOpen] = useState(false)
 
   const classList = [
     hasSidebar ? 'has-sidebar' : '',
     sidebarOpen ? 'open-sidebar' : '',
     searchOpen ? 'open-search' : '',
+    tocOpen ? 'open-toc' : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -27,14 +28,16 @@ const Template: FunctionComponent<TemplateProps> = function ({
       value={{
         sidebarOpen,
         searchOpen,
+        tocOpen,
         toggleSidebar: () => setSidebarOpen(v => !v),
         toggleSearch: () => setSearchOpen(v => !v),
         closeSidebar: () => setSidebarOpen(false),
+        toggleToc: () => setTocOpen(v => !v),
       }}
     >
       <div id="wrap" className={classList}>
         {children}
-        <Footer />
+        <div className="aside-mask" onClick={() => setSidebarOpen(false)}></div>
       </div>
     </LayoutContext.Provider>
   )

@@ -81,14 +81,18 @@ const PostToc: FunctionComponent<PostTocProps> = ({ tableOfContents }) => {
   if (!tableOfContents) return null
 
   return (
-    <nav className="toc-container" aria-label="목차">
-      <h3 className="toc-title">Contents</h3>
-      <div
-        ref={tocRef}
-        className="toc"
-        dangerouslySetInnerHTML={{ __html: parsedToc }}
-      />
-    </nav>
+    <div className="cont-wrap toc-wrapper" aria-label="목차">
+      <div className="cont-ttl">
+        <h3>Contents</h3>
+      </div>
+      <div className="cont-box">
+        <div
+          ref={tocRef}
+          className="toc"
+          dangerouslySetInnerHTML={{ __html: parsedToc }}
+        />
+      </div>
+    </div>
   )
 }
 

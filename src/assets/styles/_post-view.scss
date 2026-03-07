@@ -16,11 +16,12 @@
 
   .post-head-info {
     position: relative;
-    z-index: 2;
-    width: 100%;
-    // min-height: 40rem;
-    padding: 6rem 0;
     color: #fff;
+    width: 100%;
+    max-width: var(--max-width);
+    padding: 6rem 0;
+    margin: 0 auto;
+    z-index: 2;
 
     .inner {
       display: flex;
@@ -30,7 +31,7 @@
       width: 100%;
       min-height: 28rem;
       // gap: 4rem;
-      max-width: 1024px;
+      // max-width: 1024px;
       height: 100%;
       margin: 0 auto;
     }
@@ -132,34 +133,60 @@
   }
 }
 
+.post-topbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: var(--bg-default);
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  transform: translateY(-100%);
+  transition: transform 0.15s;
+
+  &.on {
+    transform: translateY(0);
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 4.8rem;
+  }
+
+  .title {
+    padding-top: 0.1rem;
+    h1 {
+      font-size: 1.6rem;
+      font-weight: normal;
+      @include clamp(1);
+    }
+  }
+}
+
 .post-contents {
-  // Renderer Style
-  // display: flex;
-  // flex-direction: column;
-  // width: 1024px;
   margin: 0 auto;
-  // padding: 100px 0;
   word-break: break-all;
 
   // Markdown Style
   line-height: 1.76;
   font-size: 1.6rem;
-  // font-weight: 300;
 
   // Apply Padding Attribute to All Elements
   p {
     margin: 0 0 1.6rem;
 
     code {
-      font-family: 'Fira Code';
+      font-family: var(--deckgo-highlight-code-font-family);
       display: inline-block;
-      font-size: 1.3rem;
+      font-size: 90%;
       color: #3f596f;
       letter-spacing: -0.024rem;
       padding: 0 0.6rem;
       border-radius: 0.6rem;
       background: rgb(25 25 28 / 5%);
-      // vertical-align: top;
     }
   }
 
@@ -491,57 +518,6 @@
   .utterances {
     // width: 100%;
     max-width: none;
-  }
-}
-
-.toc-container {
-  position: sticky;
-  top: 4rem;
-  max-height: calc(100vh - 12rem);
-  overflow-y: auto;
-  scrollbar-width: none;
-  padding: 1rem 0 1rem 2rem;
-  border-left: 1px solid var(--bc-sub);
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  .toc-title {
-    font-size: 1.6rem;
-    font-weight: 600;
-  }
-
-  .toc {
-    margin-top: 1.2rem;
-
-    ul {
-      li {
-        // list-style: none;
-
-        a {
-          display: block;
-          font-size: 1.4rem;
-          color: var(--fc-sub);
-          padding: 0.4rem 0;
-          transition: color 0.2s;
-          @include clamp(2);
-
-          &:hover {
-            color: var(--fc-default);
-          }
-
-          &.toc-active {
-            color: var(--fc-primary);
-            font-weight: 500;
-          }
-        }
-
-        ul {
-          padding-left: 1.3rem;
-        }
-      }
-    }
   }
 }
 

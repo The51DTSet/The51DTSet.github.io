@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
 import { PostPageItemType } from 'types/PostItem.types'
+
 import Template from 'templates/index-template'
 import Seo from 'components/Common/Seo'
 import PostHead from 'components/Post/PostHead'
+import Footer from 'components/Common/Footer'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
 import PostToc from 'components/Post/PostToc'
@@ -48,7 +50,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         categories={categories}
         thumbnail={gatsbyImageData}
       />
-      <div id="container">
+      <div id="container" className="post-page">
         <div id="contents">
           <div className="contents-left">
             <PostContent html={html} />
@@ -59,6 +61,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
             <PostToc tableOfContents={tableOfContents} />
           </div>
         </div>
+        <Footer />
       </div>
     </Template>
   )

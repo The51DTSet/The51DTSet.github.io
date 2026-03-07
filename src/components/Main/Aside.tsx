@@ -3,10 +3,12 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import queryString, { ParsedQuery } from 'query-string'
 import { Link } from 'gatsby'
 import { useLocation } from '@reach/router'
-import LogoImage from 'components/Main/LogoImage'
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList'
 import { PostListItemType } from 'types/PostItem.types'
 import { useLayout } from 'contexts/LayoutContext'
+
+import LogoImage from 'components/Main/LogoImage'
+import { Icon } from 'components/Common/icon'
 
 type AsideProps = {
   logoImage: IGatsbyImageData
@@ -92,7 +94,17 @@ const Aside: FunctionComponent<AsideProps> = function ({
             </ul>
           </div>
         </div>
-        <div className="aside-foot">AsideBottom</div>
+        <div className="aside-foot">
+          <div className="foot-links">
+            <a
+              href="https://github.com/The51DTSet"
+              target="_blank"
+              className="foot-links-item"
+            >
+              <Icon name="github" className="ico ico-github" />
+            </a>
+          </div>
+        </div>
       </div>
     </aside>
   )

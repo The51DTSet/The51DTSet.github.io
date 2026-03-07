@@ -19,7 +19,7 @@ $ (sudo) npm install -g gatsby-cli
 
 ```shell
 $ gatsby develop
-$ gatsby develop -H 192.188.x.x
+$ gatsby develop -H 192.188.0.xx
 ```
 
 ## 5. 배포하기

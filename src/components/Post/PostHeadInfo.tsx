@@ -45,7 +45,7 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
             </div>
             <div className="post-category">
               {categories.map(x => (
-                <span>{x}</span>
+                <span key={x}>{x}</span>
               ))}
             </div>
           </div>

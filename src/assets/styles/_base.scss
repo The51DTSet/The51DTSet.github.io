@@ -14,3 +14,9 @@ html {
 .blind {
   @include blind;
 }
+
+@media (width <= 1200px) {
+  #___gatsby {
+    overflow-x: hidden;
+  }
+}

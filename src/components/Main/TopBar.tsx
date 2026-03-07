@@ -19,7 +19,7 @@ const TabBar: FunctionComponent = function () {
       >
         <Icon name="menu" className="ico ico-menu" />
       </button>
-      <div className="title">Title</div>
+      <div className="topbar-title">The51X DT</div>
       <button
         type="button"
         className="btn-search"

@@ -22,20 +22,23 @@
 
   // icon
   --ic-default: #222;
-  --ic-sub: #555;
+  --ic-sub: #999;
   --ic-sub2: #aaa;
 
   --aside-width: 30rem;
   --container-left-padding: 30rem;
   --rnb-width: 26rem;
 
-  // @include desktop {
-  //   --aside-width: 26rem;
-  //   --container-left-padding: 26rem;
-  // --rnb-width: 22rem;
-  // }
+  --max-width: 1190px;
 
-  // @include tablet-sm {
-  //   --container-left-padding: 0;
-  // }
+  // 사이트 좌우 여백
+  --side-padding: 4rem;
+  --side-back-margin: -4rem;
+}
+
+@media (width <= 1200px) {
+  :root {
+    --side-padding: 1.2rem;
+    --side-back-margin: -1.2rem;
+  }
 }

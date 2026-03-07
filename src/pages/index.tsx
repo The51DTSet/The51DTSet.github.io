@@ -1,13 +1,15 @@
 import React, { FunctionComponent } from 'react'
-import Aside from 'components/Main/Aside'
-import TopBar from 'components/Main/TopBar'
-import PostList from 'components/Main/PostList'
-import Template from 'templates/index-template'
-import Seo from 'components/Common/Seo'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/PostItem.types'
-import queryString, { ParsedQuery } from 'query-string'
 import { graphql } from 'gatsby'
+import queryString, { ParsedQuery } from 'query-string'
+
+import Template from 'templates/index-template'
+import Seo from 'components/Common/Seo'
+import TopBar from 'components/Main/TopBar'
+import Aside from 'components/Main/Aside'
+import Footer from 'components/Common/Footer'
+import PostList from 'components/Main/PostList'
 import PostRecommended from 'components/Main/PostRecommended'
 import PostTags from 'components/Main/PostTags'
 
@@ -58,7 +60,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   return (
     <Template hasSidebar>
       <Aside logoImage={gatsbyImageData} edges={edges} search={search} />
-      <div id="container">
+      <div id="container" className="index-page">
         <TopBar />
         <div id="contents">
           <div className="contents-left">
@@ -74,6 +76,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
             <PostTags edges={edges} selectedTag={selectedTag} />
           </div>
         </div>
+        <Footer />
       </div>
     </Template>
   )

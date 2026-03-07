@@ -1,7 +1,7 @@
 @use './mixins' as *;
 
 :root {
-  --deckgo-highlight-code-font-family: 'Fira Code';
+  --deckgo-highlight-code-font-family: 'Fira Code', monospace;
   --deckgo-highlight-code-font-size: 1.4rem;
   --deckgo-highlight-code-line-height: 1.4;
   --deckgo-highlight-code-scroll: auto;
@@ -158,10 +158,6 @@
   justify-content: center;
   gap: 0.6rem;
   height: 3.6rem;
-  // padding: 0.6rem 1.4rem;
-  // padding-right: 0.7rem;
-  // background: #1e1e2e;
-  // border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   // carbon terminal 스타일 ● ● ● 점
   &::before {
@@ -180,22 +176,26 @@
     // margin-right: auto;
   }
 
-  .code-lang {
-    font-family: 'Fira Code', monospace;
-    font-size: 1.2rem;
-    // font-weight: 500;
-    color: #89b4fa;
-    // background: rgba(137, 180, 250, 0.12);
-    // padding: 0.2rem 0.7rem;
-    // border-radius: 4px;
-    // letter-spacing: 0.03em;
+  .code-block-title {
+    font-family: var(--deckgo-highlight-code-font-family);
+    font-size: 1.4rem;
+    color: var(--fc-sub);
   }
 
-  .code-filename {
-    font-family: 'Fira Code', monospace;
+  .code-copy-btn {
+    position: absolute;
+    right: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .code-lang {
+    font-family: var(--deckgo-highlight-code-font-family);
     font-size: 1.2rem;
-    color: #cdd6f4;
-    opacity: 0.7;
+    color: #89b4fa;
   }
 }
 

@@ -13,27 +13,39 @@ const PostTags: FunctionComponent<PostTagsProps> = function ({
 }) {
   const tags = useMemo(() => {
     const tagSet = new Set<string>()
-    edges.forEach(({ node: { frontmatter: { tags } } }) => {
-      if (tags) tags.forEach(tag => tagSet.add(tag))
-    })
+    edges.forEach(
+      ({
+        node: {
+          frontmatter: { tags },
+        },
+      }) => {
+        if (tags) tags.forEach(tag => tagSet.add(tag))
+      },
+    )
     return Array.from(tagSet).sort()
   }, [edges])
 
   if (tags.length === 0) return null
 
   return (
-    <div className="post-tags">
-      <h3>Tags</h3>
-      <div className="post-tags-lists">
-        {tags.map(tag => (
-          <Link
-            key={tag}
-            to={selectedTag === tag ? '/' : `/?tag=${encodeURIComponent(tag)}`}
-            className={`post-tags-item${selectedTag === tag ? ' active' : ''}`}
-          >
-            {tag}
-          </Link>
-        ))}
+    <div className="cont-wrap">
+      <div className="cont-ttl">
+        <h3>Tags</h3>
+      </div>
+      <div className="cont-box">
+        <div className="post-tags">
+          {tags.map(tag => (
+            <Link
+              key={tag}
+              to={
+                selectedTag === tag ? '/' : `/?tag=${encodeURIComponent(tag)}`
+              }
+              className={`post-tags-item${selectedTag === tag ? ' active' : ''}`}
+            >
+              {tag}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   )
