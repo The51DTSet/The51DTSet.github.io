@@ -225,6 +225,10 @@
     opacity: 0;
     // text-decoration: none;
     border-bottom: 0;
+
+    svg {
+      display: none;
+    }
   }
 
   h1:hover .anchor,
@@ -239,6 +243,10 @@
       visibility 0s ease-in 0s;
     // text-decoration: none;
     border-bottom: 0;
+
+    svg {
+      display: none;
+    }
   }
 
   * + h1,
