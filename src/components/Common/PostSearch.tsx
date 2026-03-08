@@ -3,8 +3,6 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import { useGatsbyPluginFusejs } from 'react-use-fusejs'
 import { useLayout } from 'contexts/LayoutContext'
 
-import { Icon } from 'components/Common/icon'
-
 type SearchResultItem = {
   id: string
   title: string
@@ -40,7 +38,7 @@ export function Search() {
       <div className="inner">
         <div className="input-item">
           <div className="btn-submit">
-            <Icon name="search" className="ico ico-search"></Icon>
+            <i className="ico fa-solid fa-magnifying-glass"></i>
           </div>
           <input
             value={query}
@@ -72,13 +70,13 @@ export function Search() {
                     <div className="search-result-info">
                       {item.date && (
                         <span className="search-result-date">
-                          <Icon name="calendar" className="ico ico-calendar" />
+                          <i className="ico fa-regular fa-calendar"></i>
                           {item.date}
                         </span>
                       )}
                       {item.categories?.length > 0 && (
                         <span className="search-result-categories">
-                          <Icon name="folder" className="ico ico-folder" />
+                          <i className="ico fa-regular fa-folder-open"></i>
                           {item.categories.join(' / ')}
                         </span>
                       )}

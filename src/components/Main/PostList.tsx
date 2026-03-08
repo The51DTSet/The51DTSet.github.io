@@ -3,8 +3,6 @@ import PostItem from 'components/Main/PostItem'
 import { PostListItemType } from 'types/PostItem.types'
 import usePagination from 'hooks/usePagination'
 
-import { Icon } from 'components/Common/icon'
-
 type PostListProps = {
   selectedCategory: string
   selectedTag: string
@@ -70,7 +68,7 @@ const PostList: FunctionComponent<PostListProps> = ({
             disabled={currentPage === 1}
             aria-label="이전 페이지"
           >
-            <Icon name="left" className="ico ico-left" />
+            <i className="ico ico-left fa-solid fa-angle-left"></i>
           </button>
           {pages.map((page, i) =>
             page === '...' ? (
@@ -93,7 +91,7 @@ const PostList: FunctionComponent<PostListProps> = ({
             disabled={currentPage === totalPages}
             aria-label="다음 페이지"
           >
-            <Icon name="right" className="ico ico-right" />
+            <i className="ico ico-right fa-solid fa-angle-right"></i>
           </button>
         </div>
       )}

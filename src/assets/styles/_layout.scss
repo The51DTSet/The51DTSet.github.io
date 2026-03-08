@@ -99,7 +99,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 3rem;
         aspect-ratio: 1;
+        color: var(--ic-sub);
         padding: 0.6rem;
         border-radius: 50%;
         border: 1px solid var(--bc-default);
@@ -166,6 +168,7 @@
     justify-content: center;
     width: 5.6rem;
     height: 4.6rem;
+    color: var(--ic-sub);
 
     // svg {
     //   width: 16px;
@@ -295,7 +298,7 @@
 
     .search-result-title {
       font-size: 1.6rem;
-      font-weight: 700;
+      font-weight: 500;
       @include clamp(1);
       transition: color 0.3s;
     }
@@ -316,6 +319,7 @@
 
     .search-result-date,
     .search-result-categories {
+      width: max-content;
       display: flex;
       align-items: center;
       gap: 0.4rem;

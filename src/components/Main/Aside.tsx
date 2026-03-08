@@ -8,7 +8,6 @@ import { PostListItemType } from 'types/PostItem.types'
 import { useLayout } from 'contexts/LayoutContext'
 
 import LogoImage from 'components/Main/LogoImage'
-import { Icon } from 'components/Common/icon'
 
 type AsideProps = {
   logoImage: IGatsbyImageData
@@ -101,7 +100,7 @@ const Aside: FunctionComponent<AsideProps> = function ({
               target="_blank"
               className="foot-links-item"
             >
-              <Icon name="github" className="ico ico-github" />
+              <i className="ico fa-brands fa-github"></i>
             </a>
           </div>
         </div>

@@ -3,8 +3,6 @@ import BreadCrumb from 'components/Common/BreadCrumb'
 import PostSearch from 'components/Common/PostSearch'
 import { useLayout } from 'contexts/LayoutContext'
 
-import { Icon } from 'components/Common/icon'
-
 const TabBar: FunctionComponent = function () {
   const { toggleSidebar, toggleSearch } = useLayout()
 
@@ -17,7 +15,7 @@ const TabBar: FunctionComponent = function () {
         aria-label="메뉴 열기"
         onClick={toggleSidebar}
       >
-        <Icon name="menu" className="ico ico-menu" />
+        <i className="ico fa-solid fa-bars"></i>
       </button>
       <div className="topbar-title">The51X DT</div>
       <button
@@ -26,8 +24,8 @@ const TabBar: FunctionComponent = function () {
         aria-label="검색"
         onClick={toggleSearch}
       >
-        <Icon name="search" className="ico ico-search" />
-        <Icon name="searchClose" className="ico ico-close" />
+        <i className="ico ico-search fa-solid fa-magnifying-glass"></i>
+        <i className="ico ico-close fa-solid fa-xmark"></i>
       </button>
       <PostSearch />
     </div>

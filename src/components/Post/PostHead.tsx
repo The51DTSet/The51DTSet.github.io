@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import PostHeadInfo, { PostHeadInfoProps } from 'components/Post/PostHeadInfo'
-import { Icon } from 'components/Common/icon'
 import { useLayout } from 'contexts/LayoutContext'
 
 type PostHeadProps = PostHeadInfoProps & {
@@ -42,7 +41,7 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
               <h1>{title}</h1>
             </div>
             <button type="button" className="btn-toc" onClick={toggleToc}>
-              <Icon name="listMenu" className="ico ico-menu" />
+              <i className="ico fa-solid fa-list-ul"></i>
             </button>
           </div>
         </div>

@@ -34,6 +34,88 @@
   // 사이트 좌우 여백
   --side-padding: 4rem;
   --side-back-margin: -4rem;
+
+  // FontAwesome 웹폰트 (CSS ::before 에서 사용)
+  --fa-family-classic: 'Font Awesome 7 Free';
+  --fa-style-family-classic: var(--fa-family-classic);
+  --fa-font-solid: normal 900 0.9em/1 var(--fa-family-classic);
+  --fa-font-regular: normal 400 0.9em/1 var(--fa-family-classic);
+
+  // --icon-font-family: 'Font Awesome 7 Free'; // solid: font-weight 900 / regular: font-weight 400
+  // --icon-font-family-brands: 'Font Awesome 7 Brands'; // brands: font-weight 400
+
+  // code block
+  // --codeblock-font-family: 'Fira Code', monospace;
+  --codeblock-font-family:
+    SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --codeblock-background: #f6f8fa;
+  --codeblock-border-color: #ececec;
+  --codeblock-radius: 1rem;
+
+  --codeblock-header-text-color: #a3a3a3;
+  --codeblock-header-icon-color: #c9c8c8;
+
+  --codeblock-numbers-line: transparent;
+
+  --codeblock-color-text-in-codeblock: #3f596f;
+
+  --codeblock-color: #5e646f;
+  --codeblock-color-muted: #e5e5e5;
+  --codeblock-color-keyword: #b870ce;
+  --codeblock-color-classname: #c95959;
+  --codeblock-color-function: #6587bf;
+  --codeblock-color-number: #db7070;
+  --codeblock-color-attrname: #db7070;
+  --codeblock-color-tag: #db7070;
+  --codeblock-color-comment: #acb2bc;
+  --codeblock-color-operator: #5e646f;
+  --codeblock-color-value: #7c9f4b;
+
+  // --deckgo-highlight-code-font-family: 'Fira Code', monospace;
+  // --deckgo-highlight-code-font-size: 1.4rem;
+  // --deckgo-highlight-code-line-height: 1.4;
+  // --deckgo-highlight-code-scroll: auto;
+  // --deckgo-highlight-code-white-space: pre-wrap;
+  // --deckgo-highlight-code-display: block;
+  // --deckgo-highlight-code-height: 100%;
+  // --deckgo-highlight-code-width: 100%;
+  // --deckgo-highlight-code-carbon-header-padding: 0;
+  // --deckgo-highlight-code-carbon-header-margin: 0;
+
+  // new
+  // --deckgo-highlight-code-color: #5e646f;
+  // --deckgo-highlight-code-background: #f6f8fa;
+  // --deckgo-highlight-code-padding: 0 16px;
+  // --deckgo-highlight-code-border-radius: 1rem;
+  // --deckgo-highlight-code-margin: 0.8rem 0 2rem;
+  // --deckgo-highlight-code-zoom: 1;
+  // --deckgo-highlight-code-direction: ltr;
+  // --deckgo-highlight-code-text-align: start;
+  // --deckgo-highlight-code-container-width: 100%;
+  // --deckgo-highlight-code-container-height: 100%;
+  // --deckgo-highlight-code-container-display: block;
+  // --deckgo-highlight-code-container-justify-content: center;
+  // --deckgo-highlight-code-container-flex-direction: column;
+  // --deckgo-highlight-code-container-align-items: center;
+  // --deckgo-highlight-code-carbon-toolbar-display: none;
+
+  // // --deckgo-highlight-code-carbon-background: #f6f8fa;
+  // --deckgo-highlight-code-carbon-color: #202020;
+  // --deckgo-highlight-code-token-atrule: #ac4142;
+  // --deckgo-highlight-code-token-comment: #acb2bc;
+  // --deckgo-highlight-code-token-comment-rgb: 143, 85, 54;
+  // --deckgo-highlight-code-token-function: #90a959;
+  // --deckgo-highlight-code-token-operator: #202020;
+  // --deckgo-highlight-code-token-property: #90a959;
+  // --deckgo-highlight-code-token-punctuation: #202020;
+  // --deckgo-highlight-code-token-regex: #f4bf75;
+  // --deckgo-highlight-code-token-selector: #ac4142;
+
+  // --deckgo-highlight-code-line-numbers-background: transparent;
+  // --deckgo-highlight-code-line-numbers-border-right: 1px solid
+  //   rgba(0, 0, 0, 0.1);
+  // --deckgo-lowlight-code-line-numbers-color: #9e9e9e;
 }
 
 @media (width <= 1200px) {

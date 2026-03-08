@@ -6,46 +6,139 @@
 
 // You can delete this file if you're not using it
 
-import 'prismjs/themes/prism-tomorrow.css'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import '@fortawesome/fontawesome-free/css/fontawesome.min.css'
+import '@fortawesome/fontawesome-free/css/solid.min.css'
+import '@fortawesome/fontawesome-free/css/regular.min.css'
+import '@fortawesome/fontawesome-free/css/brands.min.css'
+import 'prismjs/themes/prism.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import 'prismjs/plugins/command-line/prism-command-line.css'
 import './src/assets/styles/index.scss'
 
-import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader'
-deckDeckGoHighlightElement()
+const LANGUAGE_NAMES = {
+  js: 'JavaScript',
+  javascript: 'JavaScript',
+  jsx: 'JSX',
+  ts: 'TypeScript',
+  tsx: 'TSX',
+  css: 'CSS',
+  scss: 'SCSS',
+  sass: 'Sass',
+  html: 'HTML',
+  json: 'JSON',
+  md: 'Markdown',
+  markdown: 'Markdown',
+  bash: 'Bash',
+  sh: 'Shell',
+  shell: 'Shell',
+  python: 'Python',
+  py: 'Python',
+  java: 'Java',
+  kotlin: 'Kotlin',
+  kt: 'Kotlin',
+  go: 'Go',
+  rust: 'Rust',
+  rs: 'Rust',
+  cpp: 'C++',
+  c: 'C',
+  sql: 'SQL',
+  yaml: 'YAML',
+  yml: 'YAML',
+  xml: 'XML',
+  graphql: 'GraphQL',
+  swift: 'Swift',
+  dart: 'Dart',
+  ruby: 'Ruby',
+  rb: 'Ruby',
+  php: 'PHP',
+}
 
-const COPY_ICON = `<svg class="ico ico-code-copy" viewBox="0 0 640 640"><path d="M352 528H128c-8.8 0-16-7.2-16-16V288c0-8.8 7.2-16 16-16h48v-48h-48c-35.3 0-64 28.7-64 64v224c0 35.3 28.7 64 64 64h224c35.3 0 64-28.7 64-64v-48h-48v48c0 8.8-7.2 16-16 16m-64-160c-8.8 0-16-7.2-16-16V128c0-8.8 7.2-16 16-16h224c8.8 0 16 7.2 16 16v224c0 8.8-7.2 16-16 16zm-64-16c0 35.3 28.7 64 64 64h224c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H288c-35.3 0-64 28.7-64 64z"/></svg>`
+function buildHeader(highlightEl, title) {
+  if (highlightEl.dataset.headerBuilt) return
+  highlightEl.dataset.headerBuilt = 'true'
 
-const CHECK_ICON = `<svg class="ico ico-code-check" viewBox="0 0 640 640"><path d="M530.8 134.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></svg>`
+  const lang = highlightEl.dataset.language || ''
+  const langName = LANGUAGE_NAMES[lang] || lang || ''
 
-export const onClientEntry = () => {
-  document.addEventListener('click', e => {
-    const btn = e.target.closest('.code-copy-btn')
-    if (!btn) return
+  // 헤더 엘리먼트 생성
+  const header = document.createElement('div')
+  header.className = 'gatsby-highlight-header'
 
-    const codeEl = btn
-      .closest('.code-block')
-      ?.querySelector('code[slot="code"]')
-    if (!codeEl) return
+  // 언어 이름 뱃지
+  if (langName) {
+    const langEl = document.createElement('span')
+    langEl.className = 'gatsby-code-language'
+    langEl.textContent = langName
+    header.appendChild(langEl)
+  }
 
-    const text = codeEl.textContent
-    const showCopied = () => {
-      const prev = btn.innerHTML
-      btn.innerHTML = CHECK_ICON
+  // 파일명 (있을 때만)
+  if (title) {
+    const titleSpan = document.createElement('span')
+    titleSpan.className = 'gatsby-code-title'
+    titleSpan.textContent = title
+    header.appendChild(titleSpan)
+  }
+
+  // 복사 버튼
+  const copyBtn = document.createElement('button')
+  copyBtn.className = 'gatsby-code-copy'
+  copyBtn.textContent = 'Copy'
+  copyBtn.addEventListener('click', () => {
+    const code = highlightEl.querySelector('code')
+    if (!code) return
+    const text = code.textContent
+    const done = () => {
+      copyBtn.textContent = 'Copied!'
       setTimeout(() => {
-        btn.innerHTML = prev
+        copyBtn.textContent = 'Copy'
       }, 2000)
     }
-
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).then(showCopied)
+      navigator.clipboard.writeText(text).then(done)
     } else {
-      const textarea = document.createElement('textarea')
-      textarea.value = text
-      textarea.style.cssText = 'position:fixed;opacity:0;pointer-events:none'
-      document.body.appendChild(textarea)
-      textarea.select()
+      const ta = document.createElement('textarea')
+      ta.value = text
+      ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none'
+      document.body.appendChild(ta)
+      ta.select()
       document.execCommand('copy')
-      document.body.removeChild(textarea)
-      showCopied()
+      document.body.removeChild(ta)
+      done()
     }
   })
+  header.appendChild(copyBtn)
+
+  // 기존 자식들을 .gatsby-code-body 로 이동 (헤더와 코드 영역 분리)
+  const body = document.createElement('div')
+  body.className = 'gatsby-code-body'
+  while (highlightEl.firstChild) {
+    body.appendChild(highlightEl.firstChild)
+  }
+
+  highlightEl.appendChild(header)
+  highlightEl.appendChild(body)
+}
+
+function setupCodeBlocks() {
+  // gatsby-remark-code-titles 가 생성한 .gatsby-code-title (형제 요소) 처리
+  document.querySelectorAll('.gatsby-code-title').forEach(titleEl => {
+    const title = titleEl.textContent.trim()
+    const highlightEl = titleEl.nextElementSibling
+    if (!highlightEl?.classList.contains('gatsby-highlight')) return
+    buildHeader(highlightEl, title)
+    titleEl.remove()
+  })
+
+  // 파일명 없는 .gatsby-highlight 처리
+  document
+    .querySelectorAll('.gatsby-highlight:not([data-header-built])')
+    .forEach(highlightEl => {
+      buildHeader(highlightEl, null)
+    })
+}
+
+export const onRouteUpdate = () => {
+  setupCodeBlocks()
 }

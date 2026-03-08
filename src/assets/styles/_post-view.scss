@@ -164,6 +164,10 @@
       @include clamp(1);
     }
   }
+
+  .btn-toc {
+    color: var(--ic-sub);
+  }
 }
 
 .post-contents {
@@ -179,16 +183,26 @@
     margin: 0 0 1.6rem;
   }
 
-  code:not([slot]) {
-    font-family: var(--deckgo-highlight-code-font-family);
+  .anchor.custom-class.after {
+    &::after {
+      content: '#';
+    }
+  }
+
+  code.language-text {
     display: inline-block;
+    font-family: var(--codeblock-font-family);
     font-size: 90%;
-    color: #3f596f;
+    color: var(--codeblock-color-text-in-codeblock);
     letter-spacing: -0.024rem;
     padding: 0 0.6rem;
     border-radius: 0.6rem;
     background: rgb(25 25 28 / 5%);
   }
+
+  // code:not([slot]) {
+  //   font-family: var(--deckgo-highlight-code-font-family);
+  // }
 
   a,
   a:not(.img-link) {

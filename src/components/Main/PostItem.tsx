@@ -3,8 +3,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { PostFrontmatterType } from 'types/PostItem.types'
 import { Link } from 'gatsby'
 
-import { Icon } from 'components/Common/icon'
-
 type PostItemProps = PostFrontmatterType & { link: string }
 
 const PostItem: FunctionComponent<PostItemProps> = function ({
@@ -31,11 +29,11 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
         <p className="desc">{summary}</p>
         <div className="info-wrapper">
           <div className="date">
-            <Icon name="calendar" className="ico ico-calendar" />
+            <i className="ico ico-calendar fa-regular fa-calendar"></i>
             {date}
           </div>
           <div className="categories">
-            <Icon name="folder" className="ico ico-folder" />
+            <i className="ico ico-folder fa-regular fa-folder-open"></i>
             {categories.map(category => (
               <span key={category}>{category}</span>
             ))}

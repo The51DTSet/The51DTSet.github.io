@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
-import { Icon } from 'components/Common/icon'
 
 export type PostHeadInfoProps = {
   title: string
@@ -28,7 +27,7 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
     <div className="post-head-info">
       <div className="inner">
         <button type="button" onClick={goBackPage} className="btn-back">
-          <Icon name="pageBack" className="ico ico-pageback" />
+          <i className="ico fa-solid fa-arrow-left"></i>
         </button>
         <div className="text-wrapper">
           <div className="post-title">{title}</div>

@@ -70,7 +70,7 @@ customElements.define("button-component", ButtonComponent, {
 
 마지막으로 `<button>` 사용 시 is attribute에 `my-button`을 사용자 요소로 사용함을 알려 준다.
 
-````javascript
+````html
 <button is='button-component'>Click</button>
 ````
 
