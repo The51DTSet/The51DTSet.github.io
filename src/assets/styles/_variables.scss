@@ -62,6 +62,9 @@
   --codeblock-color-comment: #acb2bc;
   --codeblock-color-operator: #5e646f;
   --codeblock-color-value: #7c9f4b;
+
+  --codeblock-highlight-background: rgba(44, 81, 193, 0.102);
+  --codeblock-highlight-border: rgba(58, 107, 255, 0.7);
 }
 
 @media (width <= 1200px) {

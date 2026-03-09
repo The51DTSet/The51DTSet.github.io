@@ -129,6 +129,16 @@
       padding-left: 5.2rem;
     }
 
+    .gatsby-highlight-code-line {
+      background-color: var(--codeblock-highlight-background);
+      display: block;
+      margin-right: -1em;
+      margin-left: -1em;
+      padding-right: 1em;
+      padding-left: 0.75em;
+      border-left: 0.25em solid var(--codeblock-highlight-border);
+    }
+
     .line-numbers {
       .line-numbers-rows {
         border-right-color: var(--codeblock-numbers-line);
