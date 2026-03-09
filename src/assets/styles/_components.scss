@@ -1,4 +1,4 @@
-@use './mixins' as *;
+@use './abstracts/mixins' as *;
 
 .section {
   width: 100%;
@@ -14,27 +14,7 @@
   display: inline-block;
   width: 2rem;
   aspect-ratio: 1;
-  fill: var(--ic-default);
-
-  &.ico-search,
-  &.ico-close,
-  &.ico-menu {
-    width: 2.2rem;
-    fill: var(--ic-sub);
-  }
-
-  &.ico-calendar,
-  &.ico-folder,
-  &.ico-github,
-  &.ico-code-copy,
-  &.ico-code-check {
-    width: 1.6rem;
-    fill: var(--ic-sub2);
-  }
-
-  &.ico-code-check {
-    fill: var(--fc-success);
-  }
+  color: var(--ic-sub);
 }
 
 .pagination {

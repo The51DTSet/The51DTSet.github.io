@@ -9,6 +9,9 @@ import { useLayout } from 'contexts/LayoutContext'
 
 import LogoImage from 'components/Main/LogoImage'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+
 type AsideProps = {
   logoImage: IGatsbyImageData
   edges: PostListItemType[]
@@ -100,7 +103,7 @@ const Aside: FunctionComponent<AsideProps> = function ({
               target="_blank"
               className="foot-links-item"
             >
-              <i className="ico fa-brands fa-github"></i>
+              <FontAwesomeIcon icon={faGithub} className='ico' />
             </a>
           </div>
         </div>

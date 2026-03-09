@@ -3,6 +3,11 @@ import PostItem from 'components/Main/PostItem'
 import { PostListItemType } from 'types/PostItem.types'
 import usePagination from 'hooks/usePagination'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+
+
+
 type PostListProps = {
   selectedCategory: string
   selectedTag: string
@@ -68,7 +73,7 @@ const PostList: FunctionComponent<PostListProps> = ({
             disabled={currentPage === 1}
             aria-label="이전 페이지"
           >
-            <i className="ico ico-left fa-solid fa-angle-left"></i>
+            <FontAwesomeIcon icon={faAngleLeft} className='ico' />
           </button>
           {pages.map((page, i) =>
             page === '...' ? (
@@ -91,7 +96,7 @@ const PostList: FunctionComponent<PostListProps> = ({
             disabled={currentPage === totalPages}
             aria-label="다음 페이지"
           >
-            <i className="ico ico-right fa-solid fa-angle-right"></i>
+            <FontAwesomeIcon icon={faAngleRight} className='ico' />
           </button>
         </div>
       )}

@@ -3,6 +3,9 @@ import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import PostHeadInfo, { PostHeadInfoProps } from 'components/Post/PostHeadInfo'
 import { useLayout } from 'contexts/LayoutContext'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faListUl } from '@fortawesome/free-solid-svg-icons'
+
 type PostHeadProps = PostHeadInfoProps & {
   thumbnail?: IGatsbyImageData
 }
@@ -32,16 +35,29 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const initialHistoryLength = useRef(0)
+
+  useEffect(() => {
+    initialHistoryLength.current = history.length
+  }, [])
+
+  const goBackPage = () => {
+    history.go(-(history.length - initialHistoryLength.current + 1))
+  }
+
   return (
     <div className="post-head">
       <div className={`post-topbar${topbarOn ? ' on' : ''}`}>
         <div className="section">
           <div className="inner">
+            <button type="button" onClick={goBackPage} className="btn-back">
+              <FontAwesomeIcon icon={faAngleLeft} className="ico" />
+            </button>
             <div className="title">
               <h1>{title}</h1>
             </div>
             <button type="button" className="btn-toc" onClick={toggleToc}>
-              <i className="ico fa-solid fa-list-ul"></i>
+              <FontAwesomeIcon icon={faListUl} className="ico" />
             </button>
           </div>
         </div>

@@ -3,6 +3,9 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { PostFrontmatterType } from 'types/PostItem.types'
 import { Link } from 'gatsby'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendar, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
+
 type PostItemProps = PostFrontmatterType & { link: string }
 
 const PostItem: FunctionComponent<PostItemProps> = function ({
@@ -29,15 +32,17 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
         <p className="desc">{summary}</p>
         <div className="info-wrapper">
           <div className="date">
-            <i className="ico ico-calendar fa-regular fa-calendar"></i>
+            <FontAwesomeIcon icon={faCalendar} className='ico' />
             {date}
           </div>
-          <div className="categories">
-            <i className="ico ico-folder fa-regular fa-folder-open"></i>
-            {categories.map(category => (
-              <span key={category}>{category}</span>
-            ))}
-          </div>
+          {categories?.length > 0 && (
+            <div className="categories">
+              <FontAwesomeIcon icon={faFolderOpen} className='ico' />
+              {categories.map(category => (
+                <span key={category}>{category}</span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </Link>

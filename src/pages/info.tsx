@@ -99,12 +99,12 @@ export const getPostList = graphql`
           id
           fields {
             slug
-            gitLastModified(formatString: "YYYY.MM.DD.")
+            gitLastModified(formatString: "MMM D, YYYY")
           }
           frontmatter {
             title
             summary
-            date(formatString: "YYYY.MM.DD.")
+            date(formatString: "MMM D, YYYY")
             categories
             tags
             thumbnail {

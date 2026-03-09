@@ -6,12 +6,11 @@
 
 // You can delete this file if you're not using it
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import '@fortawesome/fontawesome-free/css/fontawesome.min.css'
-import '@fortawesome/fontawesome-free/css/solid.min.css'
-import '@fortawesome/fontawesome-free/css/regular.min.css'
-import '@fortawesome/fontawesome-free/css/brands.min.css'
-import 'prismjs/themes/prism.css'
+import { config, icon } from '@fortawesome/fontawesome-svg-core'
+import { faCode, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faFileCode, faCopy } from '@fortawesome/free-regular-svg-icons'
+config.autoAddCss = false
+
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import 'prismjs/plugins/command-line/prism-command-line.css'
 import './src/assets/styles/index.scss'
@@ -69,7 +68,8 @@ function buildHeader(highlightEl, title) {
   if (langName) {
     const langEl = document.createElement('span')
     langEl.className = 'gatsby-code-language'
-    langEl.textContent = langName
+    langEl.appendChild(icon(faCode).node[0])
+    langEl.appendChild(document.createTextNode(langName))
     header.appendChild(langEl)
   }
 
@@ -77,22 +77,25 @@ function buildHeader(highlightEl, title) {
   if (title) {
     const titleSpan = document.createElement('span')
     titleSpan.className = 'gatsby-code-title'
-    titleSpan.textContent = title
+    titleSpan.appendChild(icon(faFileCode).node[0])
+    titleSpan.appendChild(document.createTextNode(title))
     header.appendChild(titleSpan)
   }
 
   // 복사 버튼
   const copyBtn = document.createElement('button')
   copyBtn.className = 'gatsby-code-copy'
-  copyBtn.textContent = 'Copy'
+  copyBtn.setAttribute('aria-label', 'Copy code')
+  copyBtn.appendChild(icon(faCopy).node[0])
+  copyBtn.appendChild(icon(faCheck).node[0])
   copyBtn.addEventListener('click', () => {
     const code = highlightEl.querySelector('code')
     if (!code) return
     const text = code.textContent
     const done = () => {
-      copyBtn.textContent = 'Copied!'
+      copyBtn.classList.add('copied')
       setTimeout(() => {
-        copyBtn.textContent = 'Copy'
+        copyBtn.classList.remove('copied')
       }, 2000)
     }
     if (navigator.clipboard) {

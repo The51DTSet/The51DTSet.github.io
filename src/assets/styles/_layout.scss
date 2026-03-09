@@ -1,9 +1,17 @@
-@use './mixins' as *;
+@use './abstracts/mixins' as *;
 
 #wrap {
   transition: transform 0.3s;
   &.has-sidebar {
     padding-left: 30rem;
+  }
+}
+
+.open-search {
+  .aside-mask {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
   }
 }
 
@@ -181,7 +189,7 @@
 
   .btn-search {
     position: relative;
-    z-index: 2;
+    z-index: 4;
   }
 
   .search-wrapper {
@@ -190,9 +198,9 @@
     top: 0;
     width: 100%;
     min-height: 10rem;
-    padding: 6rem 0;
+    padding: 8rem 0 4rem;
     background: #fff;
-    z-index: 1;
+    z-index: 3;
     box-shadow: 0 0 5rem 1rem rgba(0, 0, 0, 0.2);
     display: none;
 
@@ -381,7 +389,27 @@
     display: block;
 
     .contents-right {
-      display: none;
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 26rem;
+      height: 100%;
+      padding-top: 7rem;
+      border-left: 1px solid var(--bc-sub);
+      background: var(--bg-default);
+      scrollbar-width: none;
+      transition: transform 0.3s;
+      z-index: 3;
+      transform: translateX(100%);
+    }
+  }
+
+  #wrap {
+    &.open-toc {
+      .contents-right {
+        transform: translateX(0);
+      }
     }
   }
 
@@ -426,7 +454,7 @@
     margin-right: calc(var(--side-padding) * -1);
     backdrop-filter: blur(4px);
     background: rgba(255, 255, 255, 0.7);
-    z-index: 2;
+    z-index: 3;
 
     .topbar-title {
       display: flex;
@@ -442,6 +470,7 @@
   }
 
   .open-sidebar,
+  .open-search,
   .open-toc {
     .aside-mask {
       position: fixed;

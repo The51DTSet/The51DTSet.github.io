@@ -2,9 +2,22 @@ import React, { FunctionComponent } from 'react'
 import BreadCrumb from 'components/Common/BreadCrumb'
 import PostSearch from 'components/Common/PostSearch'
 import { useLayout } from 'contexts/LayoutContext'
+import { useStaticQuery, graphql } from 'gatsby'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass, faXmark, faBars } from '@fortawesome/free-solid-svg-icons'
 
 const TabBar: FunctionComponent = function () {
   const { toggleSidebar, toggleSearch } = useLayout()
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          sitename
+        }
+      }
+    }
+  `)
 
   return (
     <div id="topbar">
@@ -15,17 +28,17 @@ const TabBar: FunctionComponent = function () {
         aria-label="메뉴 열기"
         onClick={toggleSidebar}
       >
-        <i className="ico fa-solid fa-bars"></i>
+        <FontAwesomeIcon icon={faBars} className='ico' />
       </button>
-      <div className="topbar-title">The51X DT</div>
+      <div className="topbar-title">{site.siteMetadata.sitename}</div>
       <button
         type="button"
         className="btn-search"
         aria-label="검색"
         onClick={toggleSearch}
       >
-        <i className="ico ico-search fa-solid fa-magnifying-glass"></i>
-        <i className="ico ico-close fa-solid fa-xmark"></i>
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="ico ico-search" />
+        <FontAwesomeIcon icon={faXmark} className='ico ico-close' />
       </button>
       <PostSearch />
     </div>

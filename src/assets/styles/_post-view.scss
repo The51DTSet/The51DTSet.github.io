@@ -1,4 +1,4 @@
-@use './mixins' as *;
+@use './abstracts/mixins' as *;
 
 .post-head {
   position: relative;
@@ -35,21 +35,24 @@
       height: 100%;
       margin: 0 auto;
     }
-  }
 
-  .btn-back {
-    flex: 0 0 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 4rem;
-    aspect-ratio: 1;
-    font-size: 2.2rem;
-    color: var(--fc-default);
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    background: #fff;
-    margin-bottom: auto;
+    .btn-back {
+      flex: 0 0 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      aspect-ratio: 1;
+      font-size: 2.2rem;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      background: #fff;
+      margin-bottom: auto;
+
+      .ico {
+        color: var(--fc-default);
+      }
+    }
   }
 
   .text-wrapper {
@@ -140,7 +143,7 @@
   right: 0;
   background: var(--bg-default);
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.4);
-  z-index: 3;
+  z-index: 5;
   transform: translateY(-100%);
   transition: transform 0.15s;
 
@@ -151,13 +154,21 @@
   .inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+    padding: 0;
+    // gap: 2rem;
     height: 4.8rem;
+  }
+
+  .btn-back {
+    flex: 0 0 4rem;
+    aspect-ratio: 1;
+    color: var(--ic-sub);
   }
 
   .title {
     padding-top: 0.1rem;
+    margin-right: auto;
+
     h1 {
       font-size: 1.6rem;
       font-weight: normal;
@@ -166,7 +177,11 @@
   }
 
   .btn-toc {
+    flex: 0 0 4rem;
+    aspect-ratio: 1;
     color: var(--ic-sub);
+    margin-left: 2rem;
+    display: none;
   }
 }
 
@@ -261,6 +276,7 @@
   h4,
   h5,
   h6 {
+    scroll-margin-top: 80px;
     font-weight: 500;
     line-height: 1.3;
     margin: 4.8rem 0 2.4rem;
@@ -539,6 +555,14 @@
   }
 }
 
+@media (width <= 1200px) {
+  .post-topbar {
+    .btn-toc {
+      display: block;
+    }
+  }
+}
+
 @media (width <= 850px) {
   .post-head {
     // min-height: 30rem;
@@ -554,13 +578,12 @@
         padding: 0 2rem;
         min-height: 22rem;
       }
-    }
 
-    .btn-back {
-      flex: 0 0 3rem;
-      width: 30px;
-      height: 30px;
-      font-size: 18px;
+      .btn-back {
+        flex: 0 0 3.6rem;
+        width: 3.6rem;
+        font-size: 2rem;
+      }
     }
 
     .text-wrapper {
@@ -582,7 +605,4 @@
 }
 
 @media (width <= 620px) {
-  .comment-wrapper {
-    padding: 0 2rem;
-  }
 }

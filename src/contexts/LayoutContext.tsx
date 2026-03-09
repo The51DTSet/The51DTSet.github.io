@@ -5,9 +5,11 @@ type LayoutContextType = {
   searchOpen: boolean
   tocOpen: boolean
   toggleSidebar: () => void
-  toggleSearch: () => void
   closeSidebar: () => void
+  toggleSearch: () => void
+  closeSearch: () => void
   toggleToc: () => void
+  closeToc: () => void
 }
 
 export const LayoutContext = createContext<LayoutContextType>({
@@ -15,9 +17,11 @@ export const LayoutContext = createContext<LayoutContextType>({
   searchOpen: false,
   tocOpen: false,
   toggleSidebar: () => {},
-  toggleSearch: () => {},
   closeSidebar: () => {},
+  toggleSearch: () => {},
+  closeSearch: () => {},
   toggleToc: () => {},
+  closeToc: () => {},
 })
 
 export const useLayout = () => useContext(LayoutContext)

@@ -1,4 +1,4 @@
-@use './mixins' as *;
+@use './abstracts/mixins' as *;
 
 body,
 html {
@@ -17,6 +17,6 @@ html {
 
 @media (width <= 1200px) {
   #___gatsby {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 }

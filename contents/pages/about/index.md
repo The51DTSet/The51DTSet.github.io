@@ -27,15 +27,15 @@ If '100' represents 'complete' that achieved everything '0' represents 'incomple
 '51' represents 'possibility' that defferentiates possible and impossible We will experience the moment of '51' making the impossible to possible all together.
 
 
-언어 이름만 (자동 표시)
-```js
-const foo = 'bar'
-```
-파일명 표시
-
-```js:title=index.js
+- 언어 이름만 (자동 표시)
+  ```js
   const foo = 'bar'
-```
+  ```
+
+  - 파일명 표시
+    ```js:title=index.js
+      const foo = 'bar'
+    ```
 
 
 ### 줄 번호 매기기

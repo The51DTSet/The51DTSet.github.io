@@ -10,12 +10,20 @@
 module.exports = {
   siteMetadata: {
     title: `The51X DT Center Set Team | BLOG`,
+    sitename: `The51X DT`,  // 모바일에서 표시되는 topbar 타이틀
     description: `The51X DT Center Set Team BLOG`,
     author: `@The51XDTSet`,
     siteUrl: `https://The51DTSet.github.io`,
   },
   plugins: [
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        sassOptions: {
+          api: 'modern-compiler',
+        },
+      },
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-emotion`,
     'gatsby-plugin-sitemap',
@@ -41,7 +49,7 @@ module.exports = {
                 }
                 frontmatter {
                   title
-                  date(formatString: "YYYY.MM.DD")
+                  date(formatString: "MMM D, YYYY")
                   categories
                   summary
                   thumbnail {

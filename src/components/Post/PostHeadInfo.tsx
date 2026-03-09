@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+
 export type PostHeadInfoProps = {
   title: string
   date: string
@@ -27,7 +30,7 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
     <div className="post-head-info">
       <div className="inner">
         <button type="button" onClick={goBackPage} className="btn-back">
-          <i className="ico fa-solid fa-arrow-left"></i>
+          <FontAwesomeIcon icon={faArrowLeft} className='ico' />
         </button>
         <div className="text-wrapper">
           <div className="post-title">{title}</div>
@@ -42,11 +45,13 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
                 </span>
               )}
             </div>
-            <div className="post-category">
-              {categories.map(x => (
-                <span key={x}>{x}</span>
-              ))}
-            </div>
+            {categories?.length > 0 && (
+              <div className="post-category">
+                {categories.map(x => (
+                  <span key={x}>{x}</span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

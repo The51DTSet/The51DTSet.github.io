@@ -5,12 +5,14 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { useLayout } from 'contexts/LayoutContext'
 
 type PostTocProps = {
   tableOfContents: string
 }
 
 const PostToc: FunctionComponent<PostTocProps> = ({ tableOfContents }) => {
+  const { closeToc } = useLayout()
   const [activeId, setActiveId] = useState<string>('')
   const [hasH1Headings, setHasH1Headings] = useState(false)
   const tocRef = useRef<HTMLDivElement>(null)
@@ -90,6 +92,7 @@ const PostToc: FunctionComponent<PostTocProps> = ({ tableOfContents }) => {
           ref={tocRef}
           className="toc"
           dangerouslySetInnerHTML={{ __html: parsedToc }}
+          onClick={e => { if ((e.target as HTMLElement).closest('a')) closeToc() }}
         />
       </div>
     </div>

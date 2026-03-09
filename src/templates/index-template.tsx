@@ -30,14 +30,16 @@ const Template: FunctionComponent<TemplateProps> = function ({
         searchOpen,
         tocOpen,
         toggleSidebar: () => setSidebarOpen(v => !v),
-        toggleSearch: () => setSearchOpen(v => !v),
         closeSidebar: () => setSidebarOpen(false),
+        toggleSearch: () => setSearchOpen(v => !v),
+        closeSearch: () => setSearchOpen(false),
         toggleToc: () => setTocOpen(v => !v),
+        closeToc: () => setTocOpen(false),
       }}
     >
       <div id="wrap" className={classList}>
         {children}
-        <div className="aside-mask" onClick={() => setSidebarOpen(false)}></div>
+        <div className="aside-mask" onClick={() => { setSidebarOpen(false); setTocOpen(false); setSearchOpen(false) }}></div>
       </div>
     </LayoutContext.Provider>
   )

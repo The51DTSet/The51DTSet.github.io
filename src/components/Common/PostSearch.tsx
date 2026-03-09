@@ -3,6 +3,10 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import { useGatsbyPluginFusejs } from 'react-use-fusejs'
 import { useLayout } from 'contexts/LayoutContext'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faCalendar, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
+
 type SearchResultItem = {
   id: string
   title: string
@@ -37,8 +41,8 @@ export function Search() {
     >
       <div className="inner">
         <div className="input-item">
-          <div className="btn-submit">
-            <i className="ico fa-solid fa-magnifying-glass"></i>
+          <div className="btn-submit">            
+            <FontAwesomeIcon icon={faMagnifyingGlass} className='ico' />
           </div>
           <input
             value={query}
@@ -70,13 +74,13 @@ export function Search() {
                     <div className="search-result-info">
                       {item.date && (
                         <span className="search-result-date">
-                          <i className="ico fa-regular fa-calendar"></i>
+                          <FontAwesomeIcon icon={faCalendar} className='ico' />
                           {item.date}
                         </span>
                       )}
                       {item.categories?.length > 0 && (
                         <span className="search-result-categories">
-                          <i className="ico fa-regular fa-folder-open"></i>
+                          <FontAwesomeIcon icon={faFolderOpen} className='ico' />
                           {item.categories.join(' / ')}
                         </span>
                       )}
