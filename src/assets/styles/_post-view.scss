@@ -221,6 +221,7 @@
 
   a,
   a:not(.img-link) {
+    display: inline;
     color: var(--fc-primary);
     border-bottom: 1px solid #dee2e6;
     line-height: 1.2;
