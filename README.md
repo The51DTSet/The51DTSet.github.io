@@ -18,7 +18,7 @@ $ (sudo) npm install -g gatsby-cli
 ## 4. 서버 띄우기
 
 ```shell
-$ npm run start
+$ npm start
 $ gatsby develop -H 192.188.0.xx
 ```
 

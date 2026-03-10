@@ -10,12 +10,18 @@
 module.exports = {
   siteMetadata: {
     title: `The51X DT Center Set Team | BLOG`,
-    sitename: `The51X DT`,  // 모바일에서 표시되는 topbar 타이틀
+    sitename: `The51X DT`, // 모바일에서 표시되는 topbar 타이틀
     description: `The51X DT Center Set Team BLOG`,
     author: `@The51XDTSet`,
     siteUrl: `https://The51DTSet.github.io`,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: ['G-ZH3VPHLL97'],
+      },
+    },
     {
       resolve: `gatsby-plugin-sass`,
       options: {
@@ -73,7 +79,9 @@ module.exports = {
             date: node.frontmatter.date,
             categories: node.frontmatter.categories,
             summary: node.frontmatter.summary,
-            thumbnail: node.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData ?? null,
+            thumbnail:
+              node.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData ??
+              null,
           })),
       },
     },

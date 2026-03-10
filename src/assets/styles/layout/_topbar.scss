@@ -67,30 +67,16 @@
     left: 0;
     top: 0;
     width: 100%;
-    min-height: 10rem;
-    padding: 8rem 0 4rem;
+    padding: 8rem 0 6rem;
     background: #fff;
     z-index: 3;
     box-shadow: 0 0 5rem 1rem rgba(0, 0, 0, 0.2);
     display: none;
 
-    @include tablet {
-      display: none;
-    }
-
-    &.open-search {
-      display: block;
-    }
-
     .inner {
       width: 100%;
-      max-width: 768px;
-      padding: 0 4rem;
+      max-width: var(--max-width-md);
       margin: 0 auto;
-
-      @include desktop {
-        padding: 0 2rem;
-      }
     }
 
     .search-result-list {

@@ -6,7 +6,7 @@
       display: flex;
       align-items: flex-start;
       gap: 4rem;
-      padding: 2.4rem 1rem;
+      padding: 2.4rem 1.6rem;
       border-top: 1px solid var(--bc-sub);
 
       @include tablet {
@@ -34,7 +34,7 @@
       .thumbnail {
         flex: 0 0 36%;
         max-width: 26rem;
-        min-width: 22rem;
+        min-width: 16rem;
         order: 2;
         width: 100%;
         aspect-ratio: 16 / 9;
@@ -180,7 +180,7 @@
       display: flex;
       align-items: flex-start;
       gap: 2rem;
-      padding: 2.4rem 1rem;
+      padding: 2.4rem 1.6rem;
       border-top: 1px solid var(--bc-sub);
 
       @include tablet {

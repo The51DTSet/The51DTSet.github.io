@@ -4,7 +4,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  width: 30rem;
+  width: var(--aside-width);
   height: 100%;
   overflow-y: auto;
   border-right: 1px solid var(--bc-sub);
@@ -12,10 +12,6 @@
   scrollbar-width: none;
   transition: transform 0.3s;
   z-index: 3;
-
-  @include desktop-lg {
-    width: 26rem;
-  }
 
   @include tablet {
     transform: translateX(-100%);

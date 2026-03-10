@@ -12,13 +12,22 @@
 
 .cont {
   & + .cont {
-    margin-top: 3.2rem;
+    margin-top: 2.4rem;
   }
 }
 
 .scroll-y {
   overflow: hidden;
   overflow-y: auto;
+
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 calc(0% + 1.2rem),
+    #000 calc(100% - 2.2rem),
+    transparent calc(100% - 1rem)
+  );
+
   @include scrollbar();
 }
 

@@ -2,16 +2,9 @@
 
 #wrap {
   transition: transform 0.3s;
+
   &.has-sidebar {
-    padding-left: 30rem;
-
-    @include desktop-lg {
-      padding-left: 26rem;
-    }
-
-    @include tablet {
-      padding-left: 0;
-    }
+    padding-left: var(--wrap-left-padding);
   }
 
   &.open-sidebar {
@@ -27,14 +20,6 @@
     }
   }
 
-  &.open-toc {
-    .contents-right {
-      @include desktop {
-        transform: translateX(0);
-      }
-    }
-  }
-
   &.open-search {
     #topbar {
       .btn-search {
@@ -45,12 +30,18 @@
           display: inline-block;
         }
       }
-    }
 
-    .aside-mask {
-      position: fixed;
-      inset: 0;
-      z-index: 2;
+      .search-wrapper {
+        display: block;
+      }
+    }
+  }
+
+  &.open-toc {
+    .contents-right {
+      @include desktop {
+        transform: translateX(0);
+      }
     }
   }
 

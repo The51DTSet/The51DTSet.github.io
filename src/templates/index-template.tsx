@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useState } from 'react'
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
 import { LayoutContext } from 'contexts/LayoutContext'
 
 type TemplateProps = {
@@ -13,6 +13,14 @@ const Template: FunctionComponent<TemplateProps> = function ({
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [tocOpen, setTocOpen] = useState(false)
+
+  useEffect(() => {
+    if (searchOpen) {
+      const input = document.getElementById('search-input') as HTMLInputElement
+      // input?.focus()
+      setTimeout(() => input?.focus(), 100)
+    }
+  }, [searchOpen])
 
   const classList = [
     hasSidebar ? 'has-sidebar' : '',
@@ -39,7 +47,14 @@ const Template: FunctionComponent<TemplateProps> = function ({
     >
       <div id="wrap" className={classList}>
         {children}
-        <div className="aside-mask" onClick={() => { setSidebarOpen(false); setTocOpen(false); setSearchOpen(false) }}></div>
+        <div
+          className="aside-mask"
+          onClick={() => {
+            setSidebarOpen(false)
+            setTocOpen(false)
+            setSearchOpen(false)
+          }}
+        ></div>
       </div>
     </LayoutContext.Provider>
   )
