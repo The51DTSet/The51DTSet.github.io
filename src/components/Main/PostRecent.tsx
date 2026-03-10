@@ -2,14 +2,12 @@ import React, { FunctionComponent, useMemo } from 'react'
 import { Link } from 'gatsby'
 import { PostListItemType } from 'types/PostItem.types'
 
-type PostRecommendedProps = {
+type PostRecentProps = {
   edges: PostListItemType[]
 }
 
-const PostRecommended: FunctionComponent<PostRecommendedProps> = function ({
-  edges,
-}) {
-  const recommended = useMemo(() => {
+const PostRecent: FunctionComponent<PostRecentProps> = function ({ edges }) {
+  const recent = useMemo(() => {
     return [...edges]
       .sort((a, b) => {
         const aDate = a.node.fields.gitLastModified || a.node.frontmatter.date
@@ -20,13 +18,13 @@ const PostRecommended: FunctionComponent<PostRecommendedProps> = function ({
   }, [edges])
 
   return (
-    <div className="cont-wrap post-recommended">
+    <div className="cont-wrap post-recent">
       <div className="cont-ttl">
         <h3>Recently Updated</h3>
       </div>
       <div className="cont-box">
-        <div className="post-recommended">
-          {recommended.map(
+        <div className="post-recent">
+          {recent.map(
             ({
               node: {
                 id,
@@ -34,7 +32,7 @@ const PostRecommended: FunctionComponent<PostRecommendedProps> = function ({
                 frontmatter: { title },
               },
             }) => (
-              <Link key={id} to={slug} className="post-recommended-item">
+              <Link key={id} to={slug} className="post-recent-item">
                 {title}
               </Link>
             ),
@@ -45,4 +43,4 @@ const PostRecommended: FunctionComponent<PostRecommendedProps> = function ({
   )
 }
 
-export default PostRecommended
+export default PostRecent

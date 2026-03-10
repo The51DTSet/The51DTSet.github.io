@@ -1,4 +1,17 @@
-@use './abstracts/mixins' as *;
+@use '../abstracts/mixins' as *;
+
+.post-contents {
+  & > .gatsby-highlight {
+    @include tablet {
+      width: calc(100% + var(--side-padding) * 2);
+      margin-left: var(--side-back-margin);
+      margin-right: var(--side-back-margin);
+      border-radius: 0;
+      border-left: 0 none;
+      border-right: 0 none;
+    }
+  }
+}
 
 .gatsby-highlight {
   border-radius: var(--codeblock-radius);
@@ -15,6 +28,11 @@
     justify-content: center;
     height: 3.6rem;
 
+    @include tablet {
+      justify-content: flex-start;
+      padding-left: 1.6rem;
+    }
+
     &::before {
       position: absolute;
       left: 1.6rem;
@@ -27,6 +45,10 @@
       box-shadow:
         2rem 0 0 var(--codeblock-color-muted),
         4rem 0 0 var(--codeblock-color-muted);
+
+      @include tablet {
+        display: none;
+      }
     }
 
     &:has(.gatsby-code-title) {
@@ -102,7 +124,7 @@
   .gatsby-code-body {
     code[class*='language-'],
     pre[class*='language-'] {
-      font-family: var(--codeblock-font-family);
+      font-family: var(--codeblock-fontfamily);
       color: var(--codeblock-color);
       font-size: 1.36rem;
       line-height: 1.66;
@@ -192,38 +214,6 @@
     .language-css .token.string,
     .style .token.string {
       color: var(--codeblock-color-operator);
-    }
-
-    // .gatsby-highlight code[class*='language-'],
-    // .gatsby-highlight pre[class*='language-'] {
-    //   background: var(--codeblock-background);
-    // }
-  }
-}
-
-@media (width <= 620px) {
-  .post-contents {
-    & > .gatsby-highlight {
-      width: calc(100% + var(--side-padding) * 2);
-      margin-left: var(--side-back-margin);
-      margin-right: var(--side-back-margin);
-      border-radius: 0;
-      border-left: 0 none;
-      border-right: 0 none;
-    }
-  }
-
-  .gatsby-highlight {
-    .gatsby-highlight-header {
-      justify-content: flex-start;
-      padding-left: 1.6rem;
-
-      &::before {
-        display: none;
-      }
-    }
-
-    .gatsby-code-body {
     }
   }
 }

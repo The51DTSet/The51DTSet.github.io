@@ -1,11 +1,13 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { useGatsbyPluginFusejs } from 'react-use-fusejs'
 import { useLayout } from 'contexts/LayoutContext'
+import PostList from 'components/Main/PostList'
+import { PostListItemType } from 'types/PostItem.types'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { faCalendar, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
 
 type SearchResultItem = {
   id: string
@@ -15,7 +17,7 @@ type SearchResultItem = {
   date: string
   categories: string[]
   summary: string
-  thumbnail: string
+  thumbnail: IGatsbyImageData | null
 }
 
 export function Search() {
@@ -34,62 +36,57 @@ export function Search() {
     item: SearchResultItem
   }>
 
+  const posts: PostListItemType[] = result.map(({ item }) => ({
+    node: {
+      id: item.id,
+      fields: { slug: item.slug, gitLastModified: null },
+      frontmatter: {
+        title: item.title,
+        date: item.date,
+        categories: item.categories,
+        summary: item.summary,
+        thumbnail: item.thumbnail
+          ? {
+              childImageSharp: { gatsbyImageData: item.thumbnail },
+              publicURL: '',
+            }
+          : undefined,
+      },
+    },
+  }))
+
   return (
     <div
       className={`search-wrapper${searchOpen ? ' open-search' : ''}`}
       id="search"
     >
       <div className="inner">
-        <div className="input-item">
-          <div className="btn-submit">            
-            <FontAwesomeIcon icon={faMagnifyingGlass} className='ico' />
+        <div className="cont">
+          <div className="form-group">
+            <div className="input-item search-type">
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="ico" />
+              <input
+                type="search"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                id="search-input"
+                aria-label="search"
+                autoComplete="off"
+                placeholder="Search"
+                className="input"
+              />
+            </div>
           </div>
-          <input
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            id="search-input"
-            type="search"
-            aria-label="search"
-            autoComplete="off"
-            placeholder="Search"
-          />
         </div>
         {query && result.length > 0 && (
-          <ul className="search-result-list">
-            {result.map(({ item }) => (
-              <li key={item.id} className="search-result-item">
-                <Link to={item.slug} className="search-result-link">
-                  {item.thumbnail && (
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
-                      className="search-result-thumbnail"
-                    />
-                  )}
-                  <div className="search-result-text">
-                    <p className="search-result-title">{item.title}</p>
-                    {item.summary && (
-                      <p className="search-result-summary">{item.summary}</p>
-                    )}
-                    <div className="search-result-info">
-                      {item.date && (
-                        <span className="search-result-date">
-                          <FontAwesomeIcon icon={faCalendar} className='ico' />
-                          {item.date}
-                        </span>
-                      )}
-                      {item.categories?.length > 0 && (
-                        <span className="search-result-categories">
-                          <FontAwesomeIcon icon={faFolderOpen} className='ico' />
-                          {item.categories.join(' / ')}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="cont scroll-y">
+            <PostList
+              selectedCategory="All"
+              selectedTag=""
+              posts={posts}
+              type="search-type"
+            />
+          </div>
         )}
       </div>
     </div>

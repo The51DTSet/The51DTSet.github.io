@@ -1,4 +1,4 @@
-@use './abstracts/mixins' as *;
+@use '../abstracts/mixins' as *;
 
 :root {
   --bg-primary: #3a6bff;
@@ -9,6 +9,7 @@
   --fc-default: #222;
   --fc-sub: #757575;
   --fc-sub2: #aaa;
+  --fc-code: #3f596f; // 텍스트 내 일반 code
   --fc-success: #2fb075;
   --fc-danger: #ed6767;
   --fc-pink: #d63384;
@@ -17,29 +18,44 @@
   --bc-primary: #3a6bff;
   --bc-default: #ddd;
   --bc-sub: #eee;
+  --bc-link: #dee2e6;
   --bc-input: #ddd;
   --bc-input-focus: #999;
+
+  --scrollbar-track: #999;
+  --scrollbar-thumb: #666;
 
   // icon
   --ic-default: #222;
   --ic-sub: #999;
   --ic-sub2: #aaa;
 
+  // size
+  --max-width: 1190px;
+
   --aside-width: 30rem;
   --container-left-padding: 30rem;
   --rnb-width: 26rem;
 
-  --max-width: 1190px;
-
-  // 사이트 좌우 여백
+  // 좌우 여백
   --side-padding: 4rem;
   --side-back-margin: -4rem;
+  @include desktop {
+    --side-padding: 2.4rem;
+    --side-back-margin: -2.4rem;
+  }
+  @include tablet {
+    --side-padding: 1.6rem;
+    --side-back-margin: -1.6rem;
+  }
+  @include mobile {
+    --side-padding: 1.2rem;
+    --side-back-margin: -1.2rem;
+  }
 
   // code block
-  // --codeblock-font-family: 'Fira Code', monospace;
-  --codeblock-font-family:
-    'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
+  --codeblock-fontfamily: 'Consolas', 'Verdana', 'Apple SD Gothic Neo';
+
   --codeblock-background: #f6f8fa;
   --codeblock-border-color: #ececec;
   --codeblock-radius: 1rem;
@@ -48,8 +64,6 @@
   --codeblock-header-icon-color: #c9c8c8;
 
   --codeblock-numbers-line: transparent;
-
-  --codeblock-color-text-in-codeblock: #3f596f;
 
   --codeblock-color: #5e646f;
   --codeblock-color-muted: #e5e5e5;
@@ -65,11 +79,4 @@
 
   --codeblock-highlight-background: rgba(44, 81, 193, 0.102);
   --codeblock-highlight-border: rgba(58, 107, 255, 0.7);
-}
-
-@media (width <= 1200px) {
-  :root {
-    --side-padding: 1.2rem;
-    --side-back-margin: -1.2rem;
-  }
 }

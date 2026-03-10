@@ -1,0 +1,112 @@
+@use '../abstracts/mixins' as *;
+
+#aside {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 30rem;
+  height: 100%;
+  overflow-y: auto;
+  border-right: 1px solid var(--bc-sub);
+  background: var(--bg-default);
+  scrollbar-width: none;
+  transition: transform 0.3s;
+  z-index: 3;
+
+  @include desktop-lg {
+    width: 26rem;
+  }
+
+  @include tablet {
+    transform: translateX(-100%);
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem;
+  }
+
+  .aside-head {
+    margin: 2rem 0;
+    padding: 0 1.6rem;
+
+    .logo-image {
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      filter: invert(1);
+    }
+
+    .line-home {
+      margin-top: 1.8rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+    }
+
+    .desc {
+      font-size: 1.2rem;
+      color: var(--fc-sub);
+      font-style: italic;
+      margin-top: 0.4rem;
+    }
+  }
+
+  .aside-body {
+    flex: 1 1 auto;
+    margin-top: 2rem;
+
+    .page-list {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--bc-sub);
+    }
+
+    .post-link,
+    .page-link {
+      font-size: 1.6rem;
+      font-weight: 400;
+      padding: 0.8rem 1rem;
+
+      &.on {
+        font-weight: 700;
+        color: var(--fc-primary);
+      }
+
+      span {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--fc-sub2);
+      }
+    }
+  }
+
+  .aside-foot {
+    margin-top: 4rem;
+
+    .foot-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 2rem 0;
+      font-size: 1.4rem;
+
+      .foot-links-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        aspect-ratio: 1;
+        color: var(--ic-sub);
+        padding: 0.6rem;
+        border-radius: 50%;
+        border: 1px solid var(--bc-default);
+      }
+    }
+  }
+}

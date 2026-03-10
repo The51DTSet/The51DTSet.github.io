@@ -1,0 +1,43 @@
+@use '../abstracts/mixins' as *;
+
+#contents {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8rem;
+  margin: 6rem 0;
+
+  @include desktop-lg {
+    gap: 4rem;
+  }
+
+  @include desktop {
+    margin: 2rem 0;
+    display: block;
+  }
+
+  .contents-left {
+    flex: 1 1 auto;
+  }
+
+  .contents-right {
+    flex: 0 0 var(--rnb-width);
+    align-self: stretch;
+
+    @include desktop {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 26rem;
+      height: 100%;
+      padding-top: 7rem;
+      border-left: 1px solid var(--bc-sub);
+      background: var(--bg-default);
+      scrollbar-width: none;
+      transition: transform 0.3s;
+      z-index: 3;
+      transform: translateX(100%);
+    }
+  }
+}

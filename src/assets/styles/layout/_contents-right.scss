@@ -1,0 +1,25 @@
+@use '../abstracts/mixins' as *;
+
+.contents-right {
+  .cont-wrap {
+    // padding: 1rem 0;
+
+    & + .cont-wrap {
+      margin-top: 6rem;
+    }
+
+    .cont-ttl {
+      padding: 1rem 0 0 2rem;
+      border-left: 1px solid var(--bc-sub);
+
+      h3 {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+    .cont-box {
+      padding: 1.2rem 0 2rem 2rem;
+      border-left: 1px solid var(--bc-sub);
+    }
+  }
+}

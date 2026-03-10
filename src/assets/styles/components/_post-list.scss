@@ -1,4 +1,4 @@
-@use './abstracts/mixins' as *;
+@use '../abstracts/mixins' as *;
 
 .post-lists {
   &.vertical-type {
@@ -7,13 +7,13 @@
       align-items: flex-start;
       gap: 4rem;
       padding: 2.4rem 1rem;
-      // padding-top: 3rem;
-      // margin-top: 3rem;
       border-top: 1px solid var(--bc-sub);
 
+      @include tablet {
+        gap: 2rem;
+      }
+
       &:first-child {
-        // padding-top: 0;
-        // margin-top: 0;
         border-top: 0;
       }
 
@@ -48,6 +48,15 @@
         img {
           transition: transform 0.3s;
         }
+
+        @include tablet {
+          flex: 0 0 40%;
+          min-width: auto;
+        }
+
+        @include mobile-lg {
+          display: none;
+        }
       }
 
       .text-wrapper {
@@ -57,7 +66,6 @@
 
         .title {
           font-size: 2rem;
-          // font-weight: 500;
           @include clamp(2);
           transition: color 0.3s;
         }
@@ -83,18 +91,9 @@
             font-weight: 400;
             color: var(--fc-sub2);
 
-            &.date {
-            }
-
             &.categories {
               flex-wrap: wrap;
               gap: 0.6rem;
-
-              span {
-              }
-            }
-
-            .ico {
             }
           }
         }
@@ -115,6 +114,10 @@
       border-radius: 1.6rem;
       overflow: hidden;
       background: var(--bg-sub);
+
+      @include tablet {
+        width: 100%;
+      }
 
       &:hover {
         .text-wrapper {
@@ -160,74 +163,112 @@
             font-weight: 400;
             color: var(--fc-sub2);
 
-            &.date {
-            }
-
             &.categories {
               flex-wrap: wrap;
               gap: 0.6rem;
-
-              span {
-              }
-            }
-
-            .ico {
             }
           }
         }
       }
     }
   }
-}
 
-@media (width <= 620px) {
-  .post-lists {
-    &.vertical-type {
-      .post-item {
+  &.search-type {
+    max-height: 60vh;
+
+    .post-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 2.4rem 1rem;
+      border-top: 1px solid var(--bc-sub);
+
+      @include tablet {
         gap: 2rem;
+      }
 
+      &:first-child {
+        border-top: 0;
+      }
+
+      &:hover {
         .thumbnail {
+          img {
+            transform: scale(1.1);
+          }
+        }
+
+        .text-wrapper {
+          .title {
+            color: var(--fc-primary);
+          }
+        }
+      }
+
+      .thumbnail {
+        flex: 0 0 30%;
+        max-width: 26rem;
+        min-width: 16rem;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 1rem;
+        overflow: hidden;
+
+        &.thumbnail--none {
+          display: none;
+        }
+
+        img {
+          transition: transform 0.3s;
+        }
+
+        @include tablet {
           flex: 0 0 40%;
           min-width: auto;
         }
 
-        .text-wrapper {
-          padding: 0;
-
-          .title {
-            // font-size: 1.8rem;
-          }
-
-          .desc {
-            // font-size: 1.6rem;
-          }
-
-          .info-wrapper {
-            // display: block;
-            // margin-top: 1.6rem;
-
-            div {
-              // font-size: 1.2rem;
-            }
-          }
+        @include mobile-lg {
+          display: none;
         }
       }
-    }
 
-    &.thumbnail-type {
-      .post-item {
-        width: 100%;
-      }
-    }
-  }
-}
+      .text-wrapper {
+        flex: 1 1 auto;
+        padding: 0.4rem 0;
+        white-space: normal;
 
-@media (width <= 480px) {
-  .post-lists {
-    &.vertical-type {
-      .post-item {
-        .thumbnail {
-          display: none;
+        .title {
+          font-size: 2rem;
+          @include clamp(2);
+          transition: color 0.3s;
+        }
+
+        .desc {
+          font-size: 1.6rem;
+          color: var(--fc-sub);
+          @include clamp(2);
+          margin-top: 1rem;
+        }
+
+        .info-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          margin-top: 2rem;
+
+          div {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--fc-sub2);
+
+            &.categories {
+              flex-wrap: wrap;
+              gap: 0.6rem;
+            }
+          }
         }
       }
     }

@@ -1,43 +1,42 @@
-$desktop: 1650px;
-$desktop-sm: 1200px;
-$tablet: 1024px;
-$tablet-sm: 850px;
-$mobile-lg: 768px;
-$mobile: 480px;
-$mobile-sm: 320px;
+$desktop-lg: 1650px;
+$desktop: 1280px;
+$tablet-lg: 1024px;
+$tablet: 768px;
+$mobile-lg: 480px;
+$mobile: 320px;
 
-@mixin desktop-md {
-  @media (max-width: #{$desktop-md}) {
+@mixin desktop-lg {
+  @media (width <= #{$desktop-lg}) {
     @content;
   }
 }
-@mixin desktop-sm {
-  @media (max-width: #{$desktop-sm}) {
+@mixin desktop {
+  @media (width <= #{$desktop}) {
+    @content;
+  }
+}
+@mixin tablet-lg {
+  @media (width <= #{$tablet-lg}) {
     @content;
   }
 }
 @mixin tablet {
-  @media (max-width: #{$tablet}) {
-    @content;
-  }
-}
-@mixin tablet-sm {
-  @media (max-width: #{$tablet-sm}) {
+  @media (width <= #{$tablet}) {
     @content;
   }
 }
 @mixin mobile-lg {
-  @media (max-width: #{$mobile-lg}) {
+  @media (width <= #{$mobile-lg}) {
     @content;
   }
 }
 @mixin mobile {
-  @media (max-width: #{$mobile}) {
+  @media (width <= #{$mobile-lg}) {
     @content;
   }
 }
 @mixin mobile-sm {
-  @media (max-width: #{$mobile-sm}) {
+  @media (max-width: #{$mobile}) {
     @content;
   }
 }
@@ -61,4 +60,26 @@ $mobile-sm: 320px;
   text-overflow: ellipsis;
   -webkit-line-clamp: $line;
   overflow: hidden;
+}
+
+@mixin scrollbar($type: round, $size: 4px) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+  }
+
+  @if $type == 'round' {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      border-radius: $size;
+    }
+  }
+  @content;
 }

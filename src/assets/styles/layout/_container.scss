@@ -1,0 +1,9 @@
+@use '../abstracts/mixins' as *;
+
+#container {
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0 var(--side-padding);
+  margin: 0 auto;
+  transition: transform 0.3s;
+}

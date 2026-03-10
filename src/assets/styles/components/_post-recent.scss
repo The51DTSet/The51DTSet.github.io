@@ -1,0 +1,22 @@
+@use '../abstracts/mixins' as *;
+
+.post-recent {
+  .post-recent-item {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--fc-sub);
+    @include clamp(2);
+    transition:
+      color 0.15s,
+      border-color 0.15s,
+      background 0.15s;
+
+    & + .post-recent-item {
+      margin-top: 1rem;
+    }
+
+    &:hover {
+      color: var(--fc-primary);
+    }
+  }
+}

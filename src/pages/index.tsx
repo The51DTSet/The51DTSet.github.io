@@ -10,7 +10,7 @@ import TopBar from 'components/Main/TopBar'
 import Aside from 'components/Main/Aside'
 import Footer from 'components/Common/Footer'
 import PostList from 'components/Main/PostList'
-import PostRecommended from 'components/Main/PostRecommended'
+import PostRecent from 'components/Main/PostRecent'
 import PostTags from 'components/Main/PostTags'
 
 type IndexPageProps = {
@@ -72,7 +72,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
             />
           </div>
           <div className="contents-right">
-            <PostRecommended edges={edges} />
+            <PostRecent edges={edges} />
             <PostTags edges={edges} selectedTag={selectedTag} />
           </div>
         </div>

@@ -1,0 +1,75 @@
+@use '../abstracts/mixins' as *;
+
+.toc-wrapper {
+  position: sticky;
+  top: 4rem;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  padding-left: 0;
+  scrollbar-width: none;
+
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 calc(0% + 1.2rem),
+    #000 calc(100% - 2.2rem),
+    transparent calc(100% - 1rem)
+  );
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .toc {
+    padding-bottom: 2rem;
+
+    ul {
+      li {
+        a {
+          display: block;
+          font-size: 1.4rem;
+          color: var(--fc-sub);
+          @include clamp(2);
+          padding: 0.6rem 0;
+          transition: color 0.2s;
+          overflow: visible;
+
+          &:hover {
+            color: var(--fc-default);
+          }
+
+          &.toc-active {
+            position: relative;
+            color: var(--fc-primary);
+            font-weight: 500;
+
+            &::before {
+              position: absolute;
+              left: calc(-2rem - 1px);
+              content: '';
+              width: 1px;
+              height: 2rem;
+              background: var(--bg-primary);
+            }
+          }
+        }
+
+        ul {
+          li {
+            a {
+              padding-left: 2rem;
+            }
+
+            ul {
+              li {
+                a {
+                  padding-left: 4rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

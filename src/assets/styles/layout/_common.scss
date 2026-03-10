@@ -1,0 +1,29 @@
+@use '../abstracts/mixins' as *;
+
+.section {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.inner {
+  padding: 0 var(--side-padding);
+}
+
+.cont {
+  & + .cont {
+    margin-top: 3.2rem;
+  }
+}
+
+.scroll-y {
+  overflow: hidden;
+  overflow-y: auto;
+  @include scrollbar();
+}
+
+.scroll-x {
+  overflow: hidden;
+  overflow-x: auto;
+  @include scrollbar();
+}

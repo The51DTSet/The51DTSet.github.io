@@ -1,0 +1,31 @@
+@use '../abstracts/mixins' as *;
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  .post-tags-item {
+    padding: 0.6rem 0.8rem 0.4rem;
+    border-radius: 3rem;
+    font-size: 1.2rem;
+    color: var(--fc-sub);
+    border: 1px solid var(--bc-sub);
+    transition:
+      color 0.15s,
+      border-color 0.15s,
+      background 0.15s;
+
+    &:hover {
+      color: var(--fc-primary);
+      border-color: var(--fc-primary);
+    }
+
+    &.active {
+      color: var(--fc-primary);
+      border-color: var(--fc-primary);
+      background: rgba(var(--rgb-primary, 66, 99, 235), 0.08);
+      font-weight: 600;
+    }
+  }
+}

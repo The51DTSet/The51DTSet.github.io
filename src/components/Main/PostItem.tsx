@@ -32,12 +32,12 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
         <p className="desc">{summary}</p>
         <div className="info-wrapper">
           <div className="date">
-            <FontAwesomeIcon icon={faCalendar} className='ico' />
+            <FontAwesomeIcon icon={faCalendar} className="ico" />
             {date}
           </div>
           {categories?.length > 0 && (
             <div className="categories">
-              <FontAwesomeIcon icon={faFolderOpen} className='ico' />
+              <FontAwesomeIcon icon={faFolderOpen} className="ico" />
               {categories.map(category => (
                 <span key={category}>{category}</span>
               ))}

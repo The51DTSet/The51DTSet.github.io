@@ -1,0 +1,24 @@
+@use '../abstracts/mixins' as *;
+
+.input-item {
+  &.search-type {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    width: 100%;
+    height: 5.2rem;
+    padding: 0 1.6rem;
+    border-radius: 5.2rem;
+    border: 1px solid var(--bc-input);
+
+    &:has(.input:focus) {
+      border-color: var(--bc-input-focus);
+    }
+
+    .input {
+      width: 100%;
+      height: 100%;
+      outline: none;
+    }
+  }
+}

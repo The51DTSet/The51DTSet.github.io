@@ -1,7 +1,6 @@
-@use './abstracts/mixins' as *;
+@use '../abstracts/mixins' as *;
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-// @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 body, html {
   width: 100%;
@@ -90,6 +89,11 @@ svg {
   width: 100%;
   height: auto;
   vertical-align: top;
+}
+
+img[data-main-image] {
+  width: 100%;
+  height: 100%;
 }
 
 a {

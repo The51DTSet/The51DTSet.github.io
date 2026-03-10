@@ -20,7 +20,7 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         sassOptions: {
-          api: 'modern-compiler',
+          silenceDeprecations: ['legacy-js-api'],
         },
       },
     },
@@ -54,6 +54,9 @@ module.exports = {
                   summary
                   thumbnail {
                     publicURL
+                    childImageSharp {
+                      gatsbyImageData(width: 768, height: 400)
+                    }
                   }
                 }
               }
@@ -70,7 +73,7 @@ module.exports = {
             date: node.frontmatter.date,
             categories: node.frontmatter.categories,
             summary: node.frontmatter.summary,
-            thumbnail: node.frontmatter.thumbnail?.publicURL,
+            thumbnail: node.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData ?? null,
           })),
       },
     },

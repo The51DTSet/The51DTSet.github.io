@@ -7,7 +7,7 @@ import Footer from 'components/Common/Footer'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/PostItem.types'
 import { graphql } from 'gatsby'
-import PostRecommended from 'components/Main/PostRecommended'
+import PostRecent from 'components/Main/PostRecent'
 import PostTags from 'components/Main/PostTags'
 
 type IndexPageProps = {
@@ -54,7 +54,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
         <div id="contents">
           <div className="contents-left">dddddddd</div>
           <div className="contents-right">
-            <PostRecommended edges={edges} />
+            <PostRecent edges={edges} />
             <PostTags edges={edges} selectedTag="" />
           </div>
         </div>

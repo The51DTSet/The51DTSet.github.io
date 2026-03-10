@@ -1,0 +1,42 @@
+@use '../abstracts/mixins' as *;
+
+body,
+html {
+  color: var(--fc-default);
+  background-color: var(--bg-default);
+}
+
+#___gatsby,
+#gatsby-focus-wrapper {
+  width: 100%;
+}
+
+#___gatsby {
+  @include desktop {
+    overflow-x: clip;
+  }
+}
+
+.blind {
+  @include blind;
+}
+
+.fc-primary {
+  color: var(--fc-primary);
+}
+
+.fc-default {
+  color: var(--fc-default);
+}
+
+.fc-sub {
+  color: var(--fc-sub);
+}
+
+.fc-danger {
+  color: var(--fc-danger);
+}
+
+.fc-success {
+  color: var(--fc-success);
+}

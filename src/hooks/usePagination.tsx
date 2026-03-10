@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { PostListItemType } from 'types/PostItem.types'
 
-const ITEMS_PER_PAGE = 10
+const ITEMS_PER_PAGE = 5
 
 const usePagination = (
   selectedCategory: string,
@@ -12,16 +12,22 @@ const usePagination = (
 
   const filteredPosts = useMemo(
     () =>
-      posts.filter(({ node: { frontmatter: { categories, tags } } }) => {
-        const categoryMatch =
-          selectedCategory !== 'All'
-            ? categories.includes(selectedCategory)
+      posts.filter(
+        ({
+          node: {
+            frontmatter: { categories, tags },
+          },
+        }) => {
+          const categoryMatch =
+            selectedCategory !== 'All'
+              ? categories.includes(selectedCategory)
+              : true
+          const tagMatch = selectedTag
+            ? Array.isArray(tags) && tags.includes(selectedTag)
             : true
-        const tagMatch = selectedTag
-          ? Array.isArray(tags) && tags.includes(selectedTag)
-          : true
-        return categoryMatch && tagMatch
-      }),
+          return categoryMatch && tagMatch
+        },
+      ),
     [selectedCategory, selectedTag, posts],
   )
 
