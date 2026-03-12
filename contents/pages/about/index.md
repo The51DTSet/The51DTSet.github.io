@@ -1,6 +1,6 @@
 ---
 date: '2026-03-02 22:40:00 +0900'
-title: 'About'
+title: 'About, Text and Typography'
 summary: 'The51X DT Center Set Team Blog'
 author: ['aluvy']
 categories: []
@@ -15,6 +15,8 @@ thumbnail: './cover.png'
 더피프티원은 매년 다양한 프로젝트 경험과 전문성 있는 인적자원으로 프로젝트를 성공적으로 진행하며 업계를 선도합니다.
 
 
+
+
 ## Overview
 **There are many numbers in between ‘0’ and ‘100’**{: .fc-primary}
 
@@ -26,20 +28,41 @@ thumbnail: './cover.png'
 If '100' represents 'complete' that achieved everything '0' represents 'incomplete' that has to achieve everything While someone gives significant meaning to '100' we focus on '51(fifty-one)' between '0' and '100'
 '51' represents 'possibility' that defferentiates possible and impossible We will experience the moment of '51' making the impossible to possible all together.
 
+---
+
+## Headings
+# H1 - Heading
+## H2 - Heading
+### H3 - Heading
+#### H4 - Heading
+##### H5 - Heading
+###### H6 - Heading
+
+---
+
+## Paragraph
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+
+---
+
+## code block
 
 - 언어 이름만 (자동 표시)
-  ```js
-  const foo = 'bar'
-  ```
+```js
+const foo = 'bar'
+```
 
-  - 파일명 표시
-    ```js:title=index.js
-      const foo = 'bar'
-    ```
+- 파일명 표시   
+  `js:title=index.js`
 
+```js:title=index.js
+const foo = 'bar'
+```
 
-### 줄 번호 매기기
-코드 옆에 줄 번호를 표시하려면 다음 `numberLines`옵션을 사용하세요.
+- 줇 번호 매기기   
+  `javascript{numberLines: true}`
 
 ```javascript{numberLines: true}
 // In your gatsby-config.js
@@ -55,7 +78,8 @@ plugins: [
 ]
 ```
 
-원하는 인덱스부터 번호를 매길 수도 있습니다(여기서는 5번째 인덱스부터 시작합니다).
+- 원하는 인덱스부터 표시하기   
+  `javascript{numberLines: 5}`
 
 ```javascript{numberLines: 5}
 // In your gatsby-config.js
@@ -71,59 +95,8 @@ plugins: [
 ]
 ```
 
-
-### 라인 강조 표시
-코드 줄 강조 표시 기능도 추가할 수 있습니다. 이 기능은 특정 클래스가 포함된 테두리를 코드 줄 주위에 표시하고 `.gatsby-highlight-code-line`, 해당 클래스에 스타일을 적용할 수 있습니다. 자세한 내용은 README 파일을 참조하세요.
-
-코드에서 특정 줄을 강조 표시하려면 다음 지시어 중 하나를 코드에 주석으로 사용할 수 있습니다.
-
-TODO: test
-
-- highlight-line
-  - highlights the current line;
-  - highlights the next line;
-  - highlights the lines until the matching `hightlight-end`;
-  - will highlight the next line, and the fourth, fifth and sixth lines.
-
-```jsx
-class FlavorForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: 'coconut'};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('Your favorite flavor is: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Pick your favorite flavor:
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
-```
-
-코드 블록 외부에서 강조 표시할 줄을 지정할 수도 있습니다. 다음 코드 스니펫에서는 1번째 줄과 4번째 줄부터 6번째 줄까지가 강조 표시됩니다. 줄 범위 구문 분석은 https://www.npmjs.com/package/parse-numeric-range 패키지를 사용하여 수행됩니다 .
+- 라인 강조 표시   
+  `javascript{1,4-6}`
 
 ```javascript{1,4-6}
 // In your gatsby-config.js
@@ -138,3 +111,52 @@ plugins: [
   }
 ]
 ```
+
+---
+
+## list
+
+- Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+- Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+  - Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+  - Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+    - Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+      - Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+      - Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus, nisi cupiditate!
+
+---
+
+## table
+
+|Company	|Contact|Country|center|
+|:--|:--|--:|:--:|
+|Alfreds Futterkiste|Maria Anders|Germany|d|
+|Island Trading|Helen Bennett	|UK|4|
+|Magazzini Alimentari Riuniti|Giovanni Rovelli	|Italy|1|
+
+---
+
+## prompt
+
+> **기본 프롬프트**   
+> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus
+
+> **prompt tip**   
+> `{: .prompt-tip}`   
+> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus
+{: .prompt-tip}
+
+> **prompt info**   
+> `{: .prompt-info}`   
+> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus
+{: .prompt-info}
+
+> **prompt warning**   
+> `{: .prompt-warning}`   
+> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus
+{: .prompt-warning}
+
+> **prompt danger**   
+> `{: .prompt-danger}`   
+> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime consequuntur a? Temporibus quia omnis quis quas esse eaque maiores rem ea iure nostrum harum sit repellat, possimus
+{: .prompt-danger}

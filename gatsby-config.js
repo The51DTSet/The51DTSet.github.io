@@ -145,6 +145,9 @@ module.exports = {
             resolve: `${__dirname}/plugins/gatsby-remark-block-attrs`,
           },
           {
+            resolve: `${__dirname}/plugins/gatsby-remark-table-wrap`,
+          },
+          {
             resolve: 'gatsby-remark-smartypants',
             options: {
               dashes: 'oldschool',

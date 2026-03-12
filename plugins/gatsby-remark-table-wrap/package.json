@@ -1,0 +1,7 @@
+{
+  "name": "gatsby-remark-table-wrap",
+  "version": "1.0.0",
+  "description": "Wrap markdown tables with a div.table-wrap element",
+  "main": "index.js",
+  "keywords": ["gatsby", "gatsby-plugin", "gatsby-remark"]
+}
