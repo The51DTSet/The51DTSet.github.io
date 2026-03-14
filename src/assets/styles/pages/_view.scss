@@ -121,8 +121,13 @@
     @include tablet {
       flex-direction: column;
       align-items: flex-start;
-      font-size: 15px;
+      font-size: 1.5rem;
       font-weight: 400;
+    }
+
+    @include mobile-lg {
+      gap: 0.4rem;
+      margin-top: 2rem;
     }
   }
 

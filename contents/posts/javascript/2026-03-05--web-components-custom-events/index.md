@@ -4,7 +4,7 @@ title: '[JavaScript] Web Components : Custom Elements'
 summary: 'Custom Elements는 사용자 HTML Element를 만들게 해준다. 그리고 이는 DOM의 모든 기능을 다 사용할 수 있다. 기본적으로 두 가지 타입으로 생성한다.'
 author: ['aluvy']
 categories: ['JavaScript']
-tags: ['JavaScript']
+tags: ['javascript']
 thumbnail: './cover.png'
 ---
 

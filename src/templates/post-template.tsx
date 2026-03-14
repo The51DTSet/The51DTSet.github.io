@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { PostPageItemType } from 'types/PostItem.types'
 
 import Template from 'templates/index-template'
@@ -35,7 +35,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
       html,
       tableOfContents,
       fields: { gitLastModified },
-      frontmatter: { title, date, categories, author, thumbnail },
+      frontmatter: { title, date, categories, tags, author, thumbnail },
     },
   } = post
 
@@ -54,6 +54,19 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         <div id="contents">
           <div className="contents-left">
             <PostContent html={html} />
+            {tags && tags.length > 0 && (
+              <div className="post-tags">
+                {tags.map(tag => (
+                  <Link
+                    key={tag}
+                    to={`/?tag=${tag}`}
+                    className="post-tags-item"
+                  >
+                    #{tag}
+                  </Link>
+                ))}
+              </div>
+            )}
             {author && author.length > 0 && <PostAuthor authorIds={author} />}
             <CommentWidget />
           </div>
@@ -109,6 +122,7 @@ export const queryMarkdownDataBySlug = graphql`
             summary
             date(formatString: "MMM D, YYYY")
             categories
+            tags
             author
             thumbnail {
               childImageSharp {

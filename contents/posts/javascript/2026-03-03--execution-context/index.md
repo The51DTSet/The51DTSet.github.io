@@ -4,7 +4,7 @@ title: '[JavaScript] Execution Context (실행 컨텍스트)'
 summary: '실행 컨텍스트는 실행 문맥이라고도 한다. 실행 컨텍스트(Execution Context)는 실행 할 코드에 제공할 환경 정보들을 모아놓은 객체다.'
 author: ['aluvy']
 categories: ['JavaScript']
-tags: ['JavaScript']
+tags: ['javascript']
 # thumbnail: './cover.png'
 ---
 

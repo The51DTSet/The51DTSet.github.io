@@ -4,7 +4,7 @@ title: '[JavaScript] Debounce & Throttle'
 summary: '이벤트 오버클럭(overclock - 과도한 이벤트 발생)은 리소스 사용량을 증가시키기 때문에 성능문제를 야기하고 사용자 경험을 떨어트립니다. 과도한 이벤트나 함수들의 빈도수를 줄여서 성능을 향상시키는 프로그래밍 기법 중, 자주 언급되는 두 가지를 알아봅니다.'
 author: ['aluvy']
 categories: ['JavaScript']
-tags: ['JavaScript']
+tags: ['javascript']
 # thumbnail: './cover.png'
 ---
 
