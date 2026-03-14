@@ -28,7 +28,19 @@ $ gatsby develop -H 192.188.0.xx
 $ npm run deploy
 ```
 
-## 6. 익스텐션
+## 6. 캐시오류
+
+```shell
+$ sudo rm -rf .cache public
+```
+
+```shell
+$ sudo rm -rf node_modules .cache public
+$ npm install
+$ gatsby develop
+```
+
+## 익스텐션
 - Markdown All in One
 
 ## 벤치

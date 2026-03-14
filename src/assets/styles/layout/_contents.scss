@@ -1,19 +1,21 @@
 @use '../abstracts/mixins' as *;
 
 #contents {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8rem;
-  margin: 6rem 0;
+  .contents-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8rem;
+    margin: 6rem 0;
 
-  @include desktop-lg {
-    gap: 4rem;
-  }
+    @include desktop-lg {
+      gap: 4rem;
+    }
 
-  @include desktop {
-    margin: 2rem 0;
-    display: block;
+    @include desktop {
+      // margin: 2rem 0;
+      display: block;
+    }
   }
 
   .contents-left {
@@ -21,8 +23,8 @@
   }
 
   .contents-right {
-    flex: 0 0 var(--rnb-width);
-    align-self: stretch;
+    // flex: 0 0 var(--rnb-width);
+    // align-self: stretch;
 
     @include desktop {
       position: fixed;

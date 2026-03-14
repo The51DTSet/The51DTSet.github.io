@@ -231,7 +231,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  margin: 8rem 0;
+  margin: 0 0 8rem;
 
   .post-author {
     display: flex;
@@ -278,6 +278,45 @@
         text-decoration: underline;
       }
     }
+  }
+}
+
+.post-prev-next {
+  display: flex;
+  align-items: stretch;
+  border-radius: 1rem;
+  border: 1px solid var(--bc-sub);
+
+  .post-prev-item,
+  .post-next-item {
+    flex: 0 0 50%;
+    text-align: center;
+    padding: 1.4rem 2rem;
+
+    strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--fc-sub);
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 1.6rem;
+      color: var(--fc-primary);
+      margin-top: 0.6rem;
+    }
+
+    &.post-nav-empty {
+      p {
+        color: var(--fc-default);
+      }
+    }
+  }
+
+  .post-prev-item {
+  }
+  .post-next-item {
+    border-left: 1px solid var(--bc-sub);
   }
 }
 

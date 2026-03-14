@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { PostPageItemType } from 'types/PostItem.types'
 
 import Template from 'templates/index-template'
@@ -10,12 +10,23 @@ import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
 import PostToc from 'components/Post/PostToc'
 import PostAuthor from 'components/Post/PostAuthor'
+import PostTags from 'components/Post/PostTags'
+import PostPrevNext from 'components/Post/PostPrevNext'
+
+type PostNavItem = {
+  slug: string
+  title: string
+}
 
 type PostTemplateProps = {
   data: {
     allMarkdownRemark: {
       edges: PostPageItemType[]
     }
+  }
+  pageContext: {
+    prev: PostNavItem | null
+    next: PostNavItem | null
   }
   location: {
     href: string
@@ -26,6 +37,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   data: {
     allMarkdownRemark: { edges },
   },
+  pageContext: { prev, next },
 }) {
   const post = edges[0]
   if (!post) return null
@@ -52,26 +64,22 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
       />
       <div id="container" className="post-page">
         <div id="contents">
-          <div className="contents-left">
-            <PostContent html={html} />
-            {tags && tags.length > 0 && (
-              <div className="post-tags">
-                {tags.map(tag => (
-                  <Link
-                    key={tag}
-                    to={`/?tag=${tag}`}
-                    className="post-tags-item"
-                  >
-                    #{tag}
-                  </Link>
-                ))}
-              </div>
-            )}
-            {author && author.length > 0 && <PostAuthor authorIds={author} />}
-            <CommentWidget />
+          <div className="row contents-layout">
+            <div className="col-content contents-left">
+              <PostContent html={html} />
+            </div>
+            <div className="col-rnb contents-right">
+              <PostToc tableOfContents={tableOfContents} />
+            </div>
           </div>
-          <div className="contents-right">
-            <PostToc tableOfContents={tableOfContents} />
+          <div className="row contents-layout">
+            <div className="col-content">
+              {author && author.length > 0 && <PostAuthor authorIds={author} />}
+              {tags && <PostTags tags={tags} />}
+              <PostPrevNext prev={prev} next={next} />
+              <CommentWidget />
+            </div>
+            <div className="col-rnb">-</div>
           </div>
         </div>
         <Footer />

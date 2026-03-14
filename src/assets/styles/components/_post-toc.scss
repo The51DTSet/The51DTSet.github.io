@@ -2,12 +2,16 @@
 
 .toc-wrapper {
   position: sticky;
-  top: 4rem;
+  top: 7rem;
+
+  &.toc-unstuck {
+    // position: relative;
+    // top: 0;
+  }
   max-height: calc(100vh - 4rem);
   overflow-y: auto;
   padding-left: 0;
   scrollbar-width: none;
-
   mask-image: linear-gradient(
     180deg,
     transparent 0%,

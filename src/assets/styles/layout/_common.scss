@@ -16,6 +16,23 @@
   }
 }
 
+.row {
+  display: flex;
+}
+
+.col {
+  flex: 1 1 0;
+}
+
+.col-content {
+  flex: 1 1 auto;
+}
+
+.col-rnb {
+  flex: 0 0 var(--rnb-width);
+  align-self: stretch;
+}
+
 .scroll-y {
   overflow: hidden;
   overflow-y: auto;

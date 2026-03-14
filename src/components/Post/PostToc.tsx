@@ -15,6 +15,7 @@ const PostToc: FunctionComponent<PostTocProps> = ({ tableOfContents }) => {
   const { closeToc } = useLayout()
   const [activeId, setActiveId] = useState<string>('')
   const [hasH1Headings, setHasH1Headings] = useState(false)
+  const [isPastContent, setIsPastContent] = useState(false)
   const tocRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -35,6 +36,11 @@ const PostToc: FunctionComponent<PostTocProps> = ({ tableOfContents }) => {
         }
       })
       setActiveId(current)
+
+      const postContents = document.querySelector('.post-contents')
+      if (postContents) {
+        setIsPastContent(postContents.getBoundingClientRect().bottom <= 0)
+      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -83,7 +89,7 @@ const PostToc: FunctionComponent<PostTocProps> = ({ tableOfContents }) => {
   if (!tableOfContents) return null
 
   return (
-    <div className="cont-wrap toc-wrapper" aria-label="목차">
+    <div className={`cont-wrap toc-wrapper${isPastContent ? ' toc-unstuck' : ''}`} aria-label="목차">
       <div className="cont-ttl">
         <h3>Contents</h3>
       </div>

@@ -63,17 +63,19 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       <div id="container" className="index-page">
         <TopBar />
         <div id="contents">
-          <div className="contents-left">
-            <PostList
-              selectedCategory={selectedCategory}
-              selectedTag={selectedTag}
-              posts={edges}
-              type={'vertical-type'}
-            />
-          </div>
-          <div className="contents-right">
-            <PostRecent edges={edges} />
-            <PostTags edges={edges} selectedTag={selectedTag} />
+          <div className="row contents-layout">
+            <div className="col-content contents-left">
+              <PostList
+                selectedCategory={selectedCategory}
+                selectedTag={selectedTag}
+                posts={edges}
+                type={'vertical-type'}
+              />
+            </div>
+            <div className="col-rnb contents-right">
+              <PostRecent edges={edges} />
+              <PostTags edges={edges} selectedTag={selectedTag} />
+            </div>
           </div>
         </div>
         <Footer />

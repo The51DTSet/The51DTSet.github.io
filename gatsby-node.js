@@ -104,6 +104,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             fields {
               slug
             }
+            frontmatter {
+              title
+            }
           }
         }
       }
@@ -123,20 +126,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   )
 
   // Page Generating Function
-  const generatePostPage = ({
-    node: {
-      fields: { slug },
-    },
-  }) => {
-    const pageOptions = {
+  const edges = queryAllMarkdownData.data.allMarkdownRemark.edges
+
+  edges.forEach((edge, index) => {
+    const slug = edge.node.fields.slug
+
+    // DESC 정렬이므로 index-1 = 더 최신(next), index+1 = 더 오래된(prev)
+    const nextEdge = index > 0 ? edges[index - 1] : null
+    const prevEdge = index < edges.length - 1 ? edges[index + 1] : null
+
+    const prev = prevEdge
+      ? { slug: prevEdge.node.fields.slug, title: prevEdge.node.frontmatter.title }
+      : null
+    const next = nextEdge
+      ? { slug: nextEdge.node.fields.slug, title: nextEdge.node.frontmatter.title }
+      : null
+
+    createPage({
       path: slug,
       component: PostTemplateComponent,
-      context: { slug },
-    }
-
-    createPage(pageOptions)
-  }
-
-  // Generate Post Page And Passing Slug Props for Query
-  queryAllMarkdownData.data.allMarkdownRemark.edges.forEach(generatePostPage)
+      context: { slug, prev, next },
+    })
+  })
 }
