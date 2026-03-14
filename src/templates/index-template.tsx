@@ -1,5 +1,7 @@
 import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
+
 import { LayoutContext } from 'contexts/LayoutContext'
+import ScrollToTop from 'components/Common/ScrollToTop'
 
 type TemplateProps = {
   hasSidebar?: boolean
@@ -56,6 +58,7 @@ const Template: FunctionComponent<TemplateProps> = function ({
           }}
         ></div>
       </div>
+      <ScrollToTop />
     </LayoutContext.Provider>
   )
 }
