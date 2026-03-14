@@ -2,7 +2,7 @@
 
 .btn-scroll-top {
   position: fixed;
-  right: 1.6rem;
+  right: var(--side-padding);
   bottom: 7.4rem;
   display: flex;
   align-items: center;
