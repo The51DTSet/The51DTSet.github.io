@@ -1,9 +1,9 @@
 ---
 date: '2026-06-12 14:09:00 +0900'
 title: 'Posting Guide'
-summary: 'The51X DT Center Set Team Blog'
-author: ['aluvy']
-categories: []
+summary: 'The51X DT Center Set Team Blog, 포스팅을 작성하기 위한 기본 세팅과 가독성 높은 포스팅 작성을 위한 팁'
+author: ['aluvy', 'sodium', 'sjhong', 'BP2974']
+categories: ['etc']
 tags: []
 thumbnail: './cover.png'
 ---
@@ -64,10 +64,14 @@ thumbnail: './cover.jpg'
 
 ### 5. 포스팅 작성 완료하기
 
-포스팅을 모두 작성한 후에 깃허브에 push 한다.   
-The51DTSet.github.io 레포지토리의 Pull requests를 진행한다.   
-base 브랜치와 compare 브랜치 선택에 유의하고, Create pull request   
-(작성 중)
+1. 포스팅을 모두 작성한 후에 깃허브에 push 한다.
+2. The51DTSet.github.io 레포지토리의 Pull requests를 진행한다.
+3. base 브랜치와 compare 브랜치 선택에 유의하고, Create pull request 버튼을 클릭한다.
+  1. base 브랜치가 develop, compare 브랜치가 내가 작업 한 브랜치다.
+4. Open a pull request title과 description 작성 후 Create pull request 버튼을 클릭한다.
+
+> Pull requests가 생성되면, 관리자가 코드 검수 후 develop 브랜치에 머지, 배포가 진행된다.
+{: .prompt-info}
 
 
 <br><br><br><br>

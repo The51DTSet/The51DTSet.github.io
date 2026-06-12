@@ -80,17 +80,8 @@ const Aside: FunctionComponent<AsideProps> = function ({
           <div className="page-list">
             <ul>
               <li>
-                <Link
-                  to="/pages/about/"
-                  key="about"
-                  className={`post-link ${pathname === '/info/' ? 'on' : ''}`}
-                >
-                  About
-                </Link>
-              </li>
-              <li>
                 <Link to="/pages/guide/" className="page-link">
-                  Guide
+                  Posting Guide
                 </Link>
               </li>
             </ul>
