@@ -41,7 +41,7 @@ $ gatsby develop
 ```
 
 ## 익스텐션
-- Markdown All in One
+- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 
 ## 벤치
 

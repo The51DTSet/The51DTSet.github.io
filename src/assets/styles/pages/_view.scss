@@ -42,7 +42,14 @@
       }
     }
 
-    .btn-back {
+    .btn-wrap {
+      flex: 0 0 4rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-back,
+    .btn-home {
       flex: 0 0 4rem;
       display: flex;
       align-items: center;
@@ -185,7 +192,8 @@
     height: 4.8rem;
   }
 
-  .btn-back {
+  .btn-back,
+  .btn-home {
     flex: 0 0 4rem;
     display: flex;
     align-items: center;
@@ -193,6 +201,10 @@
     aspect-ratio: 1;
     color: var(--ic-sub);
     margin-left: -1rem;
+
+    &.btn-home {
+      margin-right: 0.4rem;
+    }
   }
 
   .title {

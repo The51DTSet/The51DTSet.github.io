@@ -142,6 +142,14 @@ module.exports = {
             },
           },
           {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 768,
+              quality: 100,
+              withWebp: true,
+            },
+          },
+          {
             resolve: `${__dirname}/plugins/gatsby-remark-block-attrs`,
           },
           {
@@ -151,14 +159,6 @@ module.exports = {
             resolve: 'gatsby-remark-smartypants',
             options: {
               dashes: 'oldschool',
-            },
-          },
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 768,
-              quality: 100,
-              withWebp: true,
             },
           },
           {

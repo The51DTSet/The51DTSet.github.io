@@ -40,6 +40,10 @@
     }
   }
 
+  em {
+    font-style: italic;
+  }
+
   h1 .anchor,
   h2 .anchor,
   h3 .anchor,
@@ -111,6 +115,14 @@
 
   // image
   .gatsby-resp-image-wrapper {
+    &.img-md {
+      max-width: 500px !important;
+    }
+
+    &.img-sm {
+      max-width: 300px !important;
+    }
+
     & + em {
       display: block;
       color: var(--fc-sub);
@@ -267,6 +279,22 @@
 
             li {
               list-style-type: square;
+
+              ul {
+                list-style-type: disc;
+
+                li {
+                  list-style-type: disc;
+
+                  ul {
+                    list-style-type: circle;
+
+                    li {
+                      list-style-type: circle;
+                    }
+                  }
+                }
+              }
             }
           }
         }

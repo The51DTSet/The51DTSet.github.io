@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import { navigate } from 'gatsby'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import PostHeadInfo, { PostHeadInfoProps } from 'components/Post/PostHeadInfo'
 import { useLayout } from 'contexts/LayoutContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faListUl } from '@fortawesome/free-solid-svg-icons'
+import { faHouse } from '@fortawesome/free-regular-svg-icons'
 
 type PostHeadProps = PostHeadInfoProps & {
   thumbnail?: IGatsbyImageData
@@ -45,6 +47,10 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
     history.go(-(history.length - initialHistoryLength.current + 1))
   }
 
+  const goMainPage = () => {
+    navigate('/')
+  }
+
   return (
     <div className="post-head">
       <div className={`post-topbar${topbarOn ? ' on' : ''}`}>
@@ -52,6 +58,9 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
           <div className="inner">
             <button type="button" onClick={goBackPage} className="btn-back">
               <FontAwesomeIcon icon={faAngleLeft} className="ico" />
+            </button>
+            <button type="button" onClick={goMainPage} className="btn-home">
+              <FontAwesomeIcon icon={faHouse} className="ico" />
             </button>
             <div className="title">
               <h1>{title}</h1>

@@ -89,8 +89,8 @@ const Aside: FunctionComponent<AsideProps> = function ({
                 </Link>
               </li>
               <li>
-                <Link to="/" className="page-link">
-                  Pages2
+                <Link to="/pages/guide/" className="page-link">
+                  Guide
                 </Link>
               </li>
             </ul>
@@ -103,7 +103,7 @@ const Aside: FunctionComponent<AsideProps> = function ({
               target="_blank"
               className="foot-links-item"
             >
-              <FontAwesomeIcon icon={faGithub} className='ico' />
+              <FontAwesomeIcon icon={faGithub} className="ico" />
             </a>
           </div>
         </div>
