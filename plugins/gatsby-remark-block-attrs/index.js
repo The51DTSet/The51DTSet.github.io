@@ -137,10 +137,27 @@ module.exports = ({ markdownAST }) => {
           'link',
           'image',
           'inlineCode',
+          'html',
         ]
 
         if (!textBefore.trim() && prev && INLINE_TYPES.includes(prev.type)) {
-          applyAttrs(prev, parsed)
+          if (prev.type === 'html') {
+            // gatsby-remark-images가 생성한 gatsby-resp-image-wrapper에 직접 class/attr 추가
+            if (parsed.classes.length > 0) {
+              prev.value = prev.value.replace(
+                /class="gatsby-resp-image-wrapper"/,
+                `class="gatsby-resp-image-wrapper ${parsed.classes.join(' ')}"`,
+              )
+            }
+            for (const [k, v] of Object.entries(parsed.attrs)) {
+              prev.value = prev.value.replace(
+                /class="gatsby-resp-image-wrapper([^"]*)"/,
+                `class="gatsby-resp-image-wrapper$1" ${k}="${v}"`,
+              )
+            }
+          } else {
+            applyAttrs(prev, parsed)
+          }
         } else {
           applyAttrs(paragraphNode, parsed)
         }

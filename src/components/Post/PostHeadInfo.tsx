@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
-
+import { navigate } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faHouse } from '@fortawesome/free-regular-svg-icons'
 
 export type PostHeadInfoProps = {
   title: string
@@ -26,12 +27,21 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
     history.go(-(history.length - initialHistoryLength.current + 1))
   }
 
+  const goMainPage = () => {
+    navigate('/')
+  }
+
   return (
     <div className="post-head-info">
       <div className="inner">
-        <button type="button" onClick={goBackPage} className="btn-back">
-          <FontAwesomeIcon icon={faArrowLeft} className='ico' />
-        </button>
+        <div className="btn-wrap">
+          <button type="button" onClick={goBackPage} className="btn-back">
+            <FontAwesomeIcon icon={faArrowLeft} className="ico" />
+          </button>
+          <button type="button" onClick={goMainPage} className="btn-home">
+            <FontAwesomeIcon icon={faHouse} className="ico" />
+          </button>
+        </div>
         <div className="text-wrapper">
           <div className="post-title">{title}</div>
           <div className="post-info">
